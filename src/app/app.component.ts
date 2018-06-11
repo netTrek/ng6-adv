@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
@@ -8,7 +8,8 @@ const version = 'v7';
 @Component ( {
   selector   : 'post-root',
   templateUrl: './app.component.html',
-  styleUrls  : [ './app.component.scss' ]
+  styleUrls  : [ './app.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class AppComponent implements OnInit {
   title = 'post';
