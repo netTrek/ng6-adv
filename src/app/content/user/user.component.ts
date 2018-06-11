@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, OnInit, ViewContainerRef } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, ContentChildren, ElementRef, OnInit, QueryList, ViewContainerRef } from '@angular/core';
 import { UserIconComponent } from '../user-icon/user-icon.component';
 
 @Component ( {
@@ -10,6 +10,9 @@ export class UserComponent implements OnInit, AfterContentInit {
 
   @ContentChild ( UserIconComponent )
   userIcon: UserIconComponent;
+
+  @ContentChildren ( UserIconComponent )
+  userIcons: QueryList<UserIconComponent>;
 
   @ContentChild ( UserIconComponent, {read: ElementRef} )
   userIconElemRef: ElementRef;
@@ -27,6 +30,9 @@ export class UserComponent implements OnInit, AfterContentInit {
     console.log ( this.userIcon );
     console.log ( this.userIconElemRef );
     console.log ( this.userIconViewContainerRef );
+
+    console.log ( this.userIcons.toArray() );
+    this.userIcons.changes.subscribe( next => console.log ( '**', next ) );
   }
 
 }
