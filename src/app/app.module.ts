@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { ContentModule } from './content/content.module';
 import { ViewsModule } from './views/views.module';
 import { DynamicModule } from './dynamic/dynamic.module';
+import { CustomEventsAndAttrModule } from './custom-events-and-attr/custom-events-and-attr.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DynamicModule } from './dynamic/dynamic.module';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     // ContentModule
     // ViewsModule
-    DynamicModule
+    // DynamicModule
+    CustomEventsAndAttrModule
   ],
   providers: [],
   bootstrap: [AppComponent]
