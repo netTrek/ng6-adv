@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subject, Subscription } from 'rxjs';
 import { scan } from 'rxjs/operators';
 
 @Component({
@@ -10,7 +10,7 @@ import { scan } from 'rxjs/operators';
 })
 export class PushComponent implements OnInit, OnDestroy {
 
-  count: number;
+  count$: Subject<number> = new Subject<number>();
   private subscriptions: Subscription[] = [];
 
   constructor ( private cdr: ChangeDetectorRef ) {
@@ -22,7 +22,7 @@ export class PushComponent implements OnInit, OnDestroy {
         scan ( acc => acc + 1, 0 )
       )
       .subscribe ( next => {
-        this.count = next;
+        this.count$.next( next );
       } ) );
   }
 
