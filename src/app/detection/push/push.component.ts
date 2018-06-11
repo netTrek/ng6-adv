@@ -23,7 +23,7 @@ export class PushComponent implements OnInit, OnDestroy {
       )
       .subscribe ( next => {
         this.count = next;
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       } ) );
   }
 
