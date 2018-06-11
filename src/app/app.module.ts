@@ -9,6 +9,7 @@ import { ContentModule } from './content/content.module';
 import { ViewsModule } from './views/views.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { CustomEventsAndAttrModule } from './custom-events-and-attr/custom-events-and-attr.module';
+import { DetectionModule } from './detection/detection.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomEventsAndAttrModule } from './custom-events-and-attr/custom-event
     // ContentModule
     // ViewsModule
     // DynamicModule
-    CustomEventsAndAttrModule
+    // CustomEventsAndAttrModule
+    DetectionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
