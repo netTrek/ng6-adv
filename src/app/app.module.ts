@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ContentModule } from './content/content.module';
 import { ViewsModule } from './views/views.module';
+import { DynamicModule } from './dynamic/dynamic.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ViewsModule } from './views/views.module';
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     // ContentModule
-    ViewsModule
+    // ViewsModule
+    DynamicModule
   ],
   providers: [],
   bootstrap: [AppComponent]
