@@ -5,13 +5,23 @@ import { HomeComponent } from './home/home/home.component';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
     path: 'home',
     component: HomeComponent
   },
   {
     path: 'list',
     component: UserListComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
+
 ];
 
 @NgModule({
