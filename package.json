@@ -10,6 +10,8 @@
     "build": "ng build",
     "build:stats": "ng build --stats-json && webpack-bundle-analyzer dist/post/stats.json",
     "build:prod": "ng build --prod",
+    "build:pwa": "ng build --prod && http-server dist/post -p 8088 -c2",
+    "http-server":"http-server dist/post -p 8088 -c2",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,10 +26,12 @@
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/pwa": "^0.6.8",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "@angular/service-worker": "^6.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",
@@ -38,6 +42,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "http-server": "^0.11.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
