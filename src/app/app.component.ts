@@ -29,4 +29,7 @@ export class AppComponent {
     }).subscribe();
   }
 
+  forceErr () {
+    this.$user.getUserById( 999 ).subscribe();
+  }
 }

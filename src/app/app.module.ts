@@ -13,6 +13,7 @@ import { DetectionModule } from './detection/detection.module';
 import { StreamsModule } from './streams/streams.module';
 import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     // DetectionModule
     // StreamsModule,
     HttpClientModule,
-    UsersModule
+    UsersModule,
+    UtilsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
