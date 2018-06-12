@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 import { HomeModule } from './home/home.module';
+import { DashModule } from './dash/dash.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     UsersModule,
     UtilsModule,
-    HomeModule
+    HomeModule,
+    DashModule
   ],
   providers: [],
   bootstrap: [AppComponent]
