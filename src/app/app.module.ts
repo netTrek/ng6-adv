@@ -16,8 +16,8 @@ import { ViewModule } from './view/view.module';
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    ContentModule
-    // ViewModule
+    // ContentModule
+    ViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserIconComponent implements OnInit {
 
+  val = '*';
+
   constructor() { }
 
   ngOnInit() {
