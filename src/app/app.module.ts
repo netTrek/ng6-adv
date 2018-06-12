@@ -11,6 +11,8 @@ import { DynamicModule } from './dynamic/dynamic.module';
 import { CustomEventsAndAttrModule } from './custom-events-and-attr/custom-events-and-attr.module';
 import { DetectionModule } from './detection/detection.module';
 import { StreamsModule } from './streams/streams.module';
+import { UsersModule } from './users/users.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { StreamsModule } from './streams/streams.module';
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    // ContentModule
+    ContentModule,
     // ViewsModule
     // DynamicModule
     // CustomEventsAndAttrModule
     // DetectionModule
-    StreamsModule
+    // StreamsModule,
+    HttpClientModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

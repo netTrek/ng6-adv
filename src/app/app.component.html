@@ -25,4 +25,6 @@
 <post-push></post-push>
 -->
 
+<post-user *ngFor="let usr of $user.users$ | async" (click)="delete(usr)">{{usr.firstname}} {{usr.lastname}}</post-user>
+<button (click)="create()">create</button>
 <router-outlet></router-outlet>

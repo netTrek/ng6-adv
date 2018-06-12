@@ -27,11 +27,10 @@ export class UserComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit (): void {
-    console.log ( this.userIcon );
-    console.log ( this.userIconElemRef );
-    console.log ( this.userIconViewContainerRef );
-
-    console.log ( this.userIcons.toArray() );
+    // console.log ( this.userIcon );
+    // console.log ( this.userIconElemRef );
+    // console.log ( this.userIconViewContainerRef );
+    // console.log ( this.userIcons.toArray() );
     this.userIcons.changes.subscribe( next => console.log ( '**', next ) );
   }
 

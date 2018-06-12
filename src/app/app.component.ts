@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from '../environments/environment';
+import { Component } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { interval } from 'rxjs';
+import { UserService } from './users/user.service';
+import { User } from './users/user';
 
 const version = 'v7';
 
@@ -10,40 +10,23 @@ const version = 'v7';
   templateUrl: './app.component.html',
   styleUrls  : [ './app.component.scss' ]
 } )
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'post';
 
-  constructor ( private swUpdate: SwUpdate ) {
-    console.log ( environment.endpoint );
+  constructor ( private swUpdate: SwUpdate, public $user: UserService ) {
+    $user.getUserList().subscribe();
   }
 
-  ngOnInit () {
+  delete ( user: User ) {
+    this.$user.delUser( user ).subscribe();
+  }
 
-    if ( this.swUpdate.isEnabled ) {
-
-      console.log ( 'avaiable ', version );
-
-      this.swUpdate.available.subscribe ( event => {
-        if ( confirm ( 'New version available. Load New Version?' ) ) {
-          this.swUpdate.activateUpdate ()
-              .then ( () => document.location.reload () );
-        }
-      } );
-
-      this.swUpdate.activated.subscribe ( event => {
-        console.log ( 'old version was', event.previous, version );
-        console.log ( 'new version is', event.current, version );
-      } );
-
-      this.swUpdate.checkForUpdate ();
-      interval ( 5000 )
-        .subscribe ( () => {
-          console.log ( 'check update', version );
-          this.swUpdate.checkForUpdate ().then( value => {
-            console.log ( 'checked', version );
-          });
-        } );
-    }
+  create () {
+    this.$user.create( <User> {
+      age: 111,
+      firstname: 'f111',
+      lastname: 'l111'
+    }).subscribe();
   }
 
 }
