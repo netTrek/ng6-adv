@@ -10,6 +10,7 @@ import { ViewsModule } from './views/views.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { CustomEventsAndAttrModule } from './custom-events-and-attr/custom-events-and-attr.module';
 import { DetectionModule } from './detection/detection.module';
+import { StreamsModule } from './streams/streams.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DetectionModule } from './detection/detection.module';
     // ViewsModule
     // DynamicModule
     // CustomEventsAndAttrModule
-    DetectionModule
+    // DetectionModule
+    StreamsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
