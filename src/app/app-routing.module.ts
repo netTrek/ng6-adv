@@ -27,6 +27,7 @@ const routes: Routes = [
     canLoad: [UserGuard]
     // component: UserListComponent
   },
+  { path: 'form', loadChildren: './form/form.module#FormModule' },
   {
     path      : '**',
     redirectTo: 'home'

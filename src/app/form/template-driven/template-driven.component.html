@@ -1,0 +1,16 @@
+<form novalidate #myForm="ngForm">
+  <input type="text"
+         autocomplete="name"
+         placeholder="name"
+         name="name"
+         #name="ngModel"
+         ngModel
+         >
+  <span ngModelGroup="credentials">
+    <input name="email"
+           #email="ngModel" ngModel>
+    <input name="password"
+           #password="ngModel" ngModel>
+  </span>
+</form>
+<p>{{myForm.value | json}}</p>
