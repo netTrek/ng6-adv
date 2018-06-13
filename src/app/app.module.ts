@@ -9,11 +9,13 @@ import { ContentModule } from './content/content.module';
 import { ViewModule } from './view/view.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { RoleDirective } from './dynamic/role.directive';
+import { TempTargetDirective } from './dynamic/temp-target.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoleDirective
+    RoleDirective,
+    TempTargetDirective
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,6 @@ import { RoleDirective } from './dynamic/role.directive';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RoleDirective]
+  exports: [RoleDirective, TempTargetDirective]
 })
 export class AppModule { }
