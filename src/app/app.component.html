@@ -17,7 +17,7 @@
 <div *postRole="crrRole">ADMIN</div>
 
 <post-gen-via-temp-dir [dataProvider]="[1,2,3,4]">
-  <div *postTempTarget>hello world</div>
+  <div *postTempTarget="let s=value">hello world {{s}}</div>
 </post-gen-via-temp-dir>
 
 <router-outlet></router-outlet>
