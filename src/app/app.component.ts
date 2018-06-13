@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
+import { Role } from './dynamic/role.enum';
 
 @Component ( {
   selector   : 'post-root',
@@ -9,7 +10,9 @@ import { interval } from 'rxjs';
   styleUrls  : [ './app.component.scss' ]
 } )
 export class AppComponent implements OnInit {
+
   title = 'post';
+  crrRole: Role = Role.USER;
 
   constructor ( private swUpdate: SwUpdate ) {
     console.log ( environment.endpoint );

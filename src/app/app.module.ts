@@ -8,10 +8,12 @@ import { environment } from '../environments/environment';
 import { ContentModule } from './content/content.module';
 import { ViewModule } from './view/view.module';
 import { DynamicModule } from './dynamic/dynamic.module';
+import { RoleDirective } from './dynamic/role.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoleDirective
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { DynamicModule } from './dynamic/dynamic.module';
     DynamicModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RoleDirective]
 })
 export class AppModule { }
