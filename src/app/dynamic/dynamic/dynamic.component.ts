@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'post-dynamic',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dynamic.component.scss']
 })
 export class DynamicComponent implements OnInit {
+
+  @Input()
+  data: any;
 
   constructor() { }
 

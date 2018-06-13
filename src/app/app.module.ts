@@ -10,6 +10,7 @@ import { ViewModule } from './view/view.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { RoleDirective } from './dynamic/role.directive';
 import { TempTargetDirective } from './dynamic/temp-target.directive';
+import { StreamModule } from './stream/stream.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TempTargetDirective } from './dynamic/temp-target.directive';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     // ContentModule
     // ViewModule
-    DynamicModule
+    // DynamicModule
+    StreamModule
   ],
   providers: [],
   bootstrap: [AppComponent],
