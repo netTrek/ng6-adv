@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'msg-forms',
+  selector: 'post-forms',
   template: `
     <p>
       forms works!
     </p>
-    <msg-template-driven></msg-template-driven>
+    <post-template-driven></post-template-driven>
   `,
   styles: []
 })

@@ -1,16 +1,28 @@
-<form novalidate #myForm="ngForm">
+<form novalidate #myForm="ngForm" (submit)="send( myForm )"
+      (reset)="reset( myForm, $event )">
+
   <input type="text"
          autocomplete="name"
          placeholder="name"
          name="name"
          #name="ngModel"
-         ngModel
-         >
+         msgFormater
+         [ngModel]="initVal.name"  required
+  >
   <span ngModelGroup="credentials">
-    <input name="email"
-           #email="ngModel" ngModel>
-    <input name="password"
-           #password="ngModel" ngModel>
-  </span>
+        <input name="email" #email="ngModel" [ngModel]="initVal.credentials.email" autocomplete="email" type="email"
+               placeholder="email" required email >
+        <ng-template [ngIf]="email.errors">
+          <div *ngIf="email.errors?.required">Dieser Wert ist erforderlich</div>
+          <div *ngIf="email.errors?.email">Tragen Sie eine gültige Mail Adresse ein</div>
+        </ng-template>
+        <input name="password" #password="ngModel" [ngModel]="initVal.credentials.password" autocomplete="password"
+               type="password" placeholder="password"  required>
+        </span>
+
+  <button type="submit" [disabled]="myForm.invalid || !myForm.dirty">senden</button>
+  <button type="reset" [disabled]="!myForm.dirty">reset</button>
+
 </form>
-<p>{{myForm.value | json}}</p>
+
+{{name.value}}
