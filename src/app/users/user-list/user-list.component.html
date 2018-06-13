@@ -1,5 +1,5 @@
 <post-user *ngFor="let usr of $user.users$ | async">
-  <a [routerLink]="['detail', usr.id]">{{usr.firstname}} {{usr.lastname}}</a> 
+  <a [routerLink]="['detail', usr.id]">{{usr.firstname}} {{usr.lastname}}</a>
   <button (click)="delete(usr)">-</button>
 </post-user>
 <button (click)="create()">create</button>

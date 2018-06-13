@@ -19,6 +19,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   constructor ( private route: ActivatedRoute, private $user: UserService ) {
     this.detectParamId ();
+    this.detectUser ();
   }
 
   ngOnInit () {
@@ -31,17 +32,19 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setParamId ( id: number ) {
-    this.param_id = id;
-    this.$user.getUserById( id ).pipe( first() ).subscribe( next => this.user = next );
-  }
-
   private detectParamId () {
     this.subscriptions.push (
       this.route.paramMap.pipe (
         map ( paramMap => paramMap.get ( 'id' ) )
       )
-          .subscribe ( id => this.setParamId ( Number ( id ) ) )
+          .subscribe ( id => this.param_id =  Number ( id ) )
+    );
+  }
+
+  private detectUser () {
+    this.subscriptions.push (
+      this.route.data
+          .subscribe ( data => this.user = data.user )
     );
   }
 }
