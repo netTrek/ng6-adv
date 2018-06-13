@@ -1,0 +1,28 @@
+
+<form novalidate [formGroup]="myForm" (submit)="send(  )"
+      (reset)="reset( $event )">
+
+  <input type="text"
+         autocomplete="name"
+         placeholder="name"
+         formControlName="name"
+         msgFormater
+  >
+  <span formGroupName="credentials">
+        <input type="email" autocomplete="email"
+               placeholder="email" formControlName="email" >
+        <ng-template [ngIf]="emailCtrl.errors">
+          <div *ngIf="emailCtrl.errors?.required">Dieser Wert ist erforderlich</div>
+          <div *ngIf="emailCtrl.errors?.email">Tragen Sie eine gültige Mail Adresse ein</div>
+        </ng-template>
+        <input type="password" autocomplete="password"
+               placeholder="password" formControlName="password">
+        </span>
+
+  <button type="submit" [disabled]="myForm.invalid || !myForm.dirty">senden</button>
+  <button type="reset" [disabled]="!myForm.dirty">reset</button>
+
+</form>
+
+<p>{{myForm.value | json}}</p>
+<p>{{emailCtrl.errors | json}}</p>

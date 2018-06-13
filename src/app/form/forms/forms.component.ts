@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
     <p>
       forms works!
     </p>
-    <post-template-driven></post-template-driven>
+    <!--<post-template-driven></post-template-driven>-->
+    <post-model-driven></post-model-driven>
   `,
   styles: []
 })
