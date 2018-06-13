@@ -26,14 +26,27 @@ export class UseTempOutletComponent implements OnInit, AfterViewInit {
   ngAfterViewInit (): void {
     console.log ( this.hrRef, this.hrRef2 );
     console.log ( this.hrRef === this.hrRef2 ); // true
-    const embeddedViewRef: EmbeddedViewRef<HTMLHRElement> =
-            this.viewContainerRef.createEmbeddedView(
+    const embeddedViewRef: EmbeddedViewRef<HTMLHRElement>  =
+            // outer
+            this.viewContainerRef.createEmbeddedView (
               this.hrRef
             );
     const embeddedViewRef2: EmbeddedViewRef<HTMLHRElement> =
-            this.internalViewContainerRef.createEmbeddedView(
+            // inner
+            this.internalViewContainerRef.createEmbeddedView (
               this.hrRef
             );
+
+    // inner view generated via tempRef
+    const embeddedViewRef3: EmbeddedViewRef<HTMLHRElement> =
+            this.hrRef2.createEmbeddedView ( null );
+
+    this.internalViewContainerRef.insert ( embeddedViewRef3 );
+
+    // clear after timeout
+    setTimeout ( () => {
+      this.internalViewContainerRef.clear();
+    }, 3000 );
 
   }
 
