@@ -18,6 +18,8 @@
         </ng-template>
         <input name="password" #password="ngModel" [ngModel]="initVal.credentials.password" autocomplete="password"
                type="password" placeholder="password"  required>
+        <input name="password2" #password2="ngModel" ngModel type="password" placeholder="password"
+               [postEqualValidator]="password.value" autocomplete="password2">
         </span>
 
   <button type="submit" [disabled]="myForm.invalid || !myForm.dirty">senden</button>
@@ -25,4 +27,6 @@
 
 </form>
 
-{{name.value}}
+<p>{{myForm.errors | json}}</p>
+<p>{{password.errors | json}}</p>
+<p>{{password2.errors | json}}</p>
