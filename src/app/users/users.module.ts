@@ -5,6 +5,7 @@ import { UserComponent } from './user/user.component';
 import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ResolveService } from './resolve.service';
+import { UserGuard } from './user.guard';
 
 @NgModule ( {
   imports     : [
@@ -13,7 +14,9 @@ import { ResolveService } from './resolve.service';
       { path: '', component: UserListComponent },
       {
         path   : 'detail/:id', component: UserDetailComponent,
-        resolve: { user: ResolveService }
+        resolve: { user: ResolveService },
+        canActivate: [ UserGuard ],
+        canDeactivate: [ UserGuard ]
       }
 
     ] )

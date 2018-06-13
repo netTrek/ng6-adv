@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { UserGuard } from './users/user.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path     : 'list',
-    loadChildren: './users/users.module#UsersModule'
+    loadChildren: './users/users.module#UsersModule',
+    canLoad: [UserGuard]
     // component: UserListComponent
   },
   {
@@ -29,7 +31,7 @@ const routes: Routes = [
 ];
 
 @NgModule ( {
-  imports: [ RouterModule.forRoot ( routes, { enableTracing: false, preloadingStrategy: PreloadAllModules } ) ],
+  imports: [ RouterModule.forRoot ( routes ) ],
   exports: [ RouterModule ]
 } )
 export class AppRoutingModule {
