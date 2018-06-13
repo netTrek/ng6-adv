@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { FormsModule } from '@angular/forms';
 import { EqualValidatorDirective } from './equal-validator.directive';
+import { FutureValidatorDirective } from './future-validator.directive';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { EqualValidatorDirective } from './equal-validator.directive';
     RouterModule.forChild( [ {path: '', component: FormsComponent} ] ),
     FormsModule
   ],
-  declarations: [FormsComponent, TemplateDrivenComponent, EqualValidatorDirective],
-  exports: [FormsComponent, TemplateDrivenComponent, EqualValidatorDirective]
+  declarations: [FormsComponent, TemplateDrivenComponent, EqualValidatorDirective, FutureValidatorDirective],
+  exports: [FormsComponent, TemplateDrivenComponent, EqualValidatorDirective, FutureValidatorDirective]
 })
 export class FormModule { }

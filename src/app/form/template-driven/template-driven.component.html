@@ -20,6 +20,7 @@
                type="password" placeholder="password"  required>
         <input name="password2" #password2="ngModel" ngModel type="password" placeholder="password"
                [postEqualValidator]="password.value" autocomplete="password2">
+        <input name="date" #date="ngModel" ngModel type="date" placeholder="date" autocomplete="date" postFutureValidator>
         </span>
 
   <button type="submit" [disabled]="myForm.invalid || !myForm.dirty">senden</button>
@@ -30,3 +31,4 @@
 <p>{{myForm.errors | json}}</p>
 <p>{{password.errors | json}}</p>
 <p>{{password2.errors | json}}</p>
+<p>{{date.errors | json}}</p>
