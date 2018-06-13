@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: './dash/dash.module#DashModule'
   },
   {
+    path        : 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
     path     : 'list',
     loadChildren: './users/users.module#UsersModule',
     canLoad: [UserGuard]

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 import { HomeModule } from './home/home.module';
 import { DashModule } from './dash/dash.module';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DashModule } from './dash/dash.module';
     UsersModule,
     UtilsModule,
     HomeModule,
-    DashModule
+    DashModule,
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]
