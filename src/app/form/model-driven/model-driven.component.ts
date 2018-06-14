@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { EqualValidator } from '../equal-validator.directive';
 
 @Component ( {
   selector   : 'post-model-driven',
@@ -26,6 +27,13 @@ export class ModelDrivenComponent implements OnInit {
     return undefined;
   }
 
+  get passwordCtrl2 (): FormControl {
+    if ( this.credentialsGroup ) {
+      return this.credentialsGroup.controls.password2 as FormControl;
+    }
+    return undefined;
+  }
+
   public myForm: FormGroup;
 
   constructor () {
@@ -39,9 +47,24 @@ export class ModelDrivenComponent implements OnInit {
         email   : new FormControl ( 'us@netTrek.de', [ Validators.email,
                                                        Validators.required
         ] ),
-        password: new FormControl ( 'test1234', Validators.required )
+        password: new FormControl ( 'test1234', Validators.required ),
+        password2: new FormControl ( '' )
       } )
     } );
+
+    this.passwordCtrl.valueChanges.subscribe(
+      ( next ) => {
+        this.passwordCtrl2.setValidators( [Validators.required, EqualValidator.isEqual (next) ] );
+        this.passwordCtrl2.updateValueAndValidity();
+      });
+
+    this.passwordCtrl2.setValidators( [Validators.required, EqualValidator.isEqual ( this.passwordCtrl.value ) ] );
+    this.passwordCtrl2.valueChanges.subscribe(
+      ( next ) => {
+        this.passwordCtrl2.setValidators( [Validators.required, EqualValidator.isEqual ( this.passwordCtrl.value ) ] );
+        // this.passwordCtrl2.updateValueAndValidity( {onlySelf: false});
+
+      });
   }
 
   send () {
