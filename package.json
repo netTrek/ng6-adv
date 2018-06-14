@@ -9,7 +9,7 @@
     "start:post": "ng serve --configuration post",
     "start:rest": "json-server --watch mock/db.json",
     "build": "ng build",
-    "build:stats": "ng build --stats-json && webpack-bundle-analyzer dist/post/stats.json",
+    "build:stats": "ng build --prod --stats-json && webpack-bundle-analyzer dist/post/stats.json",
     "build:prod": "ng build --prod",
     "build:pwa": "ng build --prod && http-server dist/post -p 8088 -c2",
     "http-server": "http-server dist/post -p 8088 -c2",

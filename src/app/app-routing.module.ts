@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'list',
-    component: UserListComponent
+    loadChildren: './users/users.module#UsersModule'
   },
   {
     path: 'dash',

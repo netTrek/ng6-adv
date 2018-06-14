@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from './user';
 import { environment } from '../../environments/environment';
 import { tap } from 'rxjs/operators';
+import { UsersModule } from './users.module';
 
 @Injectable ( {
   providedIn: 'root'
