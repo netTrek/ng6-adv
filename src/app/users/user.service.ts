@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 import { UsersModule } from './users.module';
 
 @Injectable ( {
-  providedIn: 'root'
+  providedIn: UsersModule
 } )
 export class UserService {
 
