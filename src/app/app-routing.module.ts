@@ -10,6 +10,10 @@ const routes: Routes = [
     redirectTo: 'home'
   },
   {
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
     path: 'home',
     loadChildren: './home/home.module#HomeModule'
   },

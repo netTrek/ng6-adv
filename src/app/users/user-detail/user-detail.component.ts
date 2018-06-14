@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { UserService } from '../user.service';
 import { User } from '../user';
 
 @Component({
@@ -14,17 +13,20 @@ export class UserDetailComponent implements OnInit {
   id: number;
   user: User;
 
-  constructor( private $route: ActivatedRoute, private $user: UserService) { }
+  constructor( private $route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.$route.data
+        .pipe(
+          map<Data, User> ( data => data.user )
+        )
+        .subscribe( user => this.user = user );
+
     this.$route.paramMap.pipe(
       map<ParamMap, number>( paramMap => Number (paramMap.get ('id') ) )
     ).subscribe( n => {
       this.id = n;
-      this.$user.getUserById( this.id )
-        .subscribe( usr => {
-          this.user = usr;
-        } );
     } );
   }
 
