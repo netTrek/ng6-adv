@@ -11,6 +11,7 @@ import { DynamicModule } from './dynamic/dynamic.module';
 import { RoleDirective } from './dynamic/role.directive';
 import { TempTargetDirective } from './dynamic/temp-target.directive';
 import { StreamModule } from './stream/stream.module';
+import { DetectionModule } from './detection/detection.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StreamModule } from './stream/stream.module';
     // ContentModule
     // ViewModule
     // DynamicModule
-    StreamModule
+    // StreamModule,
+    DetectionModule
   ],
   providers: [],
   bootstrap: [AppComponent],

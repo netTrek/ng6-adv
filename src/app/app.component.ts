@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { environment } from '../environments/environment';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs';
@@ -7,7 +7,8 @@ import { Role } from './dynamic/role.enum';
 @Component ( {
   selector   : 'post-root',
   templateUrl: './app.component.html',
-  styleUrls  : [ './app.component.scss' ]
+  styleUrls  : [ './app.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class AppComponent implements OnInit {
 
