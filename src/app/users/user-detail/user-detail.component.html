@@ -1,3 +1,11 @@
-<p>
-  user-detail works! {{id}}
-</p>
+<section>
+  <article>
+    <header>
+      <h1>user-detail works! {{id}}</h1>
+    </header>
+    <span *ngIf="user">
+      {{user | json}}
+    </span>
+  </article>
+</section>
+
