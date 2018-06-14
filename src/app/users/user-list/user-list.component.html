@@ -1,0 +1,8 @@
+<h1>list</h1>
+
+<ul>
+  <li *ngFor="let user of $user.users$ | async"> <post-user [user]="user"></post-user> <button (click)="deleteUser (user)">-</button></li>
+</ul>
+
+
+<button (click)="createNewUser()">create new user</button>

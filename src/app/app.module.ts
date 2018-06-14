@@ -14,6 +14,7 @@ import { StreamModule } from './stream/stream.module';
 import { DetectionModule } from './detection/detection.module';
 import { UsersModule } from './users/users.module';
 import { UtilsModule } from './utils/utils.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UtilsModule } from './utils/utils.module';
     // StreamModule,
     // DetectionModule,
     UsersModule,
+    HomeModule,
     UtilsModule
   ],
   providers: [],
