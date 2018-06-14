@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { interval, Observable, of, range, Subscription } from 'rxjs';
-import { scan, share } from 'rxjs/operators';
+import { BehaviorSubject, fromEvent, interval, Observable, of, range, Subject, Subscription } from 'rxjs';
+import { filter, map, scan, share, take, tap, throttleTime } from 'rxjs/operators';
 
 @NgModule ( {
   imports     : [
@@ -17,11 +17,25 @@ export class StreamModule {
     // this.factoryInterval();
     // this.factoryIntervalMulti();
     // this.factoryCreate();
-    this.createWithNew ();
+    // this.createWithNew ();
+    // this.factoryFromEvent();
+    // this.initSubject ();
+    this.initBehaviorSubject ();
+  }
+
+  private factoryFromEvent() {
+    const observable = fromEvent<MouseEvent>( document, 'mousemove' )
+      .pipe(
+        map<MouseEvent, number> ( mouseEvent => mouseEvent.clientX ),
+        throttleTime( 100 ),
+        take (10 )
+      );
+      this.subscripe( observable, true );
+      // .subscribe( next => console.log ( next) );
   }
 
   private createWithNew () {
-    const observable: Observable<number> = new Observable<number> (
+    let observable: Observable<number> = new Observable<number> (
       observer => {
         let startVal     = 0;
         const intervalID = setInterval ( () => {
@@ -35,7 +49,15 @@ export class StreamModule {
         };
       }
     );
-    
+    observable = observable.pipe(
+      tap( next => console.warn( 'original :::: ', next )),
+      map( x => x + 100 ),
+      tap( next => console.warn( 'after map :::: ', next )),
+      filter( x => x % 2 === 0 ),
+      tap( next => console.warn( 'after filter :::: ', next )),
+      take( 2 ), // auto unsubscipe first () === take (1)
+      tap( next => console.warn( 'show info from tap :::: ', next ))
+    );
     const subscriptions: Subscription[] = this.subscripe ( observable, true );
     setTimeout ( () => {
       while ( subscriptions.length > 0 ) {
@@ -112,5 +134,26 @@ export class StreamModule {
         ) );
     }
     return subscriptions;
+  }
+
+  private initSubject () {
+    const sub: Subject<number> = new Subject<number>();
+    sub.next( 1 );
+    sub.subscribe ( next => console.log ( '1st ', next ) );
+    sub.next( 2 );
+    this.subscripe( sub , true );
+    sub.next( 3 );
+    sub.next( 4 );
+  }
+
+  private initBehaviorSubject () {
+    const sub: BehaviorSubject<number> = new BehaviorSubject<number>( null );
+    sub.subscribe ( next => console.log ( '1st ', next ) );
+    sub.next( 1 );
+    sub.subscribe ( next => console.log ( '2st ', next ) );
+    sub.next( 2 );
+    this.subscripe( sub , true );
+    sub.next( 3 );
+    sub.next( 4 );
   }
 }
