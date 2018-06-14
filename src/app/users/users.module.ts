@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { UtilsModule } from '../utils/utils.module';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,6 @@ import { UtilsModule } from '../utils/utils.module';
     UtilsModule,
     UsersRoutingModule
   ],
-  declarations: [UserComponent, UserListComponent],
-  exports: [UserComponent, UserListComponent]
+  declarations: [UserComponent, UserListComponent, UserDetailComponent]
 })
 export class UsersModule { }

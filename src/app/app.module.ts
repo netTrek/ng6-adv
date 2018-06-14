@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoleDirective } from './dynamic/role.directive';
 import { TempTargetDirective } from './dynamic/temp-target.directive';
-import { UsersModule } from './users/users.module';
-import { HomeModule } from './home/home.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
