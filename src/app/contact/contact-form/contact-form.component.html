@@ -1,9 +1,58 @@
 <p>
   contact-form works!
 </p>
-<form action="">
-  <input type="text" placeholder="name" name="name" autocomplete="name">
-  <input type="text" placeholder="email" name="email" autocomplete="email">
-  <button type="submit">submit</button>
+<form (submit)="submitForm(myForm)" (reset)="resetForm( myForm, $event )" #myForm="ngForm">
+  <input type="text"
+         name="name"
+         #name="ngModel"
+         ngModel
+         placeholder="name"
+         required
+         autocomplete="name">
+  <span ngModelGroup="credentials">
+    <input type="email"
+           name="email"
+           #email="ngModel"
+           [ngModel]="initial.credentials.email"
+           required
+           email
+           placeholder="email"
+           autocomplete="email">
+
+    <div *ngIf="email?.errors && email.touched && email.dirty">
+      <div *ngIf="email?.errors?.required">wert bitte</div>
+      <div *ngIf="email?.errors?.email">wert auch richtig machen</div>
+    </div>
+
+    <input type="password"
+           name="password"
+           #password="ngModel"
+           ngModel
+           placeholder="password"
+           autocomplete="password">
+
+  </span>
+  <button type="submit" [disabled]="myForm.invalid">submit</button>
   <button type="reset">reset</button>
 </form>
+
+<button (click)="chg()">chg</button>
+
+{{myForm.valid}} <br>
+{{myForm.invalid}} <br>
+{{myForm.value | json}}
+
+<hr>
+{{name?.valid}}
+{{name.value}}
+{{name?.errors | json}}
+<hr>
+{{email?.valid}}
+{{email.value | json}}
+{{email?.errors | json}}
+<hr>
+{{password?.valid}}
+{{password.value | json}}
+
+<!--
+-->

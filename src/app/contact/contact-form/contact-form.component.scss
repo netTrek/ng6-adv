@@ -1,5 +1,12 @@
 :host {
+  background-color: aliceblue;
   input {
     display: block;
+    &.ng-invalid.ng-touched.ng-dirty {
+      border: 1px solid red;
+    + div {
+      color: red;
+    }
+    }
   }
 }
