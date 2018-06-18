@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, forwardRef, Input, StaticProvider } from '@angular/core';
+import { AfterViewInit, Directive, ExistingProvider, forwardRef, Input, StaticProvider } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 export class EqualValidator {
@@ -12,7 +12,7 @@ export class EqualValidator {
   }
 }
 
-export const EQUAL_VALIDATOR: StaticProvider = {
+export const EQUAL_VALIDATOR: ExistingProvider = {
   provide    : NG_VALIDATORS,
   useExisting: forwardRef ( () => EqualValidatorDirective ),
   multi      : true

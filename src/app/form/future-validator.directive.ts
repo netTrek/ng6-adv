@@ -1,4 +1,4 @@
-import { Directive, forwardRef, StaticProvider } from '@angular/core';
+import { Directive, ExistingProvider, forwardRef, StaticProvider } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 export class FutureValidator {
@@ -13,7 +13,7 @@ export class FutureValidator {
   }
 }
 
-export const FUTURE_VALIDATOR: StaticProvider = {
+export const FUTURE_VALIDATOR: ExistingProvider = {
   provide    : NG_VALIDATORS,
   useExisting: forwardRef ( () => FutureValidatorDirective ),
   multi      : true
