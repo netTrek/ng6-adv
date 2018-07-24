@@ -1,27 +1,51 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+
+describe ( 'AppComponent', () => {
+
+  let fixture: ComponentFixture<AppComponent>;
+  let componet: AppComponent;
+  let debugElement: DebugElement;
+  let htmlElem: HTMLElement;
+
+  const name = 'ps';
+
+  beforeEach ( async ( () => {
+    TestBed.configureTestingModule ( {
       declarations: [
         AppComponent
-      ],
-    }).compileComponents();
-  }));
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'ps'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ps');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ps-test!');
-  }));
-});
+      ]
+    } )
+           .compileComponents ();
+  } ) );
+
+  beforeEach ( () => {
+    fixture  = TestBed.createComponent ( AppComponent );
+    componet = fixture.componentInstance;
+    fixture.detectChanges ();
+    debugElement = fixture.debugElement.query ( By.css ( 'h1' ) );
+    htmlElem     = debugElement.nativeElement;
+  } );
+
+  it ( 'should create the app', async ( () => {
+    expect ( componet )
+      .toBeTruthy ();
+  } ) );
+
+  it ( `should have as title '${name}'`, async ( () => {
+    expect ( componet.title )
+      .toEqual ( name );
+  } ) );
+
+  it ( 'should render title in a h1 tag', async ( () => {
+    expect ( htmlElem.textContent )
+      .toContain ( `Welcome to ${name}!` );
+  } ) );
+
+  it ( 'should render title in a h1 tag', () => {
+    expect ( htmlElem.textContent )
+      .toContain ( `Welcome to ${name}!` );
+  } );
+} );
