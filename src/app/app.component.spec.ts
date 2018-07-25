@@ -48,4 +48,16 @@ describe ( 'AppComponent', () => {
     expect ( htmlElem.textContent )
       .toContain ( `Welcome to ${name}!` );
   } );
+
+  it ( 'should changeTitel', async ( () => {
+    componet.changeTitel( 'test' );
+    expect( componet.title ).toBe( 'test' );
+  } ) );
+
+  it ( 'should render title in a h1 tag', () => {
+    componet.changeTitel( 'test' );
+    fixture.detectChanges();
+    expect ( htmlElem.textContent )
+      .toContain ( `Welcome to test!` );
+  } );
 } );
