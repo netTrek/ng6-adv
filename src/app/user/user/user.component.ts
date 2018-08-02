@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserComponent implements OnInit {
 
   title = 'Herr';
+  html = `<strong>hello</strong> world <script>alert('huhu')</script>`;
 
   constructor () {
   }
