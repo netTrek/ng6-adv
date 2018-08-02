@@ -7,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
 } )
 export class UserComponent implements OnInit {
 
+  title = 'Herr';
+
   constructor () {
   }
 
   ngOnInit () {
   }
 
+  getTitleWithDate ( prefix: string = '' ): string {
+    return prefix + this.title + Date.now();
+  }
 
 }
