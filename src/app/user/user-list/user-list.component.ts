@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'pr-user-list',
@@ -7,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
   className = 'make-red';
-  selectedIndex = 1;
+  selectedIndex = -1;
+  userList: User[] = [
+    {
+      'id': 1,
+      'firstname': 'saban',
+      'lastname': 'ünlü',
+      'birthday': '1973-11-04'
+    },
+    {
+      'id': 2,
+      'firstname': 'peter',
+      'lastname': 'müller',
+      'birthday': '1973-11-04'
+    },
+    {
+      'id': 3,
+      'firstname': 'franz',
+      'lastname': 'maier',
+      'birthday': '1973-11-04'
+    }
+  ];
+  selectedUsr: User;
+
   constructor() { }
   ngOnInit() {
   }
@@ -23,7 +46,13 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  selectIndex ( ind: number ) {
+  selectIndex ( ind: number, $event: MouseEvent ) {
     this.selectedIndex = ind;
+    console.log ( $event );
+  }
+
+  setAsSelected ( user: User ) {
+    this.selectedUsr = user;
+    this.selectedIndex = this.userList.indexOf( this.selectedUsr );
   }
 }

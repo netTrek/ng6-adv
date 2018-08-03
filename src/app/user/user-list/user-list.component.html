@@ -1,12 +1,26 @@
 <h1>user list</h1>
-<h2 [class]="className">selected user index is:= {{selectedIndex}}</h2>
+<h2 [class]="className">
+  {{selectedUsr?.firstname}}
+  {{selectedUsr?.lastname}}
+  {{selectedIndex}}
+</h2>
+
 <pr-user-list-item [class.selected]="0 === selectedIndex"
-                   (click)="selectIndex (0, $event)" ></pr-user-list-item>
+                   [user]="userList[0]"
+                    (select)="setAsSelected($event)"></pr-user-list-item>
 <pr-user-list-item [class.selected]="1 === selectedIndex"
-                   (click)="selectIndex (1, $event)" ></pr-user-list-item>
+                   [user]="userList[1]"
+                    (select)="setAsSelected($event)"></pr-user-list-item>
 <pr-user-list-item [class.selected]="2 === selectedIndex"
-                   (click)="selectIndex (2, $event)" ></pr-user-list-item>
-<pr-user-list-item [class.selected]="3 === selectedIndex"
-                   (click)="selectIndex (3, $event)" ></pr-user-list-item>
+                   [user]="userList[2]"
+                    (select)="setAsSelected($event)"></pr-user-list-item>
+
+
+<!--<pr-user-list-item [class.selected]="1 === selectedIndex"-->
+                   <!--(click)="selectIndex (1, $event)" ></pr-user-list-item>-->
+<!--<pr-user-list-item [class.selected]="2 === selectedIndex"-->
+                   <!--(click)="selectIndex (2, $event)" ></pr-user-list-item>-->
+<!--<pr-user-list-item [class.selected]="3 === selectedIndex"-->
+                   <!--(click)="selectIndex (3, $event)" ></pr-user-list-item>-->
 
 <button (click)="selectNextUsr()">next</button>

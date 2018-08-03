@@ -4,7 +4,11 @@
 <pr-user-avatar></pr-user-avatar>
 -->
 
+<span (click)="setAsSelected()">
+
 <pr-user-avatar></pr-user-avatar>
 <pr-user>
-  Saban Ünlü
+  {{user.firstname}}{{user.lastname}}
 </pr-user>
+
+</span>
