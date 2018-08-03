@@ -55,4 +55,23 @@ export class UserListComponent implements OnInit {
     this.selectedUsr = user;
     this.selectedIndex = this.userList.indexOf( this.selectedUsr );
   }
+
+  delUsr ( user: User ) {
+    this.userList.splice( this.userList.indexOf( user ), 1 );
+    this.selectedUsr = undefined;
+    this.selectedIndex = -1;
+  }
+
+  addUser ( inputElem: HTMLInputElement) {
+
+    if ( inputElem.value && inputElem.value.trim().length > 0 ) {
+      this.userList.push( <User>{
+        firstname: inputElem.value,
+        lastname: inputElem.value,
+        id: this.userList.length,
+        birthday: '04-04-99'
+      });
+      inputElem.value = '';
+    }
+  }
 }

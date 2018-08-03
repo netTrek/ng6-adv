@@ -1,6 +1,14 @@
 :host {
   display: block;
 
+  &.even {
+    background-color: lightgoldenrodyellow;
+  }
+
+  &.odd {
+    background-color: lightyellow;
+  }
+
   &.selected {
     color: deeppink;
   }

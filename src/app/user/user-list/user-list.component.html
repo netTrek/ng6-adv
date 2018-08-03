@@ -1,9 +1,19 @@
 <h1>user list</h1>
+<!--
+
 <h2 [class]="className" *ngIf="selectedUsr; else elseBlock">
   {{selectedUsr.firstname}}
   {{selectedUsr.lastname}}
   {{selectedIndex}}
 </h2>
+-->
+<ng-template [ngIf]="selectedUsr" [ngIfElse]="elseBlock">
+  <h2 [class]="className">
+    {{selectedUsr.firstname}}
+    {{selectedUsr.lastname}}
+    {{selectedIndex}}
+  </h2>
+</ng-template>
 <ng-template #elseBlock>
   <h2>kein user ausgewählt</h2>
 </ng-template>
@@ -14,6 +24,42 @@
   <address>netTrek - overbgerstr</address>
 </ng-template>
 
+<pr-user-list-item *ngFor="let user of userList; even as e; odd as o"
+                   [class.even]="e"
+                   [class.odd]="o"
+                   [selected]="user === selectedUsr"
+                   [user]="user"
+                   (select)="setAsSelected($event)"
+                   (delete)="delUsr ($event)"
+></pr-user-list-item>
+<input type="text" name="usrName" id="usrname" (keydown.enter)="addUser( nameInpField )" #nameInpField>
+<!--
+
+<ng-template #userTmp let-user><p (click)="delUsr (user)">{{user.firstname}}</p></ng-template>
+<ng-template ngFor [ngForOf]="userList" [ngForTemplate]="userTmp"></ng-template>
+-->
+
+
+<pr-grid [dataprovider]="userList">
+  <ng-template let-user>
+    <button>{{user.firstname}} {{user.lastname}}</button>
+  </ng-template>
+</pr-grid>
+
+<pr-grid [dataprovider]="userList">
+  <ng-template let-user>
+    <div style="display: inline-block; width: 50px; background-color: aliceblue">{{user.firstname}} {{user.lastname}}</div>
+  </ng-template>
+</pr-grid>
+
+<!--
+<ul>
+  <li *ngFor="let user of userList; index as i; first as f; last as l">{{i}} {{f}} {{l}} {{user.firstname}}</li>
+</ul>
+-->
+
+
+<!--
 
 <pr-user-list-item [selected]="0 === selectedIndex"
                    [user]="userList[0]"
@@ -25,6 +71,9 @@
                    [user]="userList[2]"
                    (select)="setAsSelected($event)"></pr-user-list-item>
 
+-->
+
+
 
 <!--<pr-user-list-item [selected]="1 === selectedIndex"-->
                    <!--(click)="selectIndex (1, $event)" ></pr-user-list-item>-->
@@ -32,5 +81,5 @@
                    <!--(click)="selectIndex (2, $event)" ></pr-user-list-item>-->
 <!--<pr-user-list-item [selected]="3 === selectedIndex"-->
                    <!--(click)="selectIndex (3, $event)" ></pr-user-list-item>-->
-
+<hr>
 <button (click)="selectNextUsr()">next</button>
