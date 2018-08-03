@@ -1,9 +1,19 @@
 <h1>user list</h1>
-<h2 [class]="className">
-  {{selectedUsr?.firstname}}
-  {{selectedUsr?.lastname}}
+<h2 [class]="className" *ngIf="selectedUsr; else elseBlock">
+  {{selectedUsr.firstname}}
+  {{selectedUsr.lastname}}
   {{selectedIndex}}
 </h2>
+<ng-template #elseBlock>
+  <h2>kein user ausgewählt</h2>
+</ng-template>
+
+
+<ng-template [ngIf]="selectedIndex % 2 === 0">
+  <h3>company</h3>
+  <address>netTrek - overbgerstr</address>
+</ng-template>
+
 
 <pr-user-list-item [selected]="0 === selectedIndex"
                    [user]="userList[0]"
