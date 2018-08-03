@@ -1,7 +1,7 @@
 :host {
   display: block;
 
-  &.selected {
+  &.selected, .selected {
     color: deeppink;
   }
 }

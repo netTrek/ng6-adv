@@ -30,6 +30,9 @@ export class UserListItemComponent implements OnInit, AfterViewInit {
   @Input()
   user: User;
 
+  @Input()
+  selected = false;
+
   @Output()
   select: EventEmitter<User> = new EventEmitter<User>();
   // select: EventEmitter<void> = new EventEmitter();  // falls keine Daten gesendet werden müssen
@@ -40,8 +43,8 @@ export class UserListItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit (): void {
-    console.log ( this.avatar );
-    console.log ( this.avatars.toArray() );
+    // console.log ( this.avatar );
+    // console.log ( this.avatars.toArray() );
     // this.avatars.changes.subscribe( value => { console.log ( value );} );
   }
 
