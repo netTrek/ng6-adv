@@ -1,8 +1,8 @@
 <h1>user list</h1>
-<pr-user-list-item></pr-user-list-item>
-<!--
-<pr-user-list-item></pr-user-list-item>
-<pr-user-list-item></pr-user-list-item>
-<pr-user-list-item></pr-user-list-item>
--->
+<h2>selected user index is:= {{selectedIndex}}</h2>
+<pr-user-list-item [class.selected]="0 === selectedIndex"></pr-user-list-item>
+<pr-user-list-item [class.selected]="1 === selectedIndex"></pr-user-list-item>
+<pr-user-list-item [class.selected]="2 === selectedIndex"></pr-user-list-item>
+<pr-user-list-item [class.selected]="3 === selectedIndex"></pr-user-list-item>
 
+<button (click)="selectNextUsr()">next</button>

@@ -18,12 +18,12 @@ export class UserAvatarComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    this.intervalID = window.setInterval( () => {
-      if ( ++ this.crrImgId > 1 ) {
-        this.crrImgId = 0;
-      }
-      this.url = this.urls[ this.crrImgId ];
-    }, 1000 );
+    // this.intervalID = window.setInterval( () => {
+    //   if ( ++ this.crrImgId > 1 ) {
+    //     this.crrImgId = 0;
+    //   }
+    //   this.url = this.urls[ this.crrImgId ];
+    // }, 1000 );
   }
 
   ngOnDestroy (): void {

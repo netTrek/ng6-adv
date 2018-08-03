@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+  selectedIndex = 1;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  selectNextUsr () {
+    if ( ++ this.selectedIndex === 4 ) {
+      this.selectedIndex = 0;
+    }
+  }
 }
