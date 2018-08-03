@@ -21,8 +21,6 @@ import { User } from '../../user';
 })
 export class UserListItemComponent implements OnInit, AfterViewInit {
 
-
-
   @ViewChild ( UserAvatarComponent )
   avatar: UserAvatarComponent;
 
