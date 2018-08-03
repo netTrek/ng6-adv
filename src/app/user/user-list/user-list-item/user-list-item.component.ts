@@ -1,13 +1,15 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
-  Component, EventEmitter, Input,
-  OnInit, Output,
-  Query,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
   QueryList,
   ViewChild,
-  ViewChildren,
-  ViewEncapsulation
+  ViewChildren
 } from '@angular/core';
 import { UserAvatarComponent } from '../../user-avatar/user-avatar.component';
 import { User } from '../../user';
@@ -31,6 +33,7 @@ export class UserListItemComponent implements OnInit, AfterViewInit {
   user: User;
 
   @Input()
+  @HostBinding ('class.selected')
   selected = false;
 
   @Output()
@@ -48,7 +51,10 @@ export class UserListItemComponent implements OnInit, AfterViewInit {
     // this.avatars.changes.subscribe( value => { console.log ( value );} );
   }
 
-  setAsSelected () {
+  // @HostListener('click', ['$event'] ) // optional miot Paylopad
+  // setAsSelected ( evt: MouseEvent ) { // optional miot Paylopad
+  @HostListener('click' )
+  setAsSelected ( ) {
     this.select.emit ( this.user );
     // this.select.emit(); // falls keine Daten gesendet werden müssen
   }
