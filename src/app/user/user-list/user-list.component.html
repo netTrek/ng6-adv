@@ -34,6 +34,7 @@
 <!--
 <h2 class="proleit" [ngClass]="classString">my user  view</h2>
 -->
+<!--
 
 <button prDangerBtn
         confirmMsg="hello wolrd"
@@ -45,7 +46,7 @@
   <strong *ngSwitchCase="tono">Tono</strong>
   <strong *ngSwitchCase="hawai">Hawai</strong>
   <strong *ngSwitchCase="'saban'">Saban</strong>
-  <!--<strong *ngSwitchDefault>Keine Ahnung</strong>-->
+  &lt;!&ndash;<strong *ngSwitchDefault>Keine Ahnung</strong>&ndash;&gt;
 </div>
 
 <ng-container [ngSwitch]="crrPizza">
@@ -58,6 +59,7 @@
 <h2 [ngStyle]="styleObject">my user  view</h2>
 <h2 [ngStyle]="{'color':fontColor, 'fontSize.em': fontSize}">with style probs</h2>
 
+-->
 
 <pr-user-list-item *ngFor="let user of userList; even as e; odd as o"
                    [ngClass]="{even: e, odd:o}"

@@ -1,0 +1,57 @@
+<p>
+  pipe-samples works!
+</p>
+
+<h2>json</h2>
+<p>{{sampleObj}}</p>
+<p>{{sampleObj | json}}</p>
+
+<h2>slice</h2>
+<ul>
+  <li>{{helloWorld}}</li>
+  <li>{{helloWorld | slice : 3 }}</li>
+  <li>{{helloWorld | slice : 0 : 3 }}</li>
+  <li>{{helloWorld | slice : -3 }}</li>
+  <li>{{helloWorld | slice : -3 : -2 }}</li>
+  <li>{{pi}}</li>
+</ul>
+
+<h2>date</h2>
+<ul>
+  <li>{{ date }}</li>
+  <li>{{ date | date }}</li>
+  <li>{{ date | date : 'short' }}</li>
+  <li>{{ date | date : 'yy/MM' }}</li>
+  <li>{{ date | date : 'full' }}</li>
+  <li>{{ date | date : 'full' : '+0900' }}</li>
+  <li>{{ date | date : 'full' : '+0900' : 'en' }}</li>
+</ul>
+
+<h2>string</h2>
+<ul>
+  <li>{{helloWorld | uppercase}}</li>
+  <li>{{helloWorld | lowercase}}</li>
+</ul>
+
+<h2>preise</h2>
+<ul>
+  <li>{{pi | currency}}</li>
+  <li>{{pi | currency: 'EUR'}}</li>
+  <li>{{pi | currency: 'EUR' : 'symbol'}}</li>
+  <li>{{pi | currency: 'EUR' : 'code'}}</li>
+  <li>{{pi | currency: 'EUR' : 'symbol' : '2.3-5'}}</li>
+  <li>{{pi | currency: 'EUR' : 'symbol' : '2.3-5' : 'en'}}</li>
+  <li>{{pi | currency: 'EUR' : 'symbol' : '2.3-5' : 'de'}}</li>
+</ul>
+
+<h2>number</h2>
+<ul>
+  <li>{{pi}}</li>
+  <li>{{pi | number}}</li>
+  <li>{{pi | number : '.3' }}</li>
+  <li>{{pi | number : '.3-5' }}</li>
+  <li>{{123.12 | number : '.3-5' }}</li>
+  <li>{{pi | number : '2.3-5' }}</li>
+  <li>{{123.12 | number : '5.3-5' }}</li>
+  <li>{{pi | number : '.0-0' }}</li>
+</ul>
