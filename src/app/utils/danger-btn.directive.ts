@@ -24,8 +24,8 @@ export class DangerBtnDirective implements OnInit {
     console.log ( elemRef.nativeElement );
   }
 
-  @HostListener ('click')
-  private clickHandler () {
+  @HostListener ('click', ['$event'])
+  private clickHandler ( evt: MouseEvent ) {
     if ( window.confirm( this.confirmMsg ) ) {
       this.confirmed.emit();
     } else {

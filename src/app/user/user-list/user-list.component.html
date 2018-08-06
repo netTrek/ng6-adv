@@ -41,6 +41,20 @@
         (abort)="abortHandler()"
 >danger</button>
 
+<div [ngSwitch]="crrPizza">
+  <strong *ngSwitchCase="tono">Tono</strong>
+  <strong *ngSwitchCase="hawai">Hawai</strong>
+  <strong *ngSwitchCase="'saban'">Saban</strong>
+  <!--<strong *ngSwitchDefault>Keine Ahnung</strong>-->
+</div>
+
+<ng-container [ngSwitch]="crrPizza">
+  <strong *ngSwitchCase="tono">Tono</strong>
+  <strong *ngSwitchCase="hawai">Hawai</strong>
+  <strong *ngSwitchCase="'saban'">Saban</strong>
+</ng-container>
+
+
 <h2 [ngStyle]="styleObject">my user  view</h2>
 <h2 [ngStyle]="{'color':fontColor, 'fontSize.em': fontSize}">with style probs</h2>
 
