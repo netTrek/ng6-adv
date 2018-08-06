@@ -18,15 +18,35 @@
   <h2>kein user ausgewählt</h2>
 </ng-template>
 
+<!--
 
 <ng-template [ngIf]="selectedIndex % 2 === 0">
   <h3>company</h3>
   <address>netTrek - overbgerstr</address>
 </ng-template>
+-->
+
+<!--
+<pr-user-list-item *ngFor="let user of userList; even as e; odd as o"
+<pr-user-list-item *ngFor="let user of userList; trackBy: trackByFn; even as e; odd as o"
+-->
+
+<!--
+<h2 class="proleit" [ngClass]="classString">my user  view</h2>
+-->
+
+<button prDangerBtn
+        confirmMsg="hello wolrd"
+        (confirmed)="confirmedHandler()"
+        (abort)="abortHandler()"
+>danger</button>
+
+<h2 [ngStyle]="styleObject">my user  view</h2>
+<h2 [ngStyle]="{'color':fontColor, 'fontSize.em': fontSize}">with style probs</h2>
+
 
 <pr-user-list-item *ngFor="let user of userList; even as e; odd as o"
-                   [class.even]="e"
-                   [class.odd]="o"
+                   [ngClass]="{even: e, odd:o}"
                    [selected]="user === selectedUsr"
                    [user]="user"
                    (select)="setAsSelected($event)"
@@ -35,11 +55,13 @@
 <input type="text" name="usrName" id="usrname" (keydown.enter)="addUser( nameInpField )" #nameInpField>
 <!--
 
-<ng-template #userTmp let-user><p (click)="delUsr (user)">{{user.firstname}}</p></ng-template>
+<ng-template #userTmp let-user>
+  <p (click)="delUsr (user)">{{user.firstname}}</p>
+</ng-template>
 <ng-template ngFor [ngForOf]="userList" [ngForTemplate]="userTmp"></ng-template>
 -->
-
-
+<!--
+<hr>
 <pr-grid [dataprovider]="userList">
   <ng-template let-user>
     <button>{{user.firstname}} {{user.lastname}}</button>
@@ -51,6 +73,7 @@
     <div style="display: inline-block; width: 50px; background-color: aliceblue">{{user.firstname}} {{user.lastname}}</div>
   </ng-template>
 </pr-grid>
+-->
 
 <!--
 <ul>

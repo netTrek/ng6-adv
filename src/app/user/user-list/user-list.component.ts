@@ -30,6 +30,15 @@ export class UserListComponent implements OnInit {
     }
   ];
   selectedUsr: User;
+  classString = 'hello world';
+
+  styleObject = {
+    'color': 'blue',
+    'font-size': '2em'
+  };
+
+  fontColor = 'blue';
+  fontSize = 3;
 
   constructor() { }
   ngOnInit() {
@@ -62,8 +71,12 @@ export class UserListComponent implements OnInit {
     this.selectedIndex = -1;
   }
 
-  addUser ( inputElem: HTMLInputElement) {
+  trackByFn(index, item) {
+    // console.log ( index,  item);
+    return index; // item.id;
+  }
 
+  addUser ( inputElem: HTMLInputElement) {
     if ( inputElem.value && inputElem.value.trim().length > 0 ) {
       this.userList.push( <User>{
         firstname: inputElem.value,
@@ -73,5 +86,13 @@ export class UserListComponent implements OnInit {
       });
       inputElem.value = '';
     }
+  }
+
+  confirmedHandler () {
+    console.log ( 'confirmed' );
+  }
+
+  abortHandler () {
+    console.log ( 'abord' );
   }
 }
