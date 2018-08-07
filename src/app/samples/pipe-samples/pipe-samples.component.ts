@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 
 @Component ( {
   selector   : 'pr-pipe-samples',
@@ -19,10 +20,11 @@ export class PipeSamplesComponent implements OnInit {
     key5: 'val5'
   };
 
-  constructor () {
+  constructor ( private dp: DecimalPipe ) {
   }
 
   ngOnInit () {
+    console.log ( this.dp.transform( this.pi ) );
   }
 
 }

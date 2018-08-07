@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { PipeSamplesComponent } from './pipe-samples/pipe-samples.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { FillStatePipe } from './pipes/fill-state.pipe';
@@ -12,7 +12,7 @@ import { PizzaComponent } from './pizzas/pizza/pizza.component';
   imports: [
     CommonModule
   ],
-  // providers: [ PizzaService ],
+  providers: [ DecimalPipe ],
   declarations: [PipeSamplesComponent, ReversePipe, FillStatePipe, RxjsSamplesComponent, PizzasComponent, PizzaComponent],
   exports: [PipeSamplesComponent, ReversePipe, FillStatePipe, RxjsSamplesComponent, PizzasComponent, PizzaComponent]
 })

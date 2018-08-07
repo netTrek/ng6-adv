@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 // @Injectable()
@@ -7,13 +8,15 @@ import { Injectable } from '@angular/core';
 })
 export class PizzaService {
 
-  crrPizza = 'tonno';
+  // crrPizza = 'tonno';
+  crrPizza$: BehaviorSubject<string> = new BehaviorSubject<string>( 'tonno' );
 
   constructor( ) {
     console.log ( 'service constructor' );
   }
 
   chgPizza ( trimmed: string ) {
-    this.crrPizza = trimmed;
+    // this.crrPizza = trimmed;
+    this.crrPizza$.next( trimmed );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PizzaService } from '../../pizza.service';
 
 @Component({
@@ -7,6 +7,9 @@ import { PizzaService } from '../../pizza.service';
   styleUrls: ['./pizza.component.scss']
 })
 export class PizzaComponent implements OnInit {
+
+  @Input()
+  crrPizza: string;
 
   constructor( public $pizza: PizzaService) { }
 
