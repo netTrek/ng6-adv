@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { debounceTime, filter, first } from 'rxjs/operators';
 
 @Component ( {
   selector   : 'pr-user-list',
@@ -14,8 +15,8 @@ export class UserListComponent implements OnInit {
 
   crrPizza = this.tono;
 
-  className        = 'make-red';
-  classString      = 'hello world';
+  className   = 'make-red';
+  classString = 'hello world';
 
   styleObject = {
     'color'    : 'blue',
@@ -29,13 +30,26 @@ export class UserListComponent implements OnInit {
     // $user.getUserList()/*.then( result => {
     //   console.log ( result );
     // })*/;
+
+    this.$user.userList$
+        .pipe (
+          filter ( list => list.length > 0 ),
+          debounceTime ( 2000 ),
+          first ()
+        )
+        .subscribe ( userList => {
+          const user = { ...userList [ 4 ], firstname: 'super', lastname: 'angular' };
+
+          this.$user.updateUsr ( user );
+        } );
+
   }
 
   ngOnInit () {
   }
 
   selectNextUsr () {
-    this.$user.selectNextUsr();
+    this.$user.selectNextUsr ();
     if ( this.$user.selectedIndex % 2 === 0 ) {
       this.className = 'make-blue';
     } else {
@@ -44,16 +58,16 @@ export class UserListComponent implements OnInit {
   }
 
   setAsSelected ( user: User ) {
-    this.$user.setAsSelected( user );
+    // this.$user.setAsSelected( user );
+    this.$user.getUserById ( user.id );
   }
-
 
   selectIndex ( ind: number, $event: MouseEvent ) {
     this.$user.selectIndex ( ind, $event );
   }
 
   delUsr ( user: User ) {
-    this.$user.delUsr( user );
+    this.$user.delUsr ( user );
   }
 
   trackByFn ( index, item ) {
@@ -63,7 +77,7 @@ export class UserListComponent implements OnInit {
 
   addUser ( inputElem: HTMLInputElement ) {
     if ( inputElem.value && inputElem.value.trim ().length > 0 ) {
-      this.$user.addUser( <User>{
+      this.$user.addUser ( <User>{
         firstname: inputElem.value,
         lastname : inputElem.value,
         id       : this.$user.userList.length,
