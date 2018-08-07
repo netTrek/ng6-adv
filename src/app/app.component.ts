@@ -2,6 +2,7 @@ import { Component, HostBinding, HostListener } from '@angular/core';
 import { UserService } from './user/user.service';
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { ReqCountService } from './interceptors/req-count.service';
 
 @Component ( {
   selector   : 'pr-root',
@@ -20,7 +21,7 @@ export class AppComponent {
     this.mobile = window.innerWidth < 321;
   }
 
-  constructor ( $user: UserService ) {
+  constructor ( $user: UserService, public $reqCounter: ReqCountService ) {
     $user.selectedUsr$.subscribe(
       next => {
         if ( !! next ) {

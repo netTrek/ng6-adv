@@ -12,6 +12,8 @@ import localeDe from '@angular/common/locales/de';
 import { MyFrameWorkModule } from './my-frame-work/my-frame-work.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoCacheInterceptor } from './interceptors/NoCache.interceptor';
+import { CountInterceptor } from './interceptors/Count.interceptor';
+import { ReqCountService } from './interceptors/req-count.service';
 
 registerLocaleData ( localeDe, 'de' );
 
@@ -45,6 +47,8 @@ export class MyClass {
     } )
   ],
   providers   : [
+    ReqCountService,
+    CountInterceptor,
     { provide: LOCALE_ID, useValue: 'de' },
     { provide: USE_ME, useValue: 'value 4 useMe' },
     { provide: MY_LIST, useValue: 'value from app', multi: true },
@@ -60,6 +64,11 @@ export class MyClass {
     {
       provide : HTTP_INTERCEPTORS,
       useClass: NoCacheInterceptor,
+      multi   : true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useExisting: CountInterceptor,
       multi   : true
     }
   ],

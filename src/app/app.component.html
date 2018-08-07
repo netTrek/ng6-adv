@@ -5,7 +5,7 @@
   </h1>
 </div>
 
-
+<h1 *ngIf="$reqCounter.loading$ | async">loading</h1>
 <pr-user-list></pr-user-list>
 
 
@@ -21,6 +21,8 @@
 <pr-pizzas style="float: left"></pr-pizzas>
 <pr-pizzas style="float: left"></pr-pizzas>
 -->
+
+
 
 
 <router-outlet></router-outlet>

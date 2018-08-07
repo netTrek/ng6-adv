@@ -31,17 +31,17 @@ export class UserListComponent implements OnInit {
     //   console.log ( result );
     // })*/;
 
-    this.$user.userList$
-        .pipe (
-          filter ( list => list.length > 0 ),
-          debounceTime ( 2000 ),
-          first ()
-        )
-        .subscribe ( userList => {
-          const user = { ...userList [ 4 ], firstname: 'super', lastname: 'angular' };
-
-          this.$user.updateUsr ( user );
-        } );
+    // this.$user.userList$
+    //     .pipe (
+    //       filter ( list => list.length > 0 ),
+    //       debounceTime ( 2000 ),
+    //       first ()
+    //     )
+    //     .subscribe ( userList => {
+    //       const user = { ...userList [ 4 ], firstname: 'super', lastname: 'angular' };
+    //
+    //       this.$user.updateUsr ( user );
+    //     } );
 
   }
 
