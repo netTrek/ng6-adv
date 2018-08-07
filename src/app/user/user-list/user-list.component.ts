@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'pr-user-list',
@@ -14,28 +15,6 @@ export class UserListComponent implements OnInit {
   crrPizza = this.tono;
 
   className        = 'make-red';
-  selectedIndex    = - 1;
-  userList: User[] = [
-    {
-      'id'       : 1,
-      'firstname': 'saban',
-      'lastname' : 'ünlü',
-      'birthday' : '1973-11-04'
-    },
-    {
-      'id'       : 2,
-      'firstname': 'peter',
-      'lastname' : 'müller',
-      'birthday' : '1973-11-04'
-    },
-    {
-      'id'       : 3,
-      'firstname': 'franz',
-      'lastname' : 'maier',
-      'birthday' : '1973-11-04'
-    }
-  ];
-  selectedUsr: User;
   classString      = 'hello world';
 
   styleObject = {
@@ -46,37 +25,32 @@ export class UserListComponent implements OnInit {
   fontColor = 'blue';
   fontSize  = 3;
 
-  constructor () {
+  constructor ( public $user: UserService ) {
   }
 
   ngOnInit () {
   }
 
   selectNextUsr () {
-    if ( ++ this.selectedIndex === 4 ) {
-      this.selectedIndex = 0;
-    }
-    if ( this.selectedIndex % 2 === 0 ) {
+    this.$user.selectNextUsr();
+    if ( this.$user.selectedIndex % 2 === 0 ) {
       this.className = 'make-blue';
     } else {
       this.className = 'make-red';
     }
   }
 
-  selectIndex ( ind: number, $event: MouseEvent ) {
-    this.selectedIndex = ind;
-    console.log ( $event );
+  setAsSelected ( user: User ) {
+    this.$user.setAsSelected( user );
   }
 
-  setAsSelected ( user: User ) {
-    this.selectedUsr   = user;
-    this.selectedIndex = this.userList.indexOf ( this.selectedUsr );
+
+  selectIndex ( ind: number, $event: MouseEvent ) {
+    this.$user.selectIndex ( ind, $event );
   }
 
   delUsr ( user: User ) {
-    this.userList.splice ( this.userList.indexOf ( user ), 1 );
-    this.selectedUsr   = undefined;
-    this.selectedIndex = - 1;
+    this.$user.delUsr( user );
   }
 
   trackByFn ( index, item ) {
@@ -86,10 +60,10 @@ export class UserListComponent implements OnInit {
 
   addUser ( inputElem: HTMLInputElement ) {
     if ( inputElem.value && inputElem.value.trim ().length > 0 ) {
-      this.userList.push ( <User>{
+      this.$user.addUser( <User>{
         firstname: inputElem.value,
         lastname : inputElem.value,
-        id       : this.userList.length,
+        id       : this.$user.userList.length,
         birthday : '04-04-99'
       } );
       inputElem.value = '';

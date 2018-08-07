@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:rest-api": "json-server --watch mock/db.json"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
+    "json-server": "^0.14.0",
     "@angular-devkit/build-angular": "~0.7.0",
     "@angular/cli": "~6.1.1",
     "@angular/compiler-cli": "^6.1.0",
