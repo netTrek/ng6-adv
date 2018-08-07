@@ -7,10 +7,10 @@
   {{selectedIndex}}
 </h2>
 -->
-<ng-template [ngIf]="$user.selectedUsr" [ngIfElse]="elseBlock">
+<ng-template [ngIf]="$user.selectedUsr$ | async" [ngIfElse]="elseBlock">
   <h2 [class]="className">
-    {{$user.selectedUsr.firstname}}
-    {{$user.selectedUsr.lastname}}
+    {{$user.selectedUsr.firstname}}&nbsp;
+    {{$user.selectedUsr.lastname}}&nbsp;
     {{$user.selectedIndex}}
   </h2>
 </ng-template>
@@ -61,7 +61,7 @@
 
 -->
 
-<pr-user-list-item *ngFor="let user of $user.userList; even as e; odd as o"
+<pr-user-list-item *ngFor="let user of $user.userList$ | async; even as e; odd as o"
                    [ngClass]="{even: e, odd:o}"
                    [selected]="user === $user.selectedUsr"
                    [user]="user"
