@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 
 import localeDe from '@angular/common/locales/de';
 import { MyFrameWorkModule } from './my-frame-work/my-frame-work.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NoCacheInterceptor } from './interceptors/NoCache.interceptor';
 
 registerLocaleData ( localeDe, 'de' );
 
@@ -54,6 +56,11 @@ export class MyClass {
           key: useMe
         };
       }, deps: [ USE_ME ]
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: NoCacheInterceptor,
+      multi   : true
     }
   ],
   bootstrap   : [ AppComponent ]

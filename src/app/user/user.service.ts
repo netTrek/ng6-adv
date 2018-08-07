@@ -68,9 +68,8 @@ export class UserService {
     return this.$http.get<User> ( `${this.endpoint}${id}` )
                .pipe (
                  tap ( next => {
-                   this.selectedUsr$.next ( next );
                    let ind = - 1;
-                   this.userList.find ( ( value, index ) => {
+                   this.selectedUsr = this.userList.find ( ( value, index ) => {
                      if ( value.id === next.id ) {
                        ind = index;
                        return true;
@@ -144,9 +143,8 @@ export class UserService {
                  tap ( usr => {
                    this.getUserList ().then(
                      (  ) => {
-                       this.selectedUsr   = usr;
                        let ind = - 1;
-                       this.userList.find ( ( value, index ) => {
+                       this.selectedUsr = this.userList.find ( ( value, index ) => {
                          if ( value.id === usr.id ) {
                            ind = index;
                            return true;
