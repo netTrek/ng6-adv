@@ -1,4 +1,7 @@
 import { Component, HostBinding, HostListener } from '@angular/core';
+import { UserService } from './user/user.service';
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component ( {
   selector   : 'pr-root',
@@ -15,5 +18,27 @@ export class AppComponent {
   resize ( evt: Event ) {
     // console.log ( 'resize', evt );
     this.mobile = window.innerWidth < 321;
+  }
+
+  constructor ( $user: UserService ) {
+    $user.selectedUsr$.subscribe(
+      next => {
+        if ( !! next ) {
+          console.log ( 'user selected', next );
+        } else {
+          console.log ( 'user not or unselected' );
+        }
+      }
+    );
+
+    // interval( 1000 ).pipe( take( 3 ) ).subscribe(
+    //   next => {
+    //     $user.addUser( {
+    //       birthday: '11.11.11',
+    //       firstname: `${next} firstnamae`,
+    //       lastname: `${next} lastname`
+    //     });
+    //   }
+    // );
   }
 }

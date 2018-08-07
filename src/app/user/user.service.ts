@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable ( {
   providedIn: 'root'
 } )
 export class UserService {
+
+  readonly endpoint = 'http://localhost:3000/users/';
 
   selectedIndex$: BehaviorSubject<number> = new BehaviorSubject<number>( -1 );
 
@@ -28,26 +32,7 @@ export class UserService {
   }
 
 
-  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(  [
-    {
-      'id'       : 1,
-      'firstname': 'saban',
-      'lastname' : 'ünlü',
-      'birthday' : '1973-11-04'
-    },
-    {
-      'id'       : 2,
-      'firstname': 'peter',
-      'lastname' : 'müller',
-      'birthday' : '1973-11-04'
-    },
-    {
-      'id'       : 3,
-      'firstname': 'franz',
-      'lastname' : 'maier',
-      'birthday' : '1973-11-04'
-    }
-  ]);
+  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(  []);
 
   set userList ( index: User[] ) {
     this.userList$.next( index );
@@ -58,7 +43,16 @@ export class UserService {
   }
 
 
-  constructor () {
+  constructor ( private $http: HttpClient) {
+    this.getUserList();
+  }
+
+  getUserList (): Promise<User[]> {
+    return this.$http.get<User[]>( this.endpoint )
+        .pipe(
+          tap( next => this.userList$.next( next ))
+        )
+        .toPromise();
   }
 
   selectNextUsr () {

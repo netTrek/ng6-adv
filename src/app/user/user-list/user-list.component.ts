@@ -26,6 +26,9 @@ export class UserListComponent implements OnInit {
   fontSize  = 3;
 
   constructor ( public $user: UserService ) {
+    // $user.getUserList()/*.then( result => {
+    //   console.log ( result );
+    // })*/;
   }
 
   ngOnInit () {

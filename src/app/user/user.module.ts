@@ -6,11 +6,13 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UtilsModule } from '../utils/utils.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   declarations: [
     UserComponent,
