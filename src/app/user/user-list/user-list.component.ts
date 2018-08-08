@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { debounceTime, filter, first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component ( {
   selector   : 'pr-user-list',
@@ -26,7 +27,7 @@ export class UserListComponent implements OnInit {
   fontColor = 'blue';
   fontSize  = 3;
 
-  constructor ( public $user: UserService ) {
+  constructor ( public $user: UserService, private router: Router  ) {
     // $user.getUserList()/*.then( result => {
     //   console.log ( result );
     // })*/;
@@ -59,7 +60,8 @@ export class UserListComponent implements OnInit {
 
   setAsSelected ( user: User ) {
     // this.$user.setAsSelected( user );
-    this.$user.getUserById ( user.id );
+    // this.$user.getUserById ( user.id );
+    this.router.navigate( [ 'users', user.id ] );
   }
 
   selectIndex ( ind: number, $event: MouseEvent ) {

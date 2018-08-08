@@ -1,4 +1,10 @@
-<p>
+<p *ngIf="user; else notFound">
   user-detail works! {{ user | json }}
 </p>
+<ng-template #notFound>
+  <p>No User Found for ID {{id}}</p>
+</ng-template>
+<hr>
+{{url}}
+<hr>
 <button (click)="goToNext()">next user</button>

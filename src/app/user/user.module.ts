@@ -9,6 +9,7 @@ import { UtilsModule } from '../utils/utils.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { ResoleUserDetailService } from './resole-user-detail.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,13 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     HttpClientModule,
     RouterModule.forChild( [
       { path: '', component: UserListComponent},
-      { path: ':id', component: UserDetailComponent }
+      { path: ':id',
+        component: UserDetailComponent,
+        data: { url: 'http://google.de'},
+        resolve: {
+          user: ResoleUserDetailService
+        }
+      }
      ])
   ],
   declarations: [

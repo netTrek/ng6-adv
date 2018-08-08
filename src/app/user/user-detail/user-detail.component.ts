@@ -13,6 +13,7 @@ import { User } from '../user';
 export class UserDetailComponent implements OnInit, OnDestroy {
   id: number;
   user: User;
+  url: string;
   private readonly subscriptions: Subscription[] = [];
   constructor ( private route: ActivatedRoute, private router: Router, private $user: UserService ) {
   }
@@ -23,11 +24,19 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
   ngOnInit () {
     this.subscriptions.push (
+      this.route.data
+          // .pipe( map ( data => data.url ) )
+          .subscribe( data => {
+            this.url = data.url;
+            this.user = data.user;
+          } )
+    );
+    this.subscriptions.push (
       this.route.paramMap.pipe (
             map ( params => Number ( params.get ( 'id' ) ) ) )
           .subscribe ( next => {
             this.id = next;
-            this.$user.getUserById( this.id ).then ( user => this.user = user );
+            // this.$user.getUserById( this.id ).then ( user => this.user = user );
           } )
       );
   }
