@@ -3,7 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validator, ValidatorFn, Valida
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { User } from '../user';
-import { debug } from 'util';
+import { Payload } from './payload';
+import { PayloadCtrls } from './payload-ctrls';
 
 @Component ( {
   selector   : 'pr-user-input',
@@ -12,33 +13,29 @@ import { debug } from 'util';
 } )
 export class UserInputComponent implements OnInit {
 
-  payload = {
-    firstname: {
-      value: '', validators: { required: true }
-    },
-    lastname: {
-      value: '', validators: { required: true, minLength: 3 }
-    },
-    email: {
-      value: '', validators: { required: true, email: true }
-    },
-    birthday: {
-      value: '', type: 'date'
-    },
-    password: {
-      value: '', type: 'password', validators: { required: true, minLength: 10 }
-    }
-  };
-
-  keys: {key: string, type: string}[] = [];
+  payloadCtrls: PayloadCtrls[] = [];
 
   myForm: FormGroup;
 
-  constructor ( private $user: UserService, private $router: Router, private fb: FormBuilder ) {
-  }
+  private readonly payload: Payload = {
+    firstname: {
+      value: 'test', validators: { required: true }
+    },
+    lastname: {
+      validators: { required: true, minLength: 3 }
+    },
+    email: {
+      validators: { required: true, email: true }
+    },
+    birthday: {
+      type: 'date'
+    },
+    password: {
+      type: 'password', validators: { required: true, minLength: 10 }
+    }
+  };
 
-  getCtrlFor ( key: string ): AbstractControl {
-    return this.myForm.get ( [ key ] );
+  constructor ( private $user: UserService, private $router: Router, private fb: FormBuilder ) {
   }
 
   ngOnInit () {
@@ -47,8 +44,8 @@ export class UserInputComponent implements OnInit {
     for ( const payloadKey in this.payload ) {
       if ( payloadKey ) {
         const item          = this.payload[ payloadKey ];
-        fbObj[ payloadKey ] = [ this.payload[ payloadKey ].value ];
-        this.keys.push( { key: payloadKey, type: item.type || 'text' } );
+        fbObj[ payloadKey ] = [ this.payload[ payloadKey ].value || undefined ];
+        this.payloadCtrls.push( { key: payloadKey, type: item.type || 'text', ctrl: null } );
         if ( item.hasOwnProperty ( 'validators' ) ) {
           const validators: ValidatorFn[] = [];
           const val                       = this.payload[ payloadKey ].validators;
@@ -91,11 +88,10 @@ export class UserInputComponent implements OnInit {
     }
 
     this.myForm = this.fb.group ( fbObj );
-    /*this.myForm = this.fb.group( {
-      firstname: [ '', Validators.required ],
-      lastname: [ '', [Validators.required, Validators.minLength(3), Validators.maxLength(10) ] ],
-      birthday: [ '' ]
-    });*/
+
+    this.payloadCtrls.forEach(( value, index, array) => {
+      value.ctrl = this.myForm.get ( [ value.key ] );
+    });
   }
 
   addNewUser ( myForm: AbstractControl ) {

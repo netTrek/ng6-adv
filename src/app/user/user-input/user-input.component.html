@@ -8,20 +8,20 @@ export interface User {
 }
 -->
 <form novalidate [formGroup]="myForm" (submit)="addNewUser( myForm )" (reset)="resetForm( myForm )">
-  <ng-template ngFor [ngForOf]="keys" [ngForTemplate]="input"></ng-template>
-  <ng-template #input let-key>
-    <input [type]="key.type" [placeholder]="key.key" [formControlName]="key.key">
-    <div *ngIf="getCtrlFor( key.key ).errors && getCtrlFor( key.key ).touched">
-      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.minlength">
+  <ng-template ngFor [ngForOf]="payloadCtrls" [ngForTemplate]="input"></ng-template>
+  <ng-template #input let-payloadItem>
+    <input [type]="payloadItem.type" [placeholder]="payloadItem.key" [formControl]="payloadItem.ctrl">
+    <div *ngIf="payloadItem.ctrl.errors && payloadItem.ctrl.touched">
+      <ng-template [ngIf]="payloadItem.ctrl.errors?.minlength">
         Min noch nicht erreicht
       </ng-template>
-      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.maxlength">
+      <ng-template [ngIf]="payloadItem.ctrl.errors?.maxlength">
         Max überschritte
       </ng-template>
-      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.required">
+      <ng-template [ngIf]="payloadItem.ctrl.errors?.required">
         Bitte Wert eintrage
       </ng-template>
-      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.email">
+      <ng-template [ngIf]="payloadItem.ctrl.errors?.email">
         Dies ist keine eMail
       </ng-template>
     </div>
