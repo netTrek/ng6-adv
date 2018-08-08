@@ -7,12 +7,16 @@ import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UtilsModule } from '../utils/utils.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     UtilsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forChild( [
+      { path: '', component: UserListComponent}
+     ])
   ],
   declarations: [
     UserComponent,

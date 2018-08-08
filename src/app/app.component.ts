@@ -21,10 +21,12 @@ export class AppComponent implements OnInit {
 
   myRoutes: string[] = [];
 
-  constructor ( $user: UserService,
+  constructor ( /*$user: UserService,*/
                 public $reqCounter: ReqCountService,
                 public router: Router
                 ) {
+    /*
+    // Lazy
     $user.selectedUsr$.subscribe(
       next => {
         if ( !! next ) {
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
         }
       }
     );
+    */
 
     // interval( 1000 ).pipe( take( 3 ) ).subscribe(
     //   next => {

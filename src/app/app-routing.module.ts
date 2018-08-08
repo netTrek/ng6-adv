@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListComponent } from './user/user-list/user-list.component';
 import { CountdownComponent } from './utils/countdown/countdown.component';
 import { RxjsSamplesComponent } from './samples/rxjs-samples/rxjs-samples.component';
 import { PipeSamplesComponent } from './samples/pipe-samples/pipe-samples.component';
@@ -18,7 +17,7 @@ export const routes: Routes = [
   },
   {
     path: 'users',
-    component: UserListComponent
+    loadChildren: './user/user.module#UserModule'
   },
   {
     path: 'countdown',

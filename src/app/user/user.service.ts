@@ -4,9 +4,13 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
+import { UserModule } from './user.module';
 
+// @Injectable ( {
+//   providedIn: 'root'
+// } )
 @Injectable ( {
-  providedIn: 'root'
+  providedIn: UserModule
 } )
 export class UserService {
 
