@@ -12,7 +12,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ResoleUserDetailService } from './resole-user-detail.service';
 import { UserDetailActivateGuard } from './user-detail-activate.guard';
 import { UserInputComponent } from './user-input/user-input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { FormsModule } from '@angular/forms';
         canActivate: [ UserDetailActivateGuard ]
       }
      ]),
-    FormsModule
+    ReactiveFormsModule
+    // FormsModule
   ],
   declarations: [
     UserComponent,

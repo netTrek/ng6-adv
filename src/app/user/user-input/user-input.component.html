@@ -7,10 +7,35 @@ export interface User {
   birthday: string;
 }
 -->
+<form novalidate [formGroup]="myForm" (submit)="addNewUser( myForm )" (reset)="resetForm( myForm )">
+  <ng-template ngFor [ngForOf]="keys" [ngForTemplate]="input"></ng-template>
+  <ng-template #input let-key>
+    <input [type]="key.type" [placeholder]="key.key" [formControlName]="key.key">
+    <div *ngIf="getCtrlFor( key.key ).errors && getCtrlFor( key.key ).touched">
+      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.minlength">
+        Min noch nicht erreicht
+      </ng-template>
+      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.maxlength">
+        Max überschritte
+      </ng-template>
+      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.required">
+        Bitte Wert eintrage
+      </ng-template>
+      <ng-template [ngIf]="getCtrlFor( key.key ).errors?.email">
+        Dies ist keine eMail
+      </ng-template>
+    </div>
+
+  </ng-template>
+  <button type="submit" [disabled]="myForm.invalid">submit</button>
+  <button type="reset" [disabled]="!myForm.dirty">rest</button>
+</form>
+<!--
 <form #myForm="ngForm" novalidate (submit)="addNewUser( myForm )" (reset)="resetForm( myForm )">
   <div>
     FIRSTNAME
     <input type="text" name="firstname" ngModel
+           [ngModelOptions]="{updateOn: 'blur'}"
            required
            #firstname="ngModel"  placeholder="firstname">
   </div>
@@ -18,6 +43,7 @@ export interface User {
     LASTNAME
     <input type="text" name="lastname" ngModel
            required minlength="3" maxlength="10"
+           [ngModelOptions]="{updateOn: 'blur'}"
            #lastname="ngModel" placeholder="lastname">
     <div *ngIf="lastname.errors && lastname.touched">
       <ng-template [ngIf]="lastname.errors?.minlength">
@@ -33,13 +59,14 @@ export interface User {
     <input type="text" name="birthday" ngModel
            #birthday="ngModel" placeholder="birthday">
   </div>
-  <!--
+  &lt;!&ndash;
   <select name="city" ngModel #city="ngModel">
     <option value="123" selected>123</option>
   </select>
-  -->
+  &ndash;&gt;
   <button type="submit" [disabled]="myForm.invalid">submit</button>
   <button type="reset" [disabled]="!myForm.dirty">rest</button>
 
 </form>
+<!--<p> {{myForm.value | json }}</p>-->
 

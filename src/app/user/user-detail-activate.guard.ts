@@ -10,6 +10,6 @@ export class UserDetailActivateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return confirm( 'bist du ein Admin?');
+    return true; // confirm( 'bist du ein Admin?');
   }
 }
