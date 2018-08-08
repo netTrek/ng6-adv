@@ -8,6 +8,7 @@ import { UserListItemComponent } from './user-list/user-list-item/user-list-item
 import { UtilsModule } from '../utils/utils.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   imports: [
@@ -15,14 +16,16 @@ import { RouterModule } from '@angular/router';
     UtilsModule,
     HttpClientModule,
     RouterModule.forChild( [
-      { path: '', component: UserListComponent}
+      { path: '', component: UserListComponent},
+      { path: ':id', component: UserDetailComponent }
      ])
   ],
   declarations: [
     UserComponent,
     UserListComponent,
     UserAvatarComponent,
-    UserListItemComponent
+    UserListItemComponent,
+    UserDetailComponent
   ],
   exports: [
     UserComponent,
