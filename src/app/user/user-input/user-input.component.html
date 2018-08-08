@@ -7,8 +7,7 @@ export interface User {
   birthday: string;
 }
 -->
-
-<form #myForm="ngForm" novalidate>
+<form #myForm="ngForm" novalidate (submit)="addNewUser( myForm )" (reset)="resetForm( myForm )">
   <div>
     FIRSTNAME
     <input type="text" name="firstname" ngModel
@@ -40,6 +39,7 @@ export interface User {
   </select>
   -->
   <button type="submit" [disabled]="myForm.invalid">submit</button>
+  <button type="reset" [disabled]="!myForm.dirty">rest</button>
 
 </form>
-<p>{{myForm.value | json}}</p>
+
