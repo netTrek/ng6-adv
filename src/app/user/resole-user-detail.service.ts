@@ -5,14 +5,21 @@ import { User } from './user';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
-@Injectable({
+@Injectable ( {
   providedIn: UserModule
-})
+} )
 export class ResoleUserDetailService implements Resolve<User> {
 
-  constructor( private $user: UserService ) { }
+  constructor ( private $user: UserService ) {
+  }
 
   resolve ( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): Observable<User> | Promise<User> | User {
-    return this.$user.getUserById( Number (route.paramMap.get('id')) );
+    return new Promise ( resolve => {
+      this.$user.getUserById ( Number ( route.paramMap.get ( 'id' ) ) )
+          .then (
+            success => resolve ( success ),
+            failed => resolve ( undefined )
+          );
+    } );
   }
 }

@@ -67,5 +67,6 @@ export class AppComponent implements OnInit {
     this.router.config.unshift( {
       path: 'saban', component: CountdownComponent
     });
+    // this.router.events.subscribe( evt => console.log ( evt ) );
   }
 }

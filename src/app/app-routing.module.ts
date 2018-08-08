@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadChildren: './home/home.module#HomeModule'
   },
   {
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
     path: 'users',
     loadChildren: './user/user.module#UserModule'
   },

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { retry, tap } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { UserModule } from './user.module';
 
@@ -71,6 +71,7 @@ export class UserService {
   getUserById ( id: number ): Promise<User> {
     return this.$http.get<User> ( `${this.endpoint}${id}` )
                .pipe (
+                 retry ( 3 ),
                  tap ( next => {
                    let ind = - 1;
                    this.selectedUsr = this.userList.find ( ( value, index ) => {

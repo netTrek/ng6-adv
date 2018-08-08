@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ResoleUserDetailService } from './resole-user-detail.service';
+import { UserDetailActivateGuard } from './user-detail-activate.guard';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ResoleUserDetailService } from './resole-user-detail.service';
         data: { url: 'http://google.de'},
         resolve: {
           user: ResoleUserDetailService
-        }
+        },
+        canActivate: [ UserDetailActivateGuard ]
       }
      ])
   ],
