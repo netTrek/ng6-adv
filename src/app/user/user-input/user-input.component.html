@@ -1,0 +1,45 @@
+<!--
+
+export interface User {
+  id?: number;
+  firstname: string;
+  lastname: string;
+  birthday: string;
+}
+-->
+
+<form #myForm="ngForm" novalidate>
+  <div>
+    FIRSTNAME
+    <input type="text" name="firstname" ngModel
+           required
+           #firstname="ngModel"  placeholder="firstname">
+  </div>
+  <div>
+    LASTNAME
+    <input type="text" name="lastname" ngModel
+           required minlength="3" maxlength="10"
+           #lastname="ngModel" placeholder="lastname">
+    <div *ngIf="lastname.errors && lastname.touched">
+      <ng-template [ngIf]="lastname.errors?.minlength">
+        Wert min. 3 Zeichen lang
+      </ng-template>
+      <ng-template [ngIf]="lastname.errors?.required">
+        Bitte Wert eintrage
+      </ng-template>
+    </div>
+  </div>
+  <div>
+    BIRTHDAY
+    <input type="text" name="birthday" ngModel
+           #birthday="ngModel" placeholder="birthday">
+  </div>
+  <!--
+  <select name="city" ngModel #city="ngModel">
+    <option value="123" selected>123</option>
+  </select>
+  -->
+  <button type="submit" [disabled]="myForm.invalid">submit</button>
+
+</form>
+<p>{{myForm.value | json}}</p>

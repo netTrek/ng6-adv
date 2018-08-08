@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ResoleUserDetailService } from './resole-user-detail.service';
 import { UserDetailActivateGuard } from './user-detail-activate.guard';
+import { UserInputComponent } from './user-input/user-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,6 +21,7 @@ import { UserDetailActivateGuard } from './user-detail-activate.guard';
     HttpClientModule,
     RouterModule.forChild( [
       { path: '', component: UserListComponent},
+      { path: 'add', component: UserInputComponent},
       { path: ':id',
         component: UserDetailComponent,
         data: { url: 'http://google.de'},
@@ -27,14 +30,16 @@ import { UserDetailActivateGuard } from './user-detail-activate.guard';
         },
         canActivate: [ UserDetailActivateGuard ]
       }
-     ])
+     ]),
+    FormsModule
   ],
   declarations: [
     UserComponent,
     UserListComponent,
     UserAvatarComponent,
     UserListItemComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    UserInputComponent
   ],
   exports: [
     UserComponent,

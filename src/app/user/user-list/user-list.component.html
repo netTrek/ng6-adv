@@ -60,6 +60,7 @@
 <h2 [ngStyle]="{'color':fontColor, 'fontSize.em': fontSize}">with style probs</h2>
 
 -->
+<a routerLink="add">new</a>
 
 <pr-user-list-item *ngFor="let user of $user.userList$ | async; even as e; odd as o"
                    [ngClass]="{even: e, odd:o}"
@@ -68,8 +69,11 @@
                    (select)="setAsSelected($event)"
                    (delete)="delUsr ($event)"
 ></pr-user-list-item>
-<input type="text" name="usrName" id="usrname" (keydown.enter)="addUser( nameInpField )" #nameInpField>
+
+
+
 <!--
+<input type="text" name="usrName" id="usrname" (keydown.enter)="addUser( nameInpField )" #nameInpField>
 
 <ng-template #userTmp let-user>
   <p (click)="delUsr (user)">{{user.firstname}}</p>
