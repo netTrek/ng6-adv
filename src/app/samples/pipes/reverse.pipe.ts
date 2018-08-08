@@ -2,8 +2,11 @@ import { Inject, LOCALE_ID, Optional, Pipe, PipeTransform } from '@angular/core'
 import { MY_CLASS, MY_EX, MY_FACTORY, MY_LIST, MyClass, USE_ME } from '../../app.module';
 import { A_NAME, FUN_TOKEN } from '../../my-frame-work/my-frame-work.module';
 
+let counter = 0;
+
 @Pipe({
-  name: 'reverse'
+  name: 'reverse',
+  pure: true  // default true ==> Singleton d.h. ausführung nur wenn eingangsdaten sich ändern. false macht Sinn, bei async Prozessen
 })
 export class ReversePipe implements PipeTransform {
 
@@ -17,7 +20,7 @@ export class ReversePipe implements PipeTransform {
     @Inject( FUN_TOKEN ) fun: string,
     @Optional() @Inject( A_NAME ) aName: string
   ) {
-    console.log ( crrLng, useMe, myList, myClassIOnstance, useEx, useFac, fun, aName );
+    console.warn ( ++counter, crrLng, useMe, myList, myClassIOnstance, useEx, useFac, fun, aName );
   }
 
   transform( value: boolean | string | any[] ): boolean | string | any[] {

@@ -13,6 +13,10 @@ export const routes: Routes = [
     redirectTo: 'users'
   },
   {
+    path: 'home',
+    loadChildren: './home/home.module#HomeModule'
+  },
+  {
     path: 'users',
     component: UserListComponent
   },
