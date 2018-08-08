@@ -5,6 +5,8 @@ import { take } from 'rxjs/operators';
 import { ReqCountService } from './interceptors/req-count.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { routes } from './app-routing.module';
+import { Router } from '@angular/router';
+import { CountdownComponent } from './utils/countdown/countdown.component';
 
 @Component ( {
   selector   : 'pr-root',
@@ -19,7 +21,10 @@ export class AppComponent implements OnInit {
 
   myRoutes: string[] = [];
 
-  constructor ( $user: UserService, public $reqCounter: ReqCountService ) {
+  constructor ( $user: UserService,
+                public $reqCounter: ReqCountService,
+                public router: Router
+                ) {
     $user.selectedUsr$.subscribe(
       next => {
         if ( !! next ) {
@@ -54,6 +59,10 @@ export class AppComponent implements OnInit {
       if ( value.path !== '' && value.path !== '**' ) {
         this.myRoutes.push( value.path );
       }
+    });
+    this.myRoutes.push( 'saban' );
+    this.router.config.unshift( {
+      path: 'saban', component: CountdownComponent
     });
   }
 }
