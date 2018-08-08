@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -7,24 +7,16 @@
 
 <h1 *ngIf="$reqCounter.loading$ | async">loading</h1>
 
-<!--
-<pr-user-list></pr-user-list>
--->
+<nav>
 
-
-<!--
-<pr-countdown style="width: 200px"></pr-countdown>
-<pr-rxjs-samples></pr-rxjs-samples>
-<pr-pipe-samples></pr-pipe-samples>
--->
-
-<!--
-<pr-pizzas style="float: left"></pr-pizzas>
-<pr-pizzas style="float: left"></pr-pizzas>
-<pr-pizzas style="float: left"></pr-pizzas>
--->
-
-
-
-
-<router-outlet></router-outlet>
+  <ng-template #link let-path let-l="last">
+    <a [routerLink]="path"
+       routerLinkActive="active"
+    >{{path}}</a><ng-template [ngIf]="!l"> | </ng-template>
+  </ng-template>
+  <ng-template ngFor [ngForOf]="myRoutes" [ngForTemplate]="link"></ng-template>
+</nav>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>my footer</footer>

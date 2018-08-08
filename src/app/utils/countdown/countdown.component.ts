@@ -14,4 +14,30 @@ export class CountdownComponent implements  OnInit, OnDestroy {
 
   @HostBinding ('style.width.%')
   private width = 100;
-…
+
+  // Endlos Schleife
+  constructor() { }
+  ngOnInit() {
+    this.startCountDown ();
+  }
+  private startCountDown () {
+    this.intervalID = window.setInterval ( () => {
+      this.progress = Math.round( ( 1 - (++ this.time / this.countdown)) * 100 );
+      if ( this.time === this.countdown ) {
+        this.stopCountDownAndReset ();
+      }
+    }, 1000 );
+  }
+  ngOnDestroy (): void {
+    this.stopCountDownAndReset ( true ); // wenn true erzwinge stop auch in Demo
+  }
+  private stopCountDownAndReset ( force: boolean = false ) {
+    window.clearInterval ( this.intervalID );
+    this.intervalID = undefined;
+    this.countdown = 10;
+    this.time = 0;
+    if ( this.isDemoMod && !force ) {
+      this.startCountDown();
+    }
+  }
+}

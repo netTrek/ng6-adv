@@ -6,7 +6,7 @@ import { RxjsSamplesComponent } from './samples/rxjs-samples/rxjs-samples.compon
 import { PipeSamplesComponent } from './samples/pipe-samples/pipe-samples.component';
 import { PizzasComponent } from './samples/pizzas/pizzas.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',

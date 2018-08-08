@@ -1,25 +1,23 @@
-import { Component, HostBinding, HostListener } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { UserService } from './user/user.service';
 import { interval } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { ReqCountService } from './interceptors/req-count.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { routes } from './app-routing.module';
 
 @Component ( {
   selector   : 'pr-root',
   templateUrl: './app.component.html',
   styleUrls  : [ './app.component.scss' ]
 } )
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'proleit';
 
   @HostBinding ( 'class.mobile' )
   mobile = false;
 
-  @HostListener ( 'window:resize', [ '$event' ] )
-  resize ( evt: Event ) {
-    // console.log ( 'resize', evt );
-    this.mobile = window.innerWidth < 321;
-  }
+  myRoutes: string[] = [];
 
   constructor ( $user: UserService, public $reqCounter: ReqCountService ) {
     $user.selectedUsr$.subscribe(
@@ -41,5 +39,21 @@ export class AppComponent {
     //     });
     //   }
     // );
+  }
+
+
+
+  @HostListener ( 'window:resize', [ '$event' ] )
+  resize ( evt: Event ) {
+    // console.log ( 'resize', evt );
+    this.mobile = window.innerWidth < 321;
+  }
+
+  ngOnInit (): void {
+    routes.forEach( value => {
+      if ( value.path !== '' && value.path !== '**' ) {
+        this.myRoutes.push( value.path );
+      }
+    });
   }
 }

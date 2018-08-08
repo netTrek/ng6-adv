@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class NoCacheInterceptor implements HttpInterceptor {
   // needed für IE 11
   intercept ( req: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
-
     req = req.clone ( {
       setHeaders: {
         'Cache-Control': 'no-cache',
