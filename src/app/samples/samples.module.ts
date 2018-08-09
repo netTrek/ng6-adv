@@ -6,7 +6,7 @@ import { FillStatePipe } from './pipes/fill-state.pipe';
 import { RxjsSamplesComponent } from './rxjs-samples/rxjs-samples.component';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { PizzaComponent } from './pizzas/pizza/pizza.component';
-import { MY_LIST } from '../app.module';
+import { MY_LIST } from '../token/InjectionTokens';
 // import { PizzaService } from './pizza.service';
 
 @NgModule({

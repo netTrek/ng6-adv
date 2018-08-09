@@ -1,6 +1,7 @@
 import { Inject, LOCALE_ID, Optional, Pipe, PipeTransform } from '@angular/core';
-import { MY_CLASS, MY_EX, MY_FACTORY, MY_LIST, MyClass, USE_ME } from '../../app.module';
+import { MY_CLASS, MY_EX, MY_FACTORY, MY_LIST, USE_ME } from '../../token/InjectionTokens';
 import { A_NAME, FUN_TOKEN } from '../../my-frame-work/my-frame-work.module';
+import { MyClass } from '../../token/MyClass';
 
 let counter = 0;
 

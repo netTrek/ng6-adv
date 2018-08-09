@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadChildren: './home/home.module#HomeModule'
   },
   {
+    path: 'dynTemp',
+    loadChildren: './dyn-temp/dyn-temp.module#DynTempModule'
+  },
+  {
     path: 'contact',
     loadChildren: './contact/contact.module#ContactModule'
   },

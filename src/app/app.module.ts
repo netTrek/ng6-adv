@@ -13,22 +13,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoCacheInterceptor } from './interceptors/NoCache.interceptor';
 import { CountInterceptor } from './interceptors/Count.interceptor';
 import { ReqCountService } from './interceptors/req-count.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MY_CLASS, MY_EX, MY_FACTORY, MY_LIST, USE_ME } from './token/InjectionTokens';
+import { MyClass } from './token/MyClass';
 
 registerLocaleData ( localeDe, 'de' );
-
-export const USE_ME: InjectionToken<string> = new InjectionToken<string> ( 'useMe' );
-
-export const MY_LIST: InjectionToken<string> = new InjectionToken<string> ( 'myList' );
-
-export const MY_CLASS: InjectionToken<string> = new InjectionToken<string> ( 'myClass' );
-
-export const MY_EX: InjectionToken<string> = new InjectionToken<string> ( 'myEx' );
-
-export const MY_FACTORY: InjectionToken<string> = new InjectionToken<string> ( 'myFactory' );
-
-export class MyClass {
-  key = 'value';
-}
 
 @NgModule ( {
   declarations: [
@@ -42,7 +31,8 @@ export class MyClass {
     MyFrameWorkModule.forRoot( {
       name: 'saban',
       fun: 'cool oder?'
-    } )
+    } ),
+    BrowserAnimationsModule
   ],
   providers   : [
     ReqCountService,

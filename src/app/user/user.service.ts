@@ -15,7 +15,7 @@ import { environment } from '../../environments/environment';
 } )
 export class UserService {
 
-  readonly endpoint = `${environment.endpoint}/users`; // 'http://localhost:3000/users/';
+  readonly endpoint = `${environment.endpoint}/users/`; // 'http://localhost:3000/users/';
 
   selectedIndex$: BehaviorSubject<number> = new BehaviorSubject<number> ( - 1 );
 
