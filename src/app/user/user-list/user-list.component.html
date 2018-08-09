@@ -80,13 +80,12 @@
 </ng-template>
 <ng-template ngFor [ngForOf]="userList" [ngForTemplate]="userTmp"></ng-template>
 -->
-<!--
 <hr>
-<pr-grid [dataprovider]="userList">
-  <ng-template let-user>
-    <button>{{user.firstname}} {{user.lastname}}</button>
-  </ng-template>
+<pr-grid [dataprovider]="$user.userList$ | async">
+  <button *prGrid="let user">{{user.firstname}} {{user.lastname}}</button>
 </pr-grid>
+<hr>
+<!--
 
 <pr-grid [dataprovider]="userList">
   <ng-template let-user>

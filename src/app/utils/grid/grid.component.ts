@@ -1,4 +1,5 @@
 import { AfterContentInit, Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { GridDirective } from './grid.directive';
 
 @Component({
   selector: 'pr-grid',
@@ -10,7 +11,7 @@ export class GridComponent implements OnInit, AfterContentInit {
   @Input()
   dataprovider: any[];
 
-  @ContentChild(TemplateRef)
+  @ContentChild( GridDirective, {read: TemplateRef} )
   templRef: TemplateRef<any>;
 
   constructor() { }

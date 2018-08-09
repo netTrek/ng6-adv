@@ -21,17 +21,13 @@ export class RoleDirective implements OnInit {
       }
     }
   }
-
   private _prRole: Role;
-
   constructor ( private readonly viewContainerRef: ViewContainerRef,
                 private readonly tempRef: TemplateRef<any> ) {
   }
-
   ngOnInit (): void {
     console.log ( this.viewContainerRef, this.tempRef );
   }
-
   private addTemp () {
     if ( this.viewContainerRef.length === 0 ) {
       this.viewContainerRef.createEmbeddedView( this.tempRef, {
@@ -39,7 +35,6 @@ export class RoleDirective implements OnInit {
       } );
     }
   }
-
   private removeTemp () {
     if ( this.viewContainerRef.length > 0 ) {
       this.viewContainerRef.clear();
