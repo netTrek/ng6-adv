@@ -7,6 +7,13 @@ export interface User {
   birthday: string;
 }
 -->
+<form #dateForm="ngForm">
+  <input type="date" ngModel #myDate="ngModel" name="myDate" prFuture>
+  <input type="text" ngModel #myNo="ngModel" name="myNo" prFormater>
+</form>
+<p>{{myDate.value | json}}</p>
+<p>{{myDate.errors | json}}</p>
+
 <form novalidate [formGroup]="myForm" (submit)="addNewUser( myForm )" (reset)="resetForm( myForm )">
   <ng-template ngFor [ngForOf]="payloadCtrls" [ngForTemplate]="input"></ng-template>
   <ng-template #input let-payloadItem>
@@ -23,6 +30,9 @@ export interface User {
       </ng-template>
       <ng-template [ngIf]="payloadItem.ctrl.errors?.email">
         Dies ist keine eMail
+      </ng-template>
+      <ng-template [ngIf]="payloadItem.ctrl.errors?.isFutur">
+        Datum muss in der Zukunft liegen!
       </ng-template>
     </div>
 

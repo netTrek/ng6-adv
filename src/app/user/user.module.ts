@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -31,9 +31,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         canActivate: [ UserDetailActivateGuard ]
       }
      ]),
-    ReactiveFormsModule
-    // FormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
+  providers: [ DecimalPipe ],
   declarations: [
     UserComponent,
     UserListComponent,

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 import { Payload } from './payload';
 import { PayloadCtrls } from './payload-ctrls';
+import { FuturValidator } from '../../utils/validators/future.directive';
 
 @Component ( {
   selector   : 'pr-user-input',
@@ -28,7 +29,7 @@ export class UserInputComponent implements OnInit {
       validators: { required: true, email: true }
     },
     birthday: {
-      type: 'date'
+      type: 'date', validators: { isFutur: true }
     },
     password: {
       type: 'password', validators: { required: true, minLength: 10 }
@@ -45,7 +46,8 @@ export class UserInputComponent implements OnInit {
       if ( payloadKey ) {
         const item          = this.payload[ payloadKey ];
         fbObj[ payloadKey ] = [ this.payload[ payloadKey ].value || undefined ];
-        this.payloadCtrls.push( { key: payloadKey, type: item.type || 'text', ctrl: null } );
+        this.payloadCtrls.push(
+          { key: payloadKey, type: item.type || 'text', ctrl: null } );
         if ( item.hasOwnProperty ( 'validators' ) ) {
           const validators: ValidatorFn[] = [];
           const val                       = this.payload[ payloadKey ].validators;
@@ -57,6 +59,13 @@ export class UserInputComponent implements OnInit {
                                     .toLowerCase ()
                                     .trim () === 'true' ) {
                     validators.push ( Validators.required );
+                  }
+                  break;
+                case 'isFutur':
+                  if ( val[ valKey ].toString ()
+                                    .toLowerCase ()
+                                    .trim () === 'true' ) {
+                    validators.push ( FuturValidator.isFutur );
                   }
                   break;
                 case 'email':
