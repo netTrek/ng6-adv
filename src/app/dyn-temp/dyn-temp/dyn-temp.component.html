@@ -2,9 +2,19 @@
   dyn-temp works!
 </p>
 
-<ng-template #hr>
+<ng-template #hr let-impl let-mycar="car">
+  <hr>
+  <strong>{{impl}} {{mycar}}</strong>
   <hr>
 </ng-template>
 
-<ng-container *ngTemplateOutlet="hr"></ng-container>
+<ng-container *ngTemplateOutlet="hr; context: myContext"></ng-container>
 
+
+
+<div *prRole="crrRole">ADMIN</div>
+<div *prRole="crrRole">SUPERVISOR</div>
+<div *prRole="crrRole">USER</div>
+<div *prRole="crrRole">GUEST</div>
+
+<button (click)="crrRole = crrRole + 1">next</button>

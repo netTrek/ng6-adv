@@ -7,8 +7,11 @@ import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, ViewContainer
 })
 export class DynTempComponent implements OnInit, AfterViewInit {
 
+  myContext = { $implicit: 123, car: 'BMW' };
+  crrRole = 0;
+
   @ViewChild( TemplateRef )
-  tempRef: TemplateRef<HTMLHRElement>;
+  tempRef: TemplateRef<any>;
 
   constructor( private viewContainerRef: ViewContainerRef ) { }
 
@@ -16,7 +19,9 @@ export class DynTempComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit (): void {
-    this.viewContainerRef.createEmbeddedView( this.tempRef );
+    setTimeout ( () => {
+      this.viewContainerRef.createEmbeddedView( this.tempRef, this.myContext );
+    }, 1);
   }
 
 }
