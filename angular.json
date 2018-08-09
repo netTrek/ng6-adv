@@ -28,6 +28,9 @@
             ],
             "styles": [
               {
+                "input": "node_modules/typeface-roboto/index.css"
+              },
+              {
                 "input": "node_modules/material-design-icons/iconfont/material-icons.css"
               },
               "src/theme.scss",
