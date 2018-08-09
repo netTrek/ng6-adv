@@ -12,8 +12,8 @@
 
 
 
-<div *prRole="crrRole">ADMIN</div>
-<div *prRole="crrRole">SUPERVISOR</div>
+<div *prRole="crrRole; let val">ADMIN {{val}}</div>
+<div *prRole="crrRole; role as r">SUPERVISOR {{r}} {{val}}</div>
 <div *prRole="crrRole">USER</div>
 <div *prRole="crrRole">GUEST</div>
 

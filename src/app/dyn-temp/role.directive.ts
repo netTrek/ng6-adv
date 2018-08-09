@@ -34,7 +34,9 @@ export class RoleDirective implements OnInit {
 
   private addTemp () {
     if ( this.viewContainerRef.length === 0 ) {
-      this.viewContainerRef.createEmbeddedView( this.tempRef );
+      this.viewContainerRef.createEmbeddedView( this.tempRef, {
+        $implicit: 'hello world', role: this.prRole
+      } );
     }
   }
 
