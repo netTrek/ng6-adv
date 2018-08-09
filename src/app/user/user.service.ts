@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { retry, tap } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { UserModule } from './user.module';
+import { environment } from '../../environments/environment';
 
 // @Injectable ( {
 //   providedIn: 'root'
@@ -14,7 +15,7 @@ import { UserModule } from './user.module';
 } )
 export class UserService {
 
-  readonly endpoint = 'http://localhost:3000/users/';
+  readonly endpoint = `${environment.endpoint}/users`; // 'http://localhost:3000/users/';
 
   selectedIndex$: BehaviorSubject<number> = new BehaviorSubject<number> ( - 1 );
 

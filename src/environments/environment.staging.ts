@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpoint: '/api'
+  endpoint: 'https://hs-test.server.de/api'
 };

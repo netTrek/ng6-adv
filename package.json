@@ -5,7 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "start:aot": "ng serve --aot",
-    "build": "ng build",
+    "start:prod": "ng serve --prod",
+    "start:staging": "ng serve --aot --configuration staging",
+    "build": "ng build --prod",
+    "build:stats": "ng build --prod --stats-json",
+    "webpack-bundle-analyzer": "webpack-bundle-analyzer dist/proleit/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -27,7 +31,6 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "json-server": "^0.14.0",
     "@angular-devkit/build-angular": "~0.7.0",
     "@angular/cli": "~6.1.1",
     "@angular/compiler-cli": "^6.1.0",
@@ -38,6 +41,7 @@
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
+    "json-server": "^0.14.0",
     "karma": "~1.7.1",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.0",
@@ -46,6 +50,7 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }
