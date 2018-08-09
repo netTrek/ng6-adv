@@ -9,25 +9,13 @@ import { take } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChangeDetectionComponent implements OnInit {
-  get outerVal (): number {
-    return this._outerVal;
-  }
 
-  set outerVal ( value: number ) {
-    this._outerVal = value;
-    this.cdr.detectChanges();
-  }
+  interv = interval( 500 ).pipe( take (100) );
 
   private _outerVal = -1;
 
-  constructor( private cdr: ChangeDetectorRef ) { }
+  constructor(  ) { }
 
-  ngOnInit() {
-    // interval( 500 ).pipe( take( 100 )).subscribe(
-    //   next => {
-    //     this.outerVal = next;
-    //   }
-    // );
-  }
+  ngOnInit() {}
 
 }
