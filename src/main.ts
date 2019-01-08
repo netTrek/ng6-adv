@@ -6,6 +6,26 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+
+
+  const noop = () => {
+  };
+  console    = {
+    ...window.console,
+    log   : noop,
+    /* error: noop, */
+    table : noop,
+    warn  : noop,
+    debug : noop,
+    assert: noop,
+    clear : noop,
+    dir   : noop,
+    group : noop,
+    info  : noop,
+    trace: noop
+  };
+
+
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
