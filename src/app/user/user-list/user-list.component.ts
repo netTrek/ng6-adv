@@ -19,6 +19,9 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
 })
 export class UserListComponent implements OnInit, AfterViewInit {
 
+  selectedIndex = -1;
+  test = 123;
+
   @ViewChild( 'line' )
   line: ElementRef;
 
@@ -47,4 +50,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle( this.line.nativeElement , 'borderColor', 'red');
   }
 
+  setSelectedIndex ( index: number, test?: number|MouseEvent ) {
+    this.selectedIndex = index;
+    console.log ( test );
+  }
 }

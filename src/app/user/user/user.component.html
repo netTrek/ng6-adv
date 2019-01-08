@@ -2,11 +2,23 @@
   {{name}}
 </h1>
 
+<div class="red">unselected</div>
+<div class="red" [class]="selectedClassname">selected</div>
+
+
+<div class="red selected" [class.selected]="false">red selected</div>
+
+
+<!--
+
 <div [innerText]="name" [style.color]="color">saban</div>
 <div [innerHTML]="html">saban</div>
 
 <img src="assets/cat.jpg" [attr.alt]="name" [style.width.%]="width" [attr.aria-label]="name">
 <img src="assets/{{imgFile}}" alt="" [style.width]="width+'%'">
+
+-->
+
 
 <ul>
   <li>{{name + '123'}}</li>

@@ -12,6 +12,8 @@ export class UserComponent implements OnInit {
   imgFile = 'cat.jpg';
   width = 25;
 
+  selectedClassname = 'selected';
+
   html = `<strong>hello</strong> world
 <ul>
 <li>123</li>

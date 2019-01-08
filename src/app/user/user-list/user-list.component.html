@@ -1,7 +1,21 @@
 
 <pl-user-list-header>Abteilung Entwickung</pl-user-list-header>
+
 <hr #line>
-<pl-user-list-item>Saban Ünlü</pl-user-list-item>
-<pl-user-list-item>Peter Müller</pl-user-list-item>
-<pl-user-list-item>Frank</pl-user-list-item>
-<pl-user-list-item>Paula</pl-user-list-item>
+
+<pl-user-list-item (click)="setSelectedIndex(0, test)"
+[class.selected]="selectedIndex === 0">
+  Saban Ünlü
+</pl-user-list-item>
+<pl-user-list-item (click)="setSelectedIndex(1, $event)"
+[class.selected]="selectedIndex === 1">
+  Peter Müller
+</pl-user-list-item>
+<pl-user-list-item (click)="setSelectedIndex(2, $event)"
+[class.selected]="selectedIndex === 2">
+  Frank
+</pl-user-list-item>
+<pl-user-list-item (click)="setSelectedIndex(3, $event)"
+[class.selected]="selectedIndex === 3">
+  Paula
+</pl-user-list-item>
