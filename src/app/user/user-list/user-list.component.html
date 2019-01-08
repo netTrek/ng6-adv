@@ -1,21 +1,46 @@
-
 <pl-user-list-header>Abteilung Entwickung</pl-user-list-header>
 
 <hr #line>
 
-<pl-user-list-item (click)="setSelectedIndex(0, test)"
-[class.selected]="selectedIndex === 0">
-  Saban Ünlü
+<pl-user-list-item [user]="users[0]"
+                   (selectedUsr)="setSelectedUser( $event )"
+                   [class.selected]="selectedUser === users[0]">
 </pl-user-list-item>
-<pl-user-list-item (click)="setSelectedIndex(1, $event)"
-[class.selected]="selectedIndex === 1">
-  Peter Müller
+
+<pl-user-list-item [user]="users[1]"
+                   (selectedUsr)="setSelectedUser( $event )"
+                   [class.selected]="selectedUser === users[1]">
 </pl-user-list-item>
-<pl-user-list-item (click)="setSelectedIndex(2, $event)"
-[class.selected]="selectedIndex === 2">
-  Frank
+
+<pl-user-list-item [user]="users[2]"
+                   (selectedUsr)="setSelectedUser( $event )"
+                   [class.selected]="selectedUser === users[2]">
 </pl-user-list-item>
-<pl-user-list-item (click)="setSelectedIndex(3, $event)"
-[class.selected]="selectedIndex === 3">
-  Paula
+
+<pl-user-list-item [user]="users[3]"
+                   (selectedUsr)="setSelectedUser( $event )"
+                   [class.selected]="selectedUser === users[3]">
 </pl-user-list-item>
+
+
+<!--
+
+<pl-user-list-item username="Saban Ünlü"
+                   (click)="setSelectedIndex(0, test)"
+                   [class.selected]="selectedIndex === 0">
+</pl-user-list-item>
+<pl-user-list-item  username="Peter Müller"
+                    (click)="setSelectedIndex(1, $event)"
+                    [class.selected]="selectedIndex === 1">
+</pl-user-list-item>
+<pl-user-list-item  username="Frank"
+                    (click)="setSelectedIndex(2, $event)"
+                    [class.selected]="selectedIndex === 2">
+
+</pl-user-list-item>
+<pl-user-list-item  username="Paula"
+                    (click)="setSelectedIndex(3, $event)"
+                    [class.selected]="selectedIndex === 3">
+
+</pl-user-list-item>
+-->

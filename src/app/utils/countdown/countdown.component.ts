@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'pl-countdown',
@@ -9,6 +9,8 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
 
   width = 100;
+  @Input ()
+  speed = 10;
   private intervalID: number;
 
   constructor() { }
@@ -24,8 +26,9 @@ export class CountdownComponent implements OnInit, OnDestroy {
   private startInterval () {
 
     this.intervalID = window.setInterval( () => {
-      this.width -= 10;
-      if ( this.width === 0 ) {
+      this.width -= Number (this.speed);
+      if ( this.width <= 0 ) {
+        this.width = 0;
         this.stopInterval();
       }
     }, 250 );
