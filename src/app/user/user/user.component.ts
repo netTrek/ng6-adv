@@ -11,6 +11,7 @@ export class UserComponent implements OnInit {
   name = 'Saban Ünlü';
   imgFile = 'cat.jpg';
   width = 25;
+  showCat = true;
 
   selectedClassname = 'selected';
 
@@ -37,5 +38,9 @@ export class UserComponent implements OnInit {
 
   chgColor () {
     this.color = 'blue';
+  }
+
+  toggleCat () {
+    this.showCat = !this.showCat;
   }
 }

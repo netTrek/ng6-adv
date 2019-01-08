@@ -59,18 +59,25 @@ export class UserListComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle ( this.line.nativeElement, 'borderColor', 'red' );
   }
 
-
   /*
   setSelectedIndex ( index: number, test?: number | MouseEvent ) {
     this.selectedIndex = index;
     console.log ( test );
   }
   */
+
   setSelectedUser ( $event: User ) {
     if ( this.selectedUser === $event ) {
       this.selectedUser = undefined;
     } else {
       this.selectedUser = $event;
     }
+  }
+
+  addNewUser () {
+    const lng = this.users.length;
+    this.users.push( {
+      firstname: `frank ${lng}`, lastname: `mueller ${lng}`
+    });
   }
 }

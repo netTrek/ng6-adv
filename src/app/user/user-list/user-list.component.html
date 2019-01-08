@@ -1,6 +1,24 @@
 <pl-user-list-header>Abteilung Entwickung</pl-user-list-header>
 
 <hr #line>
+<pl-user-list-item
+  *ngFor="let user of users; even as e; odd as o"
+  [ngClass]="{even: e, odd: o}"
+  [user]="user"
+  (selectedUsr)="setSelectedUser($event)"
+  [isSelected]="user === selectedUser"
+></pl-user-list-item>
+
+<button (click)="addNewUser()">add new user</button>
+
+<!--
+<ul>
+  <li *ngFor="let num of [1,2,3]; index as i; first as f"> {{num}} # {{i}} # {{f}}</li>
+</ul>
+-->
+
+
+<!--
 
 <pl-user-list-item [user]="users[0]"
                    (selectedUsr)="setSelectedUser( $event )"
@@ -21,6 +39,7 @@
                    (selectedUsr)="setSelectedUser( $event )"
                    [isSelected]="selectedUser === users[3]">
 </pl-user-list-item>
+-->
 
 
 <!--

@@ -2,14 +2,31 @@
   {{name}}
 </h1>
 
-<div class="red">unselected</div>
-<div class="red" [class]="selectedClassname">selected</div>
+<img *ngIf="showCat; else noCatBlock"
+     src="assets/{{imgFile}}"
+     alt="" [style.width]="width+'%'">
+
+<ng-template #noCatBlock>
+  Keine Katze :(
+</ng-template>
+
+<!--
+
+<ng-template [ngIf]="showCat">
+  <img src="assets/{{imgFile}}"
+       alt="" [style.width]="width+'%'">
+</ng-template>
+-->
 
 
-<div class="red selected" [class.selected]="false">red selected</div>
+<hr>
+<button (click)="toggleCat()">toggle cat</button>
 
 
 <!--
+<div class="red">unselected</div>
+<div class="red" [class]="selectedClassname">selected</div>
+<div class="red selected" [class.selected]="false">red selected</div>
 
 <div [innerText]="name" [style.color]="color">saban</div>
 <div [innerHTML]="html">saban</div>
@@ -17,7 +34,6 @@
 <img src="assets/cat.jpg" [attr.alt]="name" [style.width.%]="width" [attr.aria-label]="name">
 <img src="assets/{{imgFile}}" alt="" [style.width]="width+'%'">
 
--->
 
 
 <ul>
@@ -28,3 +44,4 @@
 
 <button (click)="chgName()">ändere</button>
 <button (click)="chgColor()">neue Farbe</button>
+-->
