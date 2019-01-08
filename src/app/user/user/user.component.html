@@ -1,4 +1,18 @@
 <h1>
-  user works!
+  {{name}}
 </h1>
 
+<div [innerText]="name" [style.color]="color">saban</div>
+<div [innerHTML]="html">saban</div>
+
+<img src="assets/cat.jpg" [attr.alt]="name" [style.width.%]="width" [attr.aria-label]="name">
+<img src="assets/{{imgFile}}" alt="" [style.width]="width+'%'">
+
+<ul>
+  <li>{{name + '123'}}</li>
+  <li>nicht machen::: {{1 + 2}}</li>
+  <li>{{getName()}}</li>
+</ul>
+
+<button (click)="chgName()">ändere</button>
+<button (click)="chgColor()">neue Farbe</button>

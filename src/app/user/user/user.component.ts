@@ -1,26 +1,23 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-// const myVar = 123;
 @Component ( {
-  selector : 'pl-user',
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  selector   : 'pl-user',
   templateUrl: './user.component.html',
-  // template : `<h1>hello world</h1>
-  // <ul>
-  //   <li>${myVar}</li>
-  //   <li>2</li>
-  //   <li>3</li>
-  // </ul>
-  // `,
-  styleUrls: [ './user.component.scss' ]
-  // styles: [
-  //   `h1 {
-  //     background-color: #ccc;
-  //     color: #f00;
-  //   }`
-  // ]
+  styleUrls  : [ './user.component.scss' ]
 } )
 export class UserComponent implements OnInit {
+
+  color = 'red';
+  name = 'Saban Ünlü';
+  imgFile = 'cat.jpg';
+  width = 25;
+
+  html = `<strong>hello</strong> world
+<ul>
+<li>123</li>
+<script>alert('hello world');</script>
+</ul>`;
+  private intervalID: number;
 
   constructor () {
   }
@@ -28,4 +25,15 @@ export class UserComponent implements OnInit {
   ngOnInit () {
   }
 
+  getName (): string {
+    return this.name;
+  }
+
+  chgName () {
+    this.name = 'Peter Müller';
+  }
+
+  chgColor () {
+    this.color = 'blue';
+  }
 }
