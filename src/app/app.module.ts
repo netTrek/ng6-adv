@@ -9,6 +9,7 @@ import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 
 import { registerLocaleData } from '@angular/common';
 import localeDE from '@angular/common/locales/de';
+import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 registerLocaleData( localeDE );
 
 @NgModule ( {
@@ -20,7 +21,8 @@ registerLocaleData( localeDE );
     AppRoutingModule,
     UserModule,
     UtilsModule,
-    PipeSamplesModule
+    PipeSamplesModule,
+    RxjsSamplesModule
   ],
   providers   : [
     {provide: LOCALE_ID, useValue: 'de'}
