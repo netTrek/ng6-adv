@@ -1,14 +1,18 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line
   selector: '[plHover]'
 })
-export class HoverDirective {
+export class HoverDirective implements OnInit {
 
   @Input()
   plHover: string;
 
-  private elem: HTMLElement;
+  @Input()
+  superwert: string;
+
+  // private elem: HTMLElement;
 
   @HostBinding ('style.color')
   private color: null|string|number;
@@ -18,6 +22,10 @@ export class HoverDirective {
     //
     // this.elem = elem.nativeElement as HTMLElement;
     // this.addListener();
+  }
+
+  ngOnInit (): void {
+    console.warn ( this.plHover, this.superwert );
   }
 
   @HostListener( 'mouseenter')

@@ -1,0 +1,67 @@
+<h3>List</h3>
+<ul>
+  <li>---------------- origina</li>
+  <li *ngFor="let value of sampleList">{{value}}</li>
+  <li>---------------- reverse Pipe</li>
+  <li *ngFor="let value of sampleList | reverse | slice : 2">reverse {{value}}</li>
+  <li>---------------- letzten 2</li>
+  <li *ngFor="let value of sampleList | slice : 2">{{value}}</li>
+  <li>---------------- 0 - 2 </li>
+  <li *ngFor="let value of sampleList | slice : 0 : 2">{{value}}</li>
+  <li>---------------- letzen 3 </li>
+  <li *ngFor="let value of sampleList | slice : -3">{{value}}</li>
+  <li>---------------- letzen 3 </li>
+  <li *ngFor="let value of sampleList | slice : -3 : -1">{{value}}</li>
+</ul>
+
+<hr>
+<h3>JSON</h3>
+{{sampleJson | json}}
+
+
+<hr>
+<h3>String</h3>
+<ul>
+  <li>{{sampleString}}</li>
+  <li>{{sampleString | uppercase | slice : 2 | reverse}}</li>
+  <li>{{sampleString | lowercase}}</li>
+</ul>
+
+<hr>
+<h3>Number</h3>
+<ul>
+  <li>{{sampleNumber}}</li>
+  <li>{{sampleNumber | number }}</li>
+  <li>{{sampleNumber | number : '.2-2' }}</li>
+  <li>{{sampleNumber | number : '2.2-2' }}</li>
+  <li>{{sampleNumber | number : '2.2-2' : 'en' }}</li>
+</ul>
+
+<hr>
+<h3>Währung</h3>
+<ul>
+  <li>{{sampleNumber}}</li>
+  <li>{{sampleNumber | currency }}</li>
+  <li>{{sampleNumber | currency : 'EUR' : 'code' }}</li>
+  <li>{{sampleNumber | currency : 'EUR' : 'symbol' }}</li>
+  <li>{{sampleNumber | currency : 'EUR' : 'symbol' : '2.2-3' }}</li>
+  <li>{{sampleNumber | currency : 'EUR' : 'symbol' : '2.2-3' : 'en' }}</li>
+  <li>{{sampleNumber | currency : 'USD' }}</li>
+  <!--
+  <li>{{sampleNumber | currency : '.2-2' }}</li>
+  <li>{{sampleNumber | currency : '2.2-2' }}</li>
+  <li>{{sampleNumber | currency : '2.2-2' : 'en' }}</li>
+  -->
+</ul>
+
+<hr>
+<h3>Date</h3>
+<ul>
+  <li>{{sampleDate}}</li>
+  <li>{{sampleDate | date}}</li>
+  <li>{{sampleDate | date : 'long'}}</li>
+  <li>{{sampleDate | date : 'full'}}</li>
+  <li>{{sampleDate | date : 'yy/MM'}}</li>
+  <li>{{sampleDate | date : 'long' : '-0800' }}</li>
+  <li>{{sampleDate | date : 'long' : '-0800' : 'en' }}</li>
+</ul>
