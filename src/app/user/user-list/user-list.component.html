@@ -6,7 +6,6 @@
   [ngClass]="{even: e, odd: o}"
   [user]="user"
   (selectedUsr)="$userSelection.setSelectedUser($event)"
-  [isSelected]="user === $userSelection.selectedUser"
 ></pl-user-list-item>
 
 <button (click)="$user.addNewUser()">add new user</button>

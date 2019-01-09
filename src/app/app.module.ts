@@ -11,7 +11,12 @@ import { registerLocaleData } from '@angular/common';
 import localeDE from '@angular/common/locales/de';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { ServiceSamplesModule } from './service-samples/service-samples.module';
+import { SAMPLE_CLASS, SAMPLE_EXISTING, SAMPLE_FACTORY, SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from './token/injectionToken';
 registerLocaleData( localeDE );
+
+export class MyInjectedClass {
+  value = 'wert';
+}
 
 @NgModule ( {
   declarations: [
@@ -27,7 +32,14 @@ registerLocaleData( localeDE );
     ServiceSamplesModule
   ],
   providers   : [
-    {provide: LOCALE_ID, useValue: 'de'}
+    {provide: LOCALE_ID, useValue: 'de'},
+    {provide: SAMPLE_VALUE, useValue: 'override SAMPLE_VALUE'},
+    {provide: SAMPLE_MULTI_VALUE, useValue: 'SAMPLE_MULTI_VALUE in app', multi: true},
+    {provide: SAMPLE_CLASS, useClass: MyInjectedClass},
+    {provide: SAMPLE_EXISTING, useExisting: SAMPLE_VALUE},
+    {provide: SAMPLE_FACTORY, useFactory: ( sampleVal: string ) => {
+      return `${sampleVal} factory export`;
+      }, deps: [SAMPLE_VALUE] }
   ],
   bootstrap   : [ AppComponent ]
 } )

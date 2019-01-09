@@ -1,34 +1,48 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { User } from '../../user';
+import { UserSelectionService } from '../user-selection.service';
+import { Subscription } from 'rxjs';
+import { skipWhile } from 'rxjs/operators';
 
-@Component({
-  selector: 'pl-user-list-item',
+@Component ( {
+  selector   : 'pl-user-list-item',
   templateUrl: './user-list-item.component.html',
-  styleUrls: ['./user-list-item.component.scss']
-})
-export class UserListItemComponent implements OnInit {
+  styleUrls  : [ './user-list-item.component.scss' ]
+} )
+export class UserListItemComponent implements OnInit, OnDestroy {
 
-  @Input()
+  @Input ()
   user: User;
 
-  @Output()
-  selectedUsr: EventEmitter<User> = new EventEmitter();
+  @Output ()
+  selectedUsr: EventEmitter<User> = new EventEmitter ();
 
+  @HostBinding ( 'class.selected' )
+  private isSelected: boolean;
+  private sub: Subscription;
 
-  @Input()
-  @HostBinding ('class.selected')
-  isSelected: boolean;
+  constructor ( $selection: UserSelectionService ) {
+    this.sub = $selection.selectedUser
+                         .pipe(
+                           skipWhile( value => value === null )
+                         )
+                         .subscribe ( next => {
+                           this.isSelected = this.user === next;
+                         } );
+  }
 
-  constructor() { }
+  ngOnDestroy (): void {
+    this.sub.unsubscribe();
+  }
 
-  ngOnInit() {
+  ngOnInit () {
     console.log ( this.user );
   }
 
-  @HostListener ('click', ['$event'])
+  @HostListener ( 'click', [ '$event' ] )
   private selectUsr ( evt?: MouseEvent ) {
     console.log ( evt );
-    this.selectedUsr.emit( this.user );
+    this.selectedUsr.emit ( this.user );
   }
 
   // @HostListener ( 'window:resize', ['$event'] )

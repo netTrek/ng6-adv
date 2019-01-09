@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./service-sample.component.scss']
 })
 export class ServiceSampleComponent implements OnInit {
-  private value: Observable<string>;
+  value: Observable<string>;
 
   constructor( public myStorage: MyStorageService ) {
     this.value = myStorage.get<string>( MyStorageKey.MY_VALUE);

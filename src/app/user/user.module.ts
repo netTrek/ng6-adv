@@ -5,12 +5,18 @@ import { UserAvatarComponent } from './user/user-avatar/user-avatar.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserListHeaderComponent } from './user-list/user-list-header/user-list-header.component';
+import { SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from '../token/injectionToken';
 
 @NgModule({
   declarations: [UserComponent, UserAvatarComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
   imports: [
     CommonModule
   ],
-  exports: [UserComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent]
+  exports: [UserComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
+  providers: [
+    {provide: SAMPLE_VALUE, useValue: 'set SAMPLE_VALUE'},
+    {provide: SAMPLE_MULTI_VALUE, useValue: 'SAMPLE_MULTI_VALUE in user', multi: true}
+  ]
 })
-export class UserModule { }
+export class UserModule {
+}

@@ -2,7 +2,7 @@ import {
   AfterContentInit,
   AfterViewInit,
   Component,
-  ElementRef,
+  ElementRef, Inject,
   OnInit,
   QueryList,
   Renderer2,
@@ -14,6 +14,7 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { UserSelectionService } from './user-selection.service';
+import { SAMPLE_VALUE } from '../../token/injectionToken';
 
 @Component ( {
   selector   : 'pl-user-list',
@@ -23,7 +24,10 @@ import { UserSelectionService } from './user-selection.service';
 } )
 export class UserListComponent implements OnInit {
 
-  constructor ( public $user: UserService, public $userSelection: UserSelectionService ) {
+  constructor ( public $user: UserService,
+                public $userSelection: UserSelectionService,
+                @Inject(SAMPLE_VALUE) val: string ) {
+    console.warn ( 'val', val );
   }
 
   ngOnInit () {

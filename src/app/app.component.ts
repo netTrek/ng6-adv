@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MyStorageService } from './service-samples/my-storage.service';
 import { interval } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { MyStorageKey } from './service-samples/my-storage.enum';
+import { SAMPLE_CLASS, SAMPLE_EXISTING, SAMPLE_FACTORY, SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from './token/injectionToken';
+import { MyInjectedClass } from './app.module';
 
 @Component({
   selector: 'pl-root',
@@ -11,8 +13,15 @@ import { MyStorageKey } from './service-samples/my-storage.enum';
 })
 export class AppComponent {
   title = 'proleit2019';
-  constructor ( myStorage: MyStorageService ) {
+  constructor ( myStorage: MyStorageService,
+                @Inject( SAMPLE_VALUE ) wertFuerSaban: string,
+                @Inject( SAMPLE_MULTI_VALUE ) multi: string[],
+                @Inject( SAMPLE_CLASS ) classVal: MyInjectedClass,
+                @Inject( SAMPLE_EXISTING ) existing: string,
+                @Inject( SAMPLE_FACTORY ) factory: string
+  ) {
     // console.log ( environment.endpoint );
+    console.log ( wertFuerSaban, existing, multi, classVal, factory );
     interval( 500 ).pipe( first() ).subscribe(
       next => {
         myStorage.chgValue( 'Geändert aus App Component');
