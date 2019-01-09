@@ -4,7 +4,8 @@ const country = 'Germany';
 const address = { city, country }; // { city: city, country: country }
 const address2 = { ...address }; // einfacher clone
 const address3 = { ...address, street: 'Overbergstr.', dep: '35a' }; // erweiterung
-
+// city, country, street, dep
+const address4 = {...address3, street: 'musterstr'}; // overrride
 const myList1: string[] = ['saban', 'hans'];
 const myList3: string[] = ['peter', 'frank'];
 const myList2: string[] = [...myList1];

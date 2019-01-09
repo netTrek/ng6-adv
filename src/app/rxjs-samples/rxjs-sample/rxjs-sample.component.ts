@@ -24,6 +24,7 @@ export class RxjsSampleComponent implements OnInit {
   private initBeSub () {
     // HOT
     const sub: BehaviorSubject<number> = new BehaviorSubject( 0 );
+    console.log ( 'crrVal', sub.getValue() );
     this.doSubscription( sub, '1. ' );
     sub.next( 1 );
     this.doSubscription( sub, '2. ' );
