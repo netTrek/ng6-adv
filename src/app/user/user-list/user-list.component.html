@@ -1,66 +1,13 @@
 <pl-user-list-header>Abteilung Entwickung</pl-user-list-header>
 
-<hr #line>
+<hr>
 <pl-user-list-item
-  *ngFor="let user of users; even as e; odd as o"
+  *ngFor="let user of $user.users; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="user"
-  (selectedUsr)="setSelectedUser($event)"
-  [isSelected]="user === selectedUser"
+  (selectedUsr)="$userSelection.setSelectedUser($event)"
+  [isSelected]="user === $userSelection.selectedUser"
 ></pl-user-list-item>
 
-<button (click)="addNewUser()">add new user</button>
+<button (click)="$user.addNewUser()">add new user</button>
 
-
-<!--
-<ul>
-  <li *ngFor="let num of [1,2,3]; index as i; first as f"> {{num}} # {{i}} # {{f}}</li>
-</ul>
--->
-
-
-<!--
-
-<pl-user-list-item [user]="users[0]"
-                   (selectedUsr)="setSelectedUser( $event )"
-                   [isSelected]="selectedUser === users[0]">
-</pl-user-list-item>
-
-<pl-user-list-item [user]="users[1]"
-                   (selectedUsr)="setSelectedUser( $event )"
-                   [isSelected]="selectedUser === users[1]">
-</pl-user-list-item>
-
-<pl-user-list-item [user]="users[2]"
-                   (selectedUsr)="setSelectedUser( $event )"
-                   [isSelected]="selectedUser === users[2]">
-</pl-user-list-item>
-
-<pl-user-list-item [user]="users[3]"
-                   (selectedUsr)="setSelectedUser( $event )"
-                   [isSelected]="selectedUser === users[3]">
-</pl-user-list-item>
--->
-
-
-<!--
-
-<pl-user-list-item username="Saban Ünlü"
-                   (click)="setSelectedIndex(0, test)"
-                   [class.selected]="selectedIndex === 0">
-</pl-user-list-item>
-<pl-user-list-item  username="Peter Müller"
-                    (click)="setSelectedIndex(1, $event)"
-                    [class.selected]="selectedIndex === 1">
-</pl-user-list-item>
-<pl-user-list-item  username="Frank"
-                    (click)="setSelectedIndex(2, $event)"
-                    [class.selected]="selectedIndex === 2">
-
-</pl-user-list-item>
-<pl-user-list-item  username="Paula"
-                    (click)="setSelectedIndex(3, $event)"
-                    [class.selected]="selectedIndex === 3">
-
-</pl-user-list-item>
--->

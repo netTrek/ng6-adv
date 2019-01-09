@@ -9,6 +9,6 @@ import { MyStorageService } from './my-storage.service';
     CommonModule
   ],
   exports: [ServiceSampleComponent],
-  providers: [MyStorageService]
+  providers: []
 })
 export class ServiceSamplesModule { }
