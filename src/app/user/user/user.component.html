@@ -1,3 +1,13 @@
+<ul *ngIf="user.id; else noUserFound">
+  <li>{{user.id}}</li>
+  <li>{{user.firstname}}</li>
+  <li>{{user.lastname}}</li>
+</ul>
+<ng-template #noUserFound>
+  <h4>Could not load data for ID {{user}}</h4>
+</ng-template>
+<!--
+version 3
 <ng-container *ngIf="user$ | async as user; else noUserFound">
   <ul>
     <li>{{user.id}}</li>
@@ -8,4 +18,8 @@
 <ng-template #noUserFound>
   <h4>Could not load data for ID {{userid}}</h4>
 </ng-template>
+-->
+
+
 <a [routerLink]="['/users', 2]">show 2</a>
+

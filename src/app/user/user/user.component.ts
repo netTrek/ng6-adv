@@ -12,8 +12,11 @@ import { User } from '../user';
 } )
 export class UserComponent implements OnInit {
 
-  user$: Observable<User|undefined>;
-  userid: string;
+  user: User;
+
+  // version 3
+  // user$: Observable<User|undefined>;
+  // userid: string;
 
   // version 2
   // userid: Observable<number>;
@@ -26,14 +29,24 @@ export class UserComponent implements OnInit {
 
   ngOnInit () {
 
-    this.user$ = this.$activatedRoute.paramMap.pipe(
-        map ( paramMap => paramMap.get ( 'userid' ) ), // hole den Parameter
-        tap ( userid => this.userid = userid ), // merke dir den Parameter
-        map ( userid => parseInt( userid , 10 ) ), // wandle parameter in Zahl
-        skipWhile ( userid => isNaN( userid ) ), // wenn wert eine gültige Zahl
-        switchMap( userid => this.$user.getUserById( userid ) ), // gebe einen äußeren Observable zurück
-        catchError( err => of ( undefined ) ) // Handle fehler wür skipWhile und SwitchMap
-    );
+    this.$activatedRoute.data
+        .pipe(
+          tap ( x => console.log( x.myValue) ),
+          map ( value => value.userResolve )
+        )
+        .subscribe(
+          resolvedUser => this.user = resolvedUser
+        );
+
+    // Version 3
+    // this.user$ = this.$activatedRoute.paramMap.pipe(
+    //     map ( paramMap => paramMap.get ( 'userid' ) ), // hole den Parameter
+    //     tap ( userid => this.userid = userid ), // merke dir den Parameter
+    //     map ( userid => parseInt( userid , 10 ) ), // wandle parameter in Zahl
+    //     skipWhile ( userid => isNaN( userid ) ), // wenn wert eine gültige Zahl
+    //     switchMap( userid => this.$user.getUserById( userid ) ), // gebe einen äußeren Observable zurück
+    //     catchError( err => of ( undefined ) ) // Handle fehler wür skipWhile und SwitchMap
+    // );
 
     // version 2
     // this.userid =

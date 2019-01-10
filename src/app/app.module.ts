@@ -16,6 +16,7 @@ import { ProleitModule } from './proleit/proleit.module';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { Router } from '@angular/router';
 registerLocaleData( localeDE );
 
 export class MyInjectedClass {
@@ -51,4 +52,7 @@ export class MyInjectedClass {
   bootstrap   : [ AppComponent ]
 } )
 export class AppModule {
+  // constructor ( $router: Router ) {
+  //   $router.events.subscribe( console.warn );
+  // }
 }

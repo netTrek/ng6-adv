@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home/home.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { User } from './user/user';
 import { UserComponent } from './user/user/user.component';
+import { ResolveGuard } from './user/resolve.guard';
+import { ActivateGuard } from './user/activate.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +18,14 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
     path: 'dash',
+    canActivate: [
+      ActivateGuard
+    ],
     loadChildren:
       './dash/dash.module#DashModule'
   },
@@ -26,7 +35,13 @@ const routes: Routes = [
   },
   {
     path: 'users/:userid',
-    component: UserComponent
+    component: UserComponent,
+    data: {
+      myValue: 'Hello World'
+    },
+    resolve: {
+      userResolve: ResolveGuard
+    }
   },
   { // IMMER IMMER IMMER als letztes
     path: '**',
