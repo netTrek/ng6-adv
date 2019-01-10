@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component ( {
   selector   : 'pl-user',
@@ -7,20 +7,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 } )
 export class UserComponent implements OnInit {
 
-  color = 'red';
-  name = 'Saban Ünlü';
-  imgFile = 'cat.jpg';
-  width = 25;
-  showCat = true;
-
-  selectedClassname = 'selected';
-
-  html = `<strong>hello</strong> world
-<ul>
-<li>123</li>
-<script>alert('hello world');</script>
-</ul>`;
-  private intervalID: number;
 
   constructor () {
   }
@@ -28,19 +14,4 @@ export class UserComponent implements OnInit {
   ngOnInit () {
   }
 
-  getName (): string {
-    return this.name;
-  }
-
-  chgName () {
-    this.name = 'Peter Müller';
-  }
-
-  chgColor () {
-    this.color = 'blue';
-  }
-
-  toggleCat () {
-    this.showCat = !this.showCat;
-  }
 }

@@ -1,33 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center" >
-  <h1 plHover="yellow" superwert="savab">
+  <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
 
 
-<!--
-<pl-pipe-sample></pl-pipe-sample>
-<pl-rxjs-sample></pl-rxjs-sample>
-<pl-service-sample></pl-service-sample>
--->
-
-<!--
-<pl-countdown style="width: 200px"></pl-countdown>
-<pl-countdown style="width: 200px" speed="20"></pl-countdown>
-<pl-countdown style="width: 200px" speed="30"></pl-countdown>
--->
-
-
-<!--
-<pl-user></pl-user>
-
--->
-
-<!--
--->
-<pl-user-list>
-</pl-user-list>
-
+<nav>
+  <a routerLink="home"
+     routerLinkActive="active-route"
+  >home</a> |
+  <a routerLink="dash"
+     routerLinkActive="active-route"
+  >dash</a> |
+  <a routerLink="users"
+     routerLinkActive="active-route"
+  >users</a>
+  <hr>
+</nav>
 
 <router-outlet></router-outlet>
+
+
+<footer>
+  <hr>
+  netTrek &copy;
+</footer>

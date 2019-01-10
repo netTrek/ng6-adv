@@ -15,6 +15,7 @@ import { SAMPLE_CLASS, SAMPLE_EXISTING, SAMPLE_FACTORY, SAMPLE_MULTI_VALUE, SAMP
 import { ProleitModule } from './proleit/proleit.module';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './home/home.module';
 registerLocaleData( localeDE );
 
 export class MyInjectedClass {
@@ -34,7 +35,8 @@ export class MyInjectedClass {
     PipeSamplesModule,
     RxjsSamplesModule,
     ServiceSamplesModule,
-    ProleitModule.forRoot( {debug: !environment.production })
+    ProleitModule.forRoot( {debug: !environment.production }),
+    HomeModule
   ],
   providers   : [
     {provide: LOCALE_ID, useValue: 'de'},
