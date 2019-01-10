@@ -25,7 +25,7 @@ export class HoverDirective implements OnInit {
   }
 
   ngOnInit (): void {
-    console.warn ( this.plHover, this.superwert );
+    // console.warn ( this.plHover, this.superwert );
   }
 
   @HostListener( 'mouseenter')

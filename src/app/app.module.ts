@@ -14,6 +14,7 @@ import { ServiceSamplesModule } from './service-samples/service-samples.module';
 import { SAMPLE_CLASS, SAMPLE_EXISTING, SAMPLE_FACTORY, SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from './token/injectionToken';
 import { ProleitModule } from './proleit/proleit.module';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData( localeDE );
 
 export class MyInjectedClass {
@@ -27,6 +28,7 @@ export class MyInjectedClass {
   imports     : [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     UserModule,
     UtilsModule,
     PipeSamplesModule,

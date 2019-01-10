@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserListHeaderComponent } from './user-list/user-list-header/user-list-header.component';
 import { SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from '../token/injectionToken';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [UserComponent, UserAvatarComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],

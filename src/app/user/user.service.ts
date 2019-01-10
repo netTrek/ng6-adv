@@ -1,25 +1,50 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable ( {
   providedIn: 'root'
 } )
 export class UserService {
 
-  users: User[] = [
-    { firstname: 'frank 0', lastname: 'müller 0' },
-    { firstname: 'frank 1', lastname: 'müller 1' },
-    { firstname: 'frank 2', lastname: 'müller 2' },
-    { firstname: 'frank 3', lastname: 'müller 3' }
-  ];
+  users: BehaviorSubject<User[]> = new BehaviorSubject( [] );
 
-  constructor () {
+  constructor ( private $http: HttpClient ) {
+    this.getUsers ();
   }
 
-  addNewUser () {
-    const lng = this.users.length;
-    this.users.push ( {
-      firstname: `frank ${lng}`, lastname: `mueller ${lng}`
-    } );
+  getUsers (): Promise<User[]> {
+    return this.$http.get<User[]> ( 'http://localhost:3000/users' )
+               .pipe(
+                    tap ( userlist => this.users.next( userlist )  )
+               )
+               .toPromise ();
+  }
+
+  addUser ( user: User ): Promise<User> {
+    return this.$http.post<User> ( 'http://localhost:3000/users', user )
+               .pipe(
+                 tap ( next => this.getUsers()  )
+               )
+               .toPromise ();
+  }
+
+  editUser ( user: User ): Promise<User> {
+    return this.$http.put<User> ( 'http://localhost:3000/users/' + user.id,
+      user )
+               .pipe(
+                 tap ( next => this.getUsers()  )
+               )
+               .toPromise ();
+  }
+
+  deleteUser ( user: User ): Promise<any> {
+    return this.$http.delete<any> ( 'http://localhost:3000/users/' + user.id )
+               .pipe(
+                 tap ( next => this.getUsers()  )
+               )
+               .toPromise ();
   }
 }

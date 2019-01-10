@@ -21,14 +21,7 @@ export class UserListItemComponent implements OnInit, OnDestroy {
   private isSelected: boolean;
   private sub: Subscription;
 
-  constructor ( $selection: UserSelectionService ) {
-    this.sub = $selection.selectedUser
-                         .pipe(
-                           skipWhile( value => value === null )
-                         )
-                         .subscribe ( next => {
-                           this.isSelected = this.user === next;
-                         } );
+  constructor ( private $selection: UserSelectionService ) {
   }
 
   ngOnDestroy (): void {
@@ -36,12 +29,16 @@ export class UserListItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit () {
-    console.log ( this.user );
+    // console.log ( this.user );
+    this.sub = this.$selection.selectedUser
+                         .subscribe ( next => {
+                           this.isSelected = this.user === next;
+                         } );
   }
 
   @HostListener ( 'click', [ '$event' ] )
   private selectUsr ( evt?: MouseEvent ) {
-    console.log ( evt );
+    // console.log ( evt );
     this.selectedUsr.emit ( this.user );
   }
 
