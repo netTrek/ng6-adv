@@ -12,6 +12,8 @@ import localeDE from '@angular/common/locales/de';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { ServiceSamplesModule } from './service-samples/service-samples.module';
 import { SAMPLE_CLASS, SAMPLE_EXISTING, SAMPLE_FACTORY, SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from './token/injectionToken';
+import { ProleitModule } from './proleit/proleit.module';
+import { environment } from '../environments/environment';
 registerLocaleData( localeDE );
 
 export class MyInjectedClass {
@@ -29,7 +31,8 @@ export class MyInjectedClass {
     UtilsModule,
     PipeSamplesModule,
     RxjsSamplesModule,
-    ServiceSamplesModule
+    ServiceSamplesModule,
+    ProleitModule.forRoot( {debug: !environment.production })
   ],
   providers   : [
     {provide: LOCALE_ID, useValue: 'de'},
