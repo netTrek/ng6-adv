@@ -25,7 +25,7 @@ const routes: Routes = [
     component: UserListComponent
   },
   {
-    path: 'users/:id',
+    path: 'users/:userid',
     component: UserComponent
   },
   { // IMMER IMMER IMMER als letztes

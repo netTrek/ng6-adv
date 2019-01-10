@@ -7,11 +7,12 @@ import { UserListItemComponent } from './user-list/user-list-item/user-list-item
 import { UserListHeaderComponent } from './user-list/user-list-header/user-list-header.component';
 import { SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from '../token/injectionToken';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [UserComponent, UserAvatarComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
   imports: [
-    CommonModule
+    CommonModule, RouterModule
   ],
   exports: [UserComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
   providers: [

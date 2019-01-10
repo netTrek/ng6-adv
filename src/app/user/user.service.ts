@@ -23,6 +23,10 @@ export class UserService {
                .toPromise ();
   }
 
+  getUserById ( id: number ): Observable<User> {
+    return this.$http.get<User> ( 'http://localhost:3000/users/' + id );
+  }
+
   addUser ( user: User ): Promise<User> {
     return this.$http.post<User> ( 'http://localhost:3000/users', user )
                .pipe(
