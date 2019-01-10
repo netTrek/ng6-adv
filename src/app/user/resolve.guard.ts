@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ResolveGuard implements Resolve<User> {
+export class ResolveGuard implements Resolve<User|string> {
 
   constructor ( private $user: UserService ) {}
 

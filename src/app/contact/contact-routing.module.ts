@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
+import { FormDeactGuard } from './contact/form-deact.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full',
       redirectTo: 'form'
       },
-      { path: 'form', component: FormComponent},
+      { path: 'form', component: FormComponent, canDeactivate: [FormDeactGuard]},
       { path: 'map', component: MapComponent}
     ]
   }

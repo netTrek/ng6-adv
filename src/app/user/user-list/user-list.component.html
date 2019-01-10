@@ -10,10 +10,13 @@
 
 <button (click)="addNewUser()">add new user</button>
 <ng-container *ngIf="$userSelection.selectedUser | async as selectedUsr">
+  <button [routerLink]="[selectedUsr.id]">
+    Details
+  </button>
   <button (click)="updatedUsr ( selectedUsr )">
-    Aktualisiere {{ selectedUsr.firstname }} {{ selectedUsr.lastname }}
+    Aktualisiere
   </button>
   <button (click)="deleteUsr ( selectedUsr )">
-    Löschen {{ selectedUsr.firstname }} {{ selectedUsr.lastname }}
+    Löschen
   </button>
 </ng-container>
