@@ -8,9 +8,9 @@ import { FormComponent } from './form/form.component';
 })
 export class FormDeactGuard implements CanDeactivate<FormComponent> {
   canDeactivate ( component: FormComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot ): Observable<boolean> | Promise<boolean> | boolean {
-    if ( component.myInput.value !== 'hallo') {
-      return window.confirm( 'seite wirklich verlassen?');
-    }
+    // if ( component.myInput.value !== 'hallo') {
+    //   return window.confirm( 'seite wirklich verlassen?');
+    // }
     return true;
   }
 }

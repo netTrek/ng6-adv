@@ -1,0 +1,5 @@
+input {
+  &.ng-dirty.ng-invalid {
+    border: red solid thick ;
+  }
+}

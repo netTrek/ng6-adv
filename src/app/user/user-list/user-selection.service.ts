@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Injectable()
-export class UserSelectionService {
+export class UserSelectionService implements OnDestroy {
 
   selectedUser: BehaviorSubject<User> =
     new BehaviorSubject( null );
+
+  private userSub: Subscription;
 
   constructor( private $user: UserService ) {
     this.observeList ();
@@ -22,7 +24,7 @@ export class UserSelectionService {
   }
 
   private observeList () {
-    this.$user.users.subscribe(
+    this.userSub = this.$user.users.subscribe(
       userList => {
         const selected = this.selectedUser.getValue();
         if ( !! selected ) {
@@ -31,5 +33,9 @@ export class UserSelectionService {
         }
       }
     );
+  }
+
+  ngOnDestroy (): void {
+    this.userSub.unsubscribe();
   }
 }

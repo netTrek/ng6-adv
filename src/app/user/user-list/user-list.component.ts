@@ -2,7 +2,7 @@ import {
   AfterContentInit,
   AfterViewInit,
   Component,
-  ElementRef, Inject,
+  ElementRef, Inject, OnDestroy,
   OnInit,
   QueryList,
   Renderer2,

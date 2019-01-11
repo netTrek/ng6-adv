@@ -7,13 +7,16 @@
 
 -->
 
-<form #myForm="ngForm">
+<form #myForm="ngForm" (submit)="sendForm(myForm.value)" (reset)="resetForm()">
 
   <input type="text"
          name="name"
          ngModel
+         plFormDir=""
          placeholder="name"
   >
+
+  <pl-date-field name="datum" ngModel (focus)="logEvents($event)"></pl-date-field>
 
   <span ngModelGroup="credentials">
     <input type="email"
@@ -21,7 +24,7 @@
            [ngModel]="defaultMail"
            #mail="ngModel"
            required
-           email 
+           email
            autocomplete="off"
            placeholder="email"
     >
@@ -35,6 +38,7 @@
            #pwd="ngModel"
            required
            minlength="3"
+           pattern="[a-zA-Z0-9]*"
            autocomplete="off"
            placeholder="password"
     >
@@ -52,6 +56,7 @@
   </span>
   <br>
   <button type="submit" [disabled]="myForm.invalid">senden</button>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
 </form>
 
 <p>{{myForm.value | json}}</p>
