@@ -56,7 +56,7 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUsr ( selectedUsr: User ) {
-    if ( window.confirm( `${selectedUsr.firstname} ${selectedUsr.lastname} wirklich löschen?`) ) {
+    if ( window.confirm ( `${selectedUsr.firstname} ${selectedUsr.lastname} wirklich löschen?` ) ) {
       this.$user.deleteUser ( selectedUsr );
     }
   }

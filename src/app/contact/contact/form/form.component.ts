@@ -7,10 +7,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 })
 export class FormComponent implements OnInit, AfterViewInit {
 
+  defaultMail = 'us@netTrek.de';
+
   myInput: HTMLInputElement;
 
-  @ViewChild ('myInput')
-  private myInputRef: ElementRef;
+  // @ViewChild ('myInput')
+  // private myInputRef: ElementRef;
 
   constructor() { }
 
@@ -18,7 +20,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit (): void {
-    this.myInput = this.myInputRef.nativeElement;
+    // this.myInput = this.myInputRef.nativeElement;
   }
 
 }

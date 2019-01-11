@@ -1,6 +1,58 @@
-<form action="">
-  <input type="text"
+<!--
+
+<input type="text"
          placeholder="schreib 'hallo' oder sei gefangen"
          style="width: 99%"
          #myInput>
+
+-->
+
+<form #myForm="ngForm">
+
+  <input type="text"
+         name="name"
+         ngModel
+         placeholder="name"
+  >
+
+  <span ngModelGroup="credentials">
+    <input type="email"
+           name="email"
+           [ngModel]="defaultMail"
+           #mail="ngModel"
+           required
+           email 
+           autocomplete="off"
+           placeholder="email"
+    >
+      <div *ngIf="mail.dirty && mail.errors">
+    <div *ngIf="mail.errors.required">Bitte Mailadresse eintrage</div>
+    <div *ngIf="mail.errors.email">Bitte gültige eMail eintragen</div>
+  </div>
+    <input type="password"
+           name="password"
+           ngModel
+           #pwd="ngModel"
+           required
+           minlength="3"
+           autocomplete="off"
+           placeholder="password"
+    >
+    <!--  <div>
+        <ul>
+          <li>value := {{mail.value}}</li>
+          <li>touched := {{mail.touched}}</li>
+          <li>untouched := {{mail.untouched}}</li>
+          <li>dirty := {{mail.dirty}}</li>
+          <li>pristine := {{mail.pristine}}</li>
+          <li>errors  := {{mail.errors | json}}}</li>
+        </ul>
+      </div>-->
+
+  </span>
+  <br>
+  <button type="submit" [disabled]="myForm.invalid">senden</button>
 </form>
+
+<p>{{myForm.value | json}}</p>
+<p>{{myForm.invalid | json}}</p>
