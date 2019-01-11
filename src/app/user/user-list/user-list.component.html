@@ -13,10 +13,15 @@
   <button [routerLink]="[selectedUsr.id]">
     Details
   </button>
+  <button routerLink="edit">edit</button>
+  <!--
   <button (click)="updatedUsr ( selectedUsr )">
     Aktualisiere
   </button>
+  -->
   <button (click)="deleteUsr ( selectedUsr )">
     Löschen
   </button>
 </ng-container>
+
+<router-outlet></router-outlet>

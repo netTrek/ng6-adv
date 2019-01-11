@@ -6,6 +6,8 @@ import { User } from './user/user';
 import { UserComponent } from './user/user/user.component';
 import { ResolveGuard } from './user/resolve.guard';
 import { ActivateGuard } from './user/activate.guard';
+import { UserEditComponent } from './user/user-list/user-edit/user-edit.component';
+import { UserAddComponent } from './user/user-list/user-add/user-add.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,11 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UserListComponent
+    component: UserListComponent,
+    children: [
+      { path: 'edit', component: UserEditComponent },
+      { path: 'add', component: UserAddComponent }
+    ]
   },
   {
     path: 'users/:userid',

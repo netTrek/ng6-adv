@@ -8,11 +8,14 @@ import { UserListHeaderComponent } from './user-list/user-list-header/user-list-
 import { SAMPLE_MULTI_VALUE, SAMPLE_VALUE } from '../token/injectionToken';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { UserEditComponent } from './user-list/user-edit/user-edit.component';
+import { UserAddComponent } from './user-list/user-add/user-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [UserComponent, UserAvatarComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
+  declarations: [UserComponent, UserAvatarComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent, UserEditComponent, UserAddComponent],
   imports: [
-    CommonModule, RouterModule
+    CommonModule, RouterModule, FormsModule
   ],
   exports: [UserComponent, UserListComponent, UserListItemComponent, UserListHeaderComponent],
   providers: [

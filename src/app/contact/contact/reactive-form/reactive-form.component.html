@@ -1,0 +1,32 @@
+<h5>reactive form</h5>
+
+<form [formGroup]="myForm">
+
+  <input type="text"
+         formControlName="name"
+         placeholder="name"
+  >
+
+  <span formGroupName="credentials">
+    <input type="email"
+           autocomplete="off"
+           placeholder="email"
+           [formControl]="emailCtrl"
+    >
+      <div *ngIf="emailCtrl.dirty && emailCtrl.errors">
+    <div *ngIf="emailCtrl.errors.required">Bitte Mailadresse eintrage</div>
+    <div *ngIf="emailCtrl.errors.email">Bitte gültige eMail eintragen</div>
+  </div>
+    <input type="password"
+           autocomplete="off"
+           placeholder="password"
+           formControlName="password"
+    >
+  </span>
+  <br>
+  <button type="submit" [disabled]="myForm.invalid">senden</button>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
+</form>
+
+<p>{{myForm.value | json}}</p>
+<p>{{myForm.invalid | json}}</p>

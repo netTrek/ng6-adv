@@ -1,0 +1,14 @@
+
+<ng-container *ngIf="user$ | async as user">
+
+  <h5>edit {{user.firstname}} {{user.lastname}}</h5>
+
+  <form (submit)="sendFormData()" #myForm="ngForm">
+    <input type="number" [ngModel]="user.id" name="id" hidden>
+    <input type="text" [ngModel]="user.firstname" required name="firstname">
+    <input type="text" [ngModel]="user.lastname" required name="lastname">
+    <input type="text" [ngModel]="user.birthday" required name="birthday">
+    <button type="submit">submit</button>
+  </form>
+
+</ng-container>

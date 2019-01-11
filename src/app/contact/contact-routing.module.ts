@@ -4,6 +4,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
 import { FormDeactGuard } from './contact/form-deact.guard';
+import { ReactiveFormComponent } from './contact/reactive-form/reactive-form.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full',
       redirectTo: 'form'
       },
-      { path: 'form', component: FormComponent, canDeactivate: [FormDeactGuard]},
+      { path: 'form', component: ReactiveFormComponent/*FormComponent*/, canDeactivate: [FormDeactGuard]},
       { path: 'map', component: MapComponent}
     ]
   }
