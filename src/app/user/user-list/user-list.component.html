@@ -1,6 +1,39 @@
+<!--
 <p class="saban" [class.selected]="selectedUser">
   user-list works! {{selectedUser | json}}
 </p>
+-->
+
+<!-- nicht 2x ngIf
+<h3 *ngIf="selectedUser">{{selectedUser.firstname}}</h3>
+<h3 *ngIf="selectedUser">{{selectedUser.lastname}}</h3>
+-->
+<!--
+bitte so bei mehrmaligen ngIf
+<ng-template [ngIf]="selectedUser">
+<h3>{{selectedUser.firstname}}</h3>
+<h3>{{selectedUser.lastname}}</h3>
+</ng-template>
+-->
+
+<h4 *ngIf="!selectedUser; else elseBlock">Kein User selektiert</h4>
+<ng-template #elseBlock>
+  <h4>{{selectedUser.firstname}} {{selectedUser.lastname}}</h4>
+</ng-template>
+
+<dvz-user-list-item
+  [user]="user"
+  (selectUsr)="setSelectedUser( $event )"
+  [isSelected]="selectedUser===user"
+  *ngFor="let user of userList"
+>
+</dvz-user-list-item>
+
+<button (click)="addNewUser()">add</button>
+<button *ngIf="selectedUser"
+        (click)="removeSelectedUser()">del {{selectedUser.firstname}} {{selectedUser.lastname}}</button>
+
+<!--
 <dvz-user-list-item
   [user]="userList[0]"
   (selectUsr)="setSelectedUser( $event )"
@@ -11,4 +44,6 @@
   (selectUsr)="setSelectedUser( $event )"
   [isSelected]="selectedUser===userList[1]">
 </dvz-user-list-item>
+-->
+
 

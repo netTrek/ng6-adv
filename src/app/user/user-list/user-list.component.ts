@@ -10,8 +10,8 @@ import { User } from '../user';
 export class UserListComponent implements OnInit {
 
   userList: User[] = [
-    { fistname: 'saban', lastname: 'uenlue' },
-    { fistname: 'peter', lastname: 'müller' },
+    { firstname: 'saban', lastname: 'uenlue' },
+    { firstname: 'peter', lastname: 'müller' }
   ];
   selectedUser: User;
 
@@ -27,5 +27,17 @@ export class UserListComponent implements OnInit {
     } else {
       this.selectedUser = user;
     }
+  }
+
+  addNewUser () {
+    const rnd = Math.floor( Math.random() * 1000 )
+    this.userList.push (
+      { firstname: 'Hans' + rnd, lastname: 'Mustermann'  + rnd }
+    );
+  }
+
+  removeSelectedUser () {
+    this.userList.splice( this.userList.indexOf(this.selectedUser), 1 );
+    this.selectedUser = undefined;
   }
 }
