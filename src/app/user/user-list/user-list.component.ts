@@ -1,24 +1,31 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { User } from '../user';
 
-@Component({
-  selector: 'dvz-user-list',
+@Component ( {
+  selector   : 'dvz-user-list',
   templateUrl: './user-list.component.html',
   // template: `<strong>HEllO LIST</strong>`,
-  styleUrls: ['./user-list.component.scss']
-})
+  styleUrls  : [ './user-list.component.scss' ]
+} )
 export class UserListComponent implements OnInit {
-  selectedIndex = -1;
 
-  constructor() { }
+  userList: User[] = [
+    { fistname: 'saban', lastname: 'uenlue' },
+    { fistname: 'peter', lastname: 'müller' },
+  ];
+  selectedUser: User;
 
-  ngOnInit() {
+  constructor () {
   }
 
-  setSelectedIndex ( ind: number ) {
-    if ( ind === this.selectedIndex ) {
-      this.selectedIndex = -1;
+  ngOnInit () {
+  }
+
+  setSelectedUser ( user: User ) {
+    if ( user === this.selectedUser ) {
+      this.selectedUser = undefined;
     } else {
-      this.selectedIndex = ind;
+      this.selectedUser = user;
     }
   }
 }

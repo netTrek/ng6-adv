@@ -1,18 +1,15 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { UserAvatarComponent } from '../../user-avatar/user-avatar.component';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { User } from '../../user';
 
 @Component({
   selector: 'dvz-user-list-item',
   templateUrl: './user-list-item.component.html',
   styleUrls: ['./user-list-item.component.scss']
 })
-export class UserListItemComponent implements OnInit, AfterViewInit {
+export class UserListItemComponent implements OnInit {
 
-  @ViewChild (UserAvatarComponent)
-  private avatar: UserAvatarComponent;
-
-  @ViewChild ('line')
-  private line: ElementRef<HTMLHRElement>;
+  @Input() user: User;
+  @Output() selectUsr: EventEmitter<User> = new EventEmitter();
 
   constructor( private renderer: Renderer2 ) {
   }
@@ -20,12 +17,7 @@ export class UserListItemComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit (): void {
-    console.log ( this.avatar );
-    // this.line.nativeElement.style.borderColor = 'red';
-    this.renderer.setStyle( this.line.nativeElement,
-      'borderColor', 'red' );
+  sendEvent () {
+    this.selectUsr.emit( this.user );
   }
-
-
 }

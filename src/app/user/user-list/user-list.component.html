@@ -1,12 +1,14 @@
 <p class="saban" [class.selected]="selected">
-  user-list works! {{selectedIndex}}
+  user-list works! {{selectedUser | json}}
 </p>
 <dvz-user-list-item
-(click)="setSelectedIndex ( 0 )"
-[class.selected]="selectedIndex===0">
+  [user]="userList[0]"
+  (selectUsr)="setSelectedUser( $event )"
+  [class.selected]="selectedUser===userList[0]">
+</dvz-user-list-item>
+<dvz-user-list-item
+  [user]="userList[1]"
+  (selectUsr)="setSelectedUser( $event )"
+  [class.selected]="selectedUser===userList[1]">
 </dvz-user-list-item>
 
-<dvz-user-list-item
-  (click)="setSelectedIndex ( 1 )"
-  [class.selected]="selectedIndex===1">
-</dvz-user-list-item>
