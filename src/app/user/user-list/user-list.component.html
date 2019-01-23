@@ -1,13 +1,12 @@
-<p>
-  user-list works!
+<p class="saban" [class.selected]="selected">
+  user-list works! {{selectedIndex}}
 </p>
-<dvz-user-list-item>
-<!--
-<dvz-user-list-item>
-  Peter
+<dvz-user-list-item
+(click)="setSelectedIndex ( 0 )"
+[class.selected]="selectedIndex===0">
 </dvz-user-list-item>
-<dvz-user-list-item>
-  Frank
-</dvz-user-list-item>
--->
 
+<dvz-user-list-item
+  (click)="setSelectedIndex ( 1 )"
+  [class.selected]="selectedIndex===1">
+</dvz-user-list-item>
