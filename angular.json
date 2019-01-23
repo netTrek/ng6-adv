@@ -10,7 +10,15 @@
       "prefix": "dvz",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "styleext": "scss",
+          "viewEncapsulation": "ShadowDom",
+          "skipTests": false
+        },
+        "@schematics/angular:directive":  {
+          "skipTests": false
+        },
+        "@schematics/angular:pipe":   {
+          "skipTests": false
         }
       },
       "architect": {
@@ -61,7 +69,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dvz:build"
+            "browserTarget": "dvz:build",
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -135,5 +144,5 @@
       }
     }
   },
-  "defaultProject": "dvz"
+  "defaultProject": "dvz",
 }
