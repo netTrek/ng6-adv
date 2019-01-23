@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { User } from '../../user';
 
 @Component({
@@ -11,13 +11,23 @@ export class UserListItemComponent implements OnInit {
   @Input() user: User;
   @Output() selectUsr: EventEmitter<User> = new EventEmitter();
 
+  @Input()
+  @HostBinding('class.selected')
+  isSelected = false;
+
   constructor( private renderer: Renderer2 ) {
   }
 
   ngOnInit() {
   }
 
-  sendEvent () {
+  @HostListener ('click')
+  private sendEvent () {
     this.selectUsr.emit( this.user );
   }
+
+  // @HostListener ('window:resize', ['$event'] )
+  // private resize ( event: Event ) {
+  //   console.log( 'resize ', event);
+  // }
 }
