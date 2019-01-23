@@ -1,12 +1,1 @@
 <img [src]="imgUrl" [attr.alt]="altDesc" width="32">
-<hr>
-<img [attr.src]="imgUrl" [attr.alt]="altDesc" width="32">
-<hr>
-<img src="./assets/img/{{imgFile}}" alt="logo" width="32">
-<img [src]="'./assets/img/'+imgFile" alt="logo" width="32">
-<hr>
-<button (click)="chgImg( imgUrl, $event )">ändere</button>
-<!-- bitte vermeiden -->
-<button (click)="altDesc = 'saban'">chg alt</button>
-<div>{{lorem}}</div>
-<div [innerHTML]="lorem"></div>

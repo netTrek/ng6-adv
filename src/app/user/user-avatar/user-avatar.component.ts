@@ -7,24 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAvatarComponent implements OnInit {
 
-  lorem = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-  <script>alert ('hello')</script>
-  <strong>ab aperiam asperiores atque consectetur culpa, dolorum ducimus error esse est facilis fuga </strong>
-  fugiat iure magnam magni, reprehenderit sapiente tempore voluptatibus!`;
+  width = 50;
 
   imgUrl = 'http://placekitten.com/32/32';
-  imgFile = 'logo.jpg';
   altDesc = 'cat';
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  chgImg ( msg: string, event: MouseEvent ) {
-    debugger
-    this.altDesc = 'netTrek';
-    this.imgUrl = './assets/img/logo.jpg';
   }
 
 }
