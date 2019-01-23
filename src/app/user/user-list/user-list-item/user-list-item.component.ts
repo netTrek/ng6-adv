@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, ContentChildren, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { UserAvatarComponent } from '../../user-avatar/user-avatar.component';
 
 @Component({
@@ -6,25 +6,26 @@ import { UserAvatarComponent } from '../../user-avatar/user-avatar.component';
   templateUrl: './user-list-item.component.html',
   styleUrls: ['./user-list-item.component.scss']
 })
-export class UserListItemComponent implements OnInit, AfterContentInit {
+export class UserListItemComponent implements OnInit, AfterViewInit {
 
-  @ContentChild (UserAvatarComponent)  // erstes gefundene Elem.
+  @ViewChild (UserAvatarComponent)
   private avatar: UserAvatarComponent;
 
-  @ContentChildren (UserAvatarComponent)
-  private avatarList: QueryList<UserAvatarComponent>;
+  @ViewChild ('line')
+  private line: ElementRef<HTMLHRElement>;
 
-  constructor() {
-    console.log ( this.avatar );
+  constructor( private renderer: Renderer2 ) {
   }
 
   ngOnInit() {
   }
 
-  ngAfterContentInit (): void {
+  ngAfterViewInit (): void {
     console.log ( this.avatar );
-    console.log ( this.avatarList );
-    console.log ( this.avatarList.toArray() );
+    // this.line.nativeElement.style.borderColor = 'red';
+    this.renderer.setStyle( this.line.nativeElement,
+      'borderColor', 'red' );
   }
+
 
 }
