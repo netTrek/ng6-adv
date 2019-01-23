@@ -30,7 +30,7 @@ export class UserListComponent implements OnInit {
   }
 
   addNewUser () {
-    const rnd = Math.floor( Math.random() * 1000 )
+    const rnd = Math.floor( Math.random() * 1000 );
     this.userList.push (
       { firstname: 'Hans' + rnd, lastname: 'Mustermann'  + rnd }
     );

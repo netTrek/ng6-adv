@@ -2,8 +2,21 @@
   display: block;
   cursor: pointer;
 
+  &.odd {
+    background-color: #00d200;
+  }
+
+  &.even {
+    background-color: #00ed00;
+  }
+
+  &.ten {
+    text-decoration: underline;
+  }
+
   &.selected {
     background-color: green;
   }
+
 
 }

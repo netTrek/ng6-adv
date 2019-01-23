@@ -25,13 +25,29 @@ bitte so bei mehrmaligen ngIf
   [user]="user"
   (selectUsr)="setSelectedUser( $event )"
   [isSelected]="selectedUser===user"
-  *ngFor="let user of userList"
+  *ngFor="let user of userList; even as e; odd as o; index as i"
+  [ngClass]="{odd: o, even: e, ten: (i+1)%3===0}"
 >
 </dvz-user-list-item>
+<!--
+
+<ul>
+  <li *ngFor="let val of ['saban','peter','frank','paula']; even as e; odd as o; index as ind; first as f; last as l">
+    {{val}} {{ind}} {{e}} {{o}}
+  </li>
+</ul>
+-->
+
 
 <button (click)="addNewUser()">add</button>
-<button *ngIf="selectedUser"
+<button [dvzDangerBtn]="'Willst du ' + selectedUser.firstname + ' wirklich löschen?'"
+  *ngIf="selectedUser"
+        (confirmed)="removeSelectedUser()"
+        >del {{selectedUser.firstname}} {{selectedUser.lastname}}</button>
+<!--
+
         (click)="removeSelectedUser()">del {{selectedUser.firstname}} {{selectedUser.lastname}}</button>
+-->
 
 <!--
 <dvz-user-list-item
