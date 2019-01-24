@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 
 @Component ( {
@@ -30,14 +30,14 @@ export class UserListComponent implements OnInit {
   }
 
   addNewUser () {
-    const rnd = Math.floor( Math.random() * 1000 );
+    const rnd = Math.floor ( Math.random () * 1000 );
     this.userList.push (
-      { firstname: 'Hans' + rnd, lastname: 'Mustermann'  + rnd }
+      { firstname: 'Hans' + rnd, lastname: 'Mustermann' + rnd }
     );
   }
 
   removeSelectedUser () {
-    this.userList.splice( this.userList.indexOf(this.selectedUser), 1 );
+    this.userList.splice ( this.userList.indexOf ( this.selectedUser ), 1 );
     this.selectedUser = undefined;
   }
 }
