@@ -1,9 +1,20 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  Output,
+  Renderer2,
+  SimpleChanges
+} from '@angular/core';
 
 @Directive({
   selector: 'button[dvzDangerBtn]'
 })
-export class DangerBtnDirective implements AfterViewInit {
+export class DangerBtnDirective implements AfterViewInit, OnChanges {
 
   @Input()
   dvzDangerBtn: string;
@@ -23,6 +34,13 @@ export class DangerBtnDirective implements AfterViewInit {
     this.renderer.setStyle( this.elem, 'fontSize', 'large' );
   }
 
+
+  ngOnChanges ( changes: SimpleChanges ): void {
+    if ( changes.hasOwnProperty('dvzDangerBtn') ) {
+      this.renderer.setProperty( this.elem, 'innerText', this.dvzDangerBtn );
+    }
+  }
+
   @HostListener('click', ['$event'])
   private confirm ( event?: any ) {
     let msg = 'Bist du sicher';
@@ -33,4 +51,5 @@ export class DangerBtnDirective implements AfterViewInit {
       this.confirmed.emit( event );
     }
   }
+
 }
