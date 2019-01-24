@@ -6,21 +6,25 @@ import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { UtilsModule } from '../utils/utils.module';
 import { NoCachInterceptorService } from '../utils/no-cach-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule ( {
   declarations: [ /** registrieren Komponente, Direktive, Pipe **/
     UserListComponent,
     UserListItemComponent,
-    UserAvatarComponent
+    UserAvatarComponent,
+    UserComponent
   ],
   imports     : [
     CommonModule,
-    UtilsModule
+    UtilsModule, RouterModule
   ],
   exports     : [
     /** Komponente, Direktive, Pipe auszeichnen, die in anderen Modulen verwendet werden sollen **/
     UserListComponent,
-    UserAvatarComponent
+    UserAvatarComponent,
+    UserComponent
   ]
 } )
 export class UserModule {

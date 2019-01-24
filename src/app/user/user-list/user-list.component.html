@@ -1,4 +1,3 @@
-
 <h4 *ngIf="!$user.selectedUser; else elseBlock">Kein User selektiert</h4>
 <ng-template #elseBlock>
   <h4>{{$user.selectedUser.firstname}} {{$user.selectedUser.lastname}}</h4>
@@ -14,12 +13,15 @@
 </dvz-user-list-item>
 
 
-
 <button (click)="createUser()">add</button>
-<button [dvzDangerBtn]="'Willst du ' + $user.selectedUser.firstname + ' wirklich löschen?'"
-  *ngIf="$user.selectedUser"
-        (confirmed)="$user.removeSelectedUser()"
-        >del {{$user.selectedUser.firstname}} {{$user.selectedUser.lastname}}</button>
+<ng-template [ngIf]="$user.selectedUser">
+  <button [routerLink]="['/user', $user.selectedUser.id]">
+    show details
+  </button>
+  <button [dvzDangerBtn]="'Willst du ' + $user.selectedUser.firstname + ' wirklich löschen?'"
+          (confirmed)="$user.removeSelectedUser()"
+  >del {{$user.selectedUser.firstname}} {{$user.selectedUser.lastname}}</button>
+</ng-template>
 
 
 

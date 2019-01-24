@@ -20,7 +20,7 @@ export class UserService {
   }
 
 
-  private getUsers (): Promise<User[]> {
+  getUsers (): Promise<User[]> {
     return this.$http.get<User[]>( environment.endpoint )
                .pipe(
                  tap( next => {
@@ -33,12 +33,12 @@ export class UserService {
                .toPromise();
   }
 
-  private getUserByID ( id ): Promise<User> {
+  getUserByID ( id ): Promise<User> {
     return this.$http.get<User>( environment.endpoint + '/' + id  )
                .toPromise();
   }
 
-  private delUserByID ( id ): Promise<any> {
+  delUserByID ( id ): Promise<any> {
     return this.$http.delete<any>( environment.endpoint + '/' + id  )
                .pipe(
                  tap( next => this.getUsers() )
@@ -46,7 +46,7 @@ export class UserService {
                .toPromise();
   }
 
-  private updateUser ( user: User ): Promise<User> {
+  updateUser ( user: User ): Promise<User> {
     return this.$http.put<User>( environment.endpoint + '/' + user.id, user  )
                .pipe(
                  tap( next => this.getUsers() )

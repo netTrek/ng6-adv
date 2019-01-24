@@ -12,6 +12,7 @@ import { registerLocaleData } from '@angular/common';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NoCachInterceptorService } from './utils/no-cach-interceptor.service';
+import { HomeModule } from './home/home.module';
 
 registerLocaleData( localeDE );
 
@@ -26,7 +27,8 @@ registerLocaleData( localeDE );
     UserModule,
     UtilsModule,
     PipeSamplesModule,
-    RxjsSamplesModule
+    RxjsSamplesModule,
+    HomeModule
   ]
   ,providers   : [
     {
