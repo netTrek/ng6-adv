@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'dvz-user-list',
@@ -9,35 +9,15 @@ import { User } from '../user';
 } )
 export class UserListComponent implements OnInit {
 
-  userList: User[] = [
-    { firstname: 'saban', lastname: 'uenlue' },
-    { firstname: 'peter', lastname: 'müller' }
-  ];
-  selectedUser: User;
 
-  constructor () {
+
+  constructor ( public $user: UserService,
+                @Inject( LOCALE_ID ) locale: string ) {
+    console.log ( locale );
   }
 
   ngOnInit () {
   }
 
-  setSelectedUser ( user: User ) {
-    if ( user === this.selectedUser ) {
-      this.selectedUser = undefined;
-    } else {
-      this.selectedUser = user;
-    }
-  }
 
-  addNewUser () {
-    const rnd = Math.floor ( Math.random () * 1000 );
-    this.userList.push (
-      { firstname: 'Hans' + rnd, lastname: 'Mustermann' + rnd }
-    );
-  }
-
-  removeSelectedUser () {
-    this.userList.splice ( this.userList.indexOf ( this.selectedUser ), 1 );
-    this.selectedUser = undefined;
-  }
 }
