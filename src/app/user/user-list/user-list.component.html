@@ -15,7 +15,7 @@
 
 
 
-<button (click)="$user.addNewUser()">add</button>
+<button (click)="createUser()">add</button>
 <button [dvzDangerBtn]="'Willst du ' + $user.selectedUser.firstname + ' wirklich löschen?'"
   *ngIf="$user.selectedUser"
         (confirmed)="$user.removeSelectedUser()"

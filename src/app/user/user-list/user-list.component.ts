@@ -9,8 +9,6 @@ import { UserService } from '../user.service';
 } )
 export class UserListComponent implements OnInit {
 
-
-
   constructor ( public $user: UserService,
                 @Inject( LOCALE_ID ) locale: string ) {
     console.log ( locale );
@@ -19,5 +17,7 @@ export class UserListComponent implements OnInit {
   ngOnInit () {
   }
 
-
+  createUser () {
+    this.$user.addUser( {firstname: 'angular', lastname: '7.04'} );
+  }
 }

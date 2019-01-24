@@ -10,7 +10,9 @@ import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
-import { UserTestService } from './user/user-test-service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NoCachInterceptorService } from './utils/no-cach-interceptor.service';
+
 registerLocaleData( localeDE );
 
 @NgModule({
@@ -19,15 +21,19 @@ registerLocaleData( localeDE );
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     UserModule,
     UtilsModule,
     PipeSamplesModule,
     RxjsSamplesModule
-  ],
-  providers: [
-    UserTestService,
-    {provide: LOCALE_ID, useValue: 'de'}
+  ]
+  ,providers   : [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: NoCachInterceptorService, multi: true
+    },
+    { provide: LOCALE_ID, useValue: 'de' }
   ],
   bootstrap: [AppComponent]
 })
