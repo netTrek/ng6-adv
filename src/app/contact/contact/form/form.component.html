@@ -1,5 +1,54 @@
-<form action="">
+<form #myForm="ngForm" (submit)="sendData(myForm.value)">
   <input type="text"
-         #myInput
-         placeholder="git hallo ein">
+         name="username"
+         placeholder="Name eingeben"
+         ngModel
+         #name="ngModel"
+         required
+  >
+  <div class="error" *ngIf="name.invalid && name.touched">
+    Bitte geb deinen Namen ein!
+  </div>
+  <input type="email"
+         name="email"
+         placeholder="email eingeben"
+         ngModel
+         #email="ngModel"
+         required email
+  >
+  <div class="error" *ngIf="email.invalid && email.touched">
+    <span *ngIf="email.errors?.email">
+      Bitte gebe eine gültige Mail-Adresse ein
+    </span>
+    <span *ngIf="email.errors?.required">
+      Bitte gebe eine Mail-Adresse ein
+    </span>
+  </div>
+
+  <span ngModelGroup="address">
+    <input type="text"
+           name="street"
+           placeholder="street eingeben"
+           ngModel
+           #street="ngModel">
+    <input type="text"
+           name="city"
+           pattern="[a-zA-Z ]*"
+           required
+           placeholder="city eingeben"
+           ngModel
+           #city="ngModel">
+  </span>
+
+  <button type="submit"
+          [disabled]="myForm.invalid">senden</button>
 </form>
+
+<p>form val {{myForm.value | json }}</p>
+<p>errors {{city.errors | json }}</p>
+<!--
+
+<p>touched {{name.touched | json }}</p>
+<p>dirty {{name.dirty | json }}</p>
+<p>valid {{name.valid | json }}</p>
+-->

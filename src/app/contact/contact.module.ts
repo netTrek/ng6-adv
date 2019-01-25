@@ -5,12 +5,13 @@ import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ContactComponent, MapComponent, FormComponent],
   imports: [
     CommonModule,
-    ContactRoutingModule
+    ContactRoutingModule, FormsModule
   ]
 })
 export class ContactModule { }

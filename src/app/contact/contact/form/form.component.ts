@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from '../../../user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dvz-form',
@@ -6,19 +8,18 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulat
   styleUrls: ['./form.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class FormComponent implements OnInit, AfterViewInit {
-  myInput: HTMLInputElement;
+export class FormComponent implements OnInit {
 
-  @ViewChild ('myInput')
-  private myInputElem: ElementRef<HTMLInputElement>;
-
-  constructor() { }
+  constructor( private $user: UserService, private $router: Router ) { }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit (): void {
-    this.myInput = this.myInputElem.nativeElement;
+  sendData ( value: any ) {
+    console.log ( 'sending body', value );
+    this.$user.addUser( {firstname: value.name, lastname: value.email })
+      .then( user => {
+        this.$router.navigate( [ '/user', user.id ] );
+      });
   }
-
 }

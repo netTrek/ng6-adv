@@ -8,6 +8,6 @@ import { FormComponent } from './form.component';
 })
 export class FormDeactivateGuard implements CanDeactivate<FormComponent> {
   canDeactivate ( component: FormComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot ): Observable<boolean> | Promise<boolean> | boolean {
-    return component.myInput.value === 'hallo';
+    return true;
   }
 }
