@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild, ContentChildren, OnInit, QueryList } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { UserComponent } from '../user/user.component';
 
@@ -7,12 +7,12 @@ import { UserComponent } from '../user/user.component';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit, AfterContentInit {
+export class UserListComponent implements OnInit, AfterViewInit {
 
-  @ContentChild ( AvatarComponent )
+  @ViewChild ( AvatarComponent )
   avatar: AvatarComponent;
 
-  @ContentChildren( UserComponent )
+  @ViewChildren( UserComponent )
   users: QueryList<UserComponent>;
 
   constructor() { }
@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit, AfterContentInit {
   ngOnInit() {
   }
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     console.log ( this.avatar );
   }
 
