@@ -1,0 +1,12 @@
+:host {
+  display: inline-block;
+  height: 10px;
+  width: 100%;
+  background-color: red;
+
+  div {
+    background-color: green;
+    width: 100%;
+    height: 100%;
+  }
+}

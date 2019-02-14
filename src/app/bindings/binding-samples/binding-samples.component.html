@@ -1,0 +1,22 @@
+<!--
+<img src="https://placekitten.com/g/200/300" alt="cat">
+<img src="https://placekitten.com/g/{{size}}" alt="cat">
+<img [src]="img" alt="cat" [attr.aria-label]="label" >
+-->
+
+<div class="inline" [style.width]="pi+'px'"></div>
+<hr>
+<div class="inline" [style.width.px]="pi"></div>
+<hr>
+<div class="inline" [style.width.%]="pi"></div>
+<hr>
+<div>{{html}}</div>
+<div [innerHTML]="html" [style.color]="color"></div>
+
+<ul>
+  <li>Wert von 'name' {{name}} .</li>
+  <li>Wert von 'pi' {{pi * 2}} .</li>
+  <li>{{combine()}}</li>
+</ul>
+<button (click)="chgName()">ändern</button>
+<button (click)="stopInterval()">stop</button>
