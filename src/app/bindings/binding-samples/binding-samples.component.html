@@ -1,8 +1,29 @@
+
+<div>{{user | json}}</div>
+<ul>
+  <li>{{user.firstname}}</li>
+  <li>{{user.lastname}}</li>
+</ul>
+
+
 <!--
+<div class="makeblue">blau</div>
+<div class="makeblue makebold">blau fett</div>
+<div [class]="blueClassName">blau</div>
+<div [class]="blueClassName" class="makebold">blau</div>
+<div class="makeblue makered">{{selected}}</div>
+<div class="makered"
+     [class.makebold]="selected"
+     [class.makeblue]="selected"
+     (click)="setAsSelected()"
+>blau</div>
+
 <img src="https://placekitten.com/g/200/300" alt="cat">
 <img src="https://placekitten.com/g/{{size}}" alt="cat">
 <img [src]="img" alt="cat" [attr.aria-label]="label" >
 -->
+
+<!--
 
 <div class="inline" [style.width]="pi+'px'"></div>
 <hr>
@@ -13,10 +34,15 @@
 <div>{{html}}</div>
 <div [innerHTML]="html" [style.color]="color"></div>
 
+-->
 <ul>
   <li>Wert von 'name' {{name}} .</li>
   <li>Wert von 'pi' {{pi * 2}} .</li>
   <li>{{combine()}}</li>
 </ul>
-<button (click)="chgName()">ändern</button>
+
+<button (click)="name='test'">test</button>
+<button (click)="chgName( $event )">ändern</button>
+<button (click)="chgValue( 'angular' )">ändere zu angular</button>
+<button (click)="chgValue( otherName )">ändere zu {{otherName}}</button>
 <button (click)="stopInterval()">stop</button>

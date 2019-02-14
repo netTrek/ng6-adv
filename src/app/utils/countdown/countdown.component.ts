@@ -8,7 +8,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class CountdownComponent implements OnInit, OnDestroy {
 
   width = 100;
-  duration = 3;
+  duration = 11;
   private interval: number;
   constructor() { }
 
