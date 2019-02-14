@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AvatarComponent } from './avatar/avatar.component';
-
+// ng g m user --module app
 @NgModule({
   declarations: [UserComponent, UserListComponent, AvatarComponent],
   imports: [
@@ -12,3 +12,4 @@ import { AvatarComponent } from './avatar/avatar.component';
   exports: [UserComponent, UserListComponent, AvatarComponent]
 })
 export class UserModule { }
+

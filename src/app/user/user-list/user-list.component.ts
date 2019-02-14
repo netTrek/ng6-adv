@@ -7,10 +7,11 @@ import { UserComponent } from '../user/user.component';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit, AfterViewInit {
+export class UserListComponent implements OnInit,
+                                          AfterViewInit {
 
   @ViewChild ( 'line' )
-  line: ElementRef<HTMLHRElement>
+  line: ElementRef<HTMLHRElement>;
 
   @ViewChild ( AvatarComponent )
   avatar: AvatarComponent;

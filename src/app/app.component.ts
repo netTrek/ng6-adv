@@ -12,4 +12,8 @@ export class AppComponent {
   constructor() {
     console.log ( environment.endpoint );
   }
+
+  chgTitle() {
+    this.title = 'Hello World';
+  }
 }
