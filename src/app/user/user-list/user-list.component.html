@@ -1,4 +1,4 @@
-<h3>user list</h3>
+<h3 msgDangerBtn>user list</h3>
 
 <!--
 <ul>
@@ -32,7 +32,8 @@
 
 <div *ngIf="selectedUser; else selecUsrTmp">
   <hr>
-  is selected = {{selectedUser.firstname}} {{selectedUser.lastname}} <button (click)="delSelected()">-</button>
+  is selected = {{selectedUser.firstname}} {{selectedUser.lastname}}
+  <button msgDangerBtn="willst du {{selectedUser.firstname}} wirklich löschen?" (confirmed)="delSelected()" >-</button>
 </div>
 <ng-template #selecUsrTmp>
   <div>

@@ -58,6 +58,10 @@ export class UserListComponent implements OnInit,
     }
   }
 
+  temp() {
+    debugger;
+  }
+
   addUser() {
     this.userList.push( {firstname: `user${this.userList.length + 1}`,
       lastname: 'added' } );
