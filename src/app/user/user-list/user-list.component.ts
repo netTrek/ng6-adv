@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { UserComponent } from '../user/user.component';
+import { User } from '../user';
 
 @Component({
   selector: 'msg-user-list',
@@ -9,6 +10,11 @@ import { UserComponent } from '../user/user.component';
 })
 export class UserListComponent implements OnInit,
                                           AfterViewInit {
+
+  userList: User[] = [
+    {firstname: 'user1', lastname: 'hello'},
+    {firstname: 'user2', lastname: 'world'}
+    ];
 
   @ViewChild ( 'line' )
   line: ElementRef<HTMLHRElement>;

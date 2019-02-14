@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { User } from '../user';
 
 // ng g c user/user --export --skip-test
 
@@ -10,6 +11,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class UserComponent implements OnInit {
+
+  @Input()
+  user: User;
 
   constructor() { }
 
