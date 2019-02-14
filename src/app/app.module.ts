@@ -1,11 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { BindingsModule } from './bindings/bindings.module';
 import { UtilsModule } from './utils/utils.module';
+import { PipesModule } from './pipes/pipes.module';
+
+import localeDE from '@angular/common/locales/de';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData( localeDE );
+
 
 @NgModule({
   declarations: [
@@ -16,9 +22,12 @@ import { UtilsModule } from './utils/utils.module';
     AppRoutingModule,
     UserModule,
     BindingsModule,
-    UtilsModule
+    UtilsModule,
+    PipesModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'de'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
