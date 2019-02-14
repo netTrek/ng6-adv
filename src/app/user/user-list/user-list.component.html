@@ -5,8 +5,10 @@
 <msg-user
   [user]="userList[0]"
   (selected)="setSelectedUser($event)"
+  [isSelected]="userList[0]===selectedUser"
 ></msg-user>
 <msg-user
   [user]="userList[1]"
   (selected)="setSelectedUser($event)"
+  [isSelected]="userList[1]===selectedUser"
 ></msg-user>

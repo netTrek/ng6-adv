@@ -1,3 +1,7 @@
 :host {
   display: block;
+  &.selected {
+    color: coral;
+    font-weight: bolder;
+  }
 }

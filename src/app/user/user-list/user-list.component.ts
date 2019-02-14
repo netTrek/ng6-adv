@@ -40,6 +40,10 @@ export class UserListComponent implements OnInit,
   }
 
   setSelectedUser( usr: User ) {
-    this.selectedUser = usr;
+    if ( this.selectedUser === usr ) {
+      this.selectedUser = undefined;
+    } else {
+      this.selectedUser = usr;
+    }
   }
 }

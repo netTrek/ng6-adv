@@ -1,4 +1,15 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter, HostBinding,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChange,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 import { User } from '../user';
 
 // ng g c user/user --export --skip-test
@@ -18,6 +29,10 @@ export class UserComponent implements OnInit, OnChanges {
   @Output()
   selected: EventEmitter<User> = new EventEmitter();
 
+  @Input()
+  @HostBinding ( 'class.selected' )
+  isSelected = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,8 +43,16 @@ export class UserComponent implements OnInit, OnChanges {
       const userVal: SimpleChange = changes.user;
       console.log ( 'user value', userVal.currentValue );
     }
+    if ( changes.hasOwnProperty( 'isSelected' ) ) {
+      if ( changes.isSelected.currentValue  ) {
+        console.log ( 'ich bin selektiert', this.user );
+      } else if ( changes.isSelected.previousValue === true  ){
+        console.log ( 'ich bin deselektiert', this.user );
+      }
+    }
   }
 
+  @HostListener ('click')
   setAsSelected() {
     this.selected.emit( this.user );
   }
