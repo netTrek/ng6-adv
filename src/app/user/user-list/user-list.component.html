@@ -1,5 +1,12 @@
 <h3>user list</h3>
+<p>{{selectedUser|json}}</p>
 <hr #line>
 <msg-avatar>1</msg-avatar>
-<msg-user [user]="userList[0]"></msg-user>
-<msg-user [user]="userList[1]"></msg-user>
+<msg-user
+  [user]="userList[0]"
+  (selected)="setSelectedUser($event)"
+></msg-user>
+<msg-user
+  [user]="userList[1]"
+  (selected)="setSelectedUser($event)"
+></msg-user>

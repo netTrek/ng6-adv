@@ -24,6 +24,7 @@ export class UserListComponent implements OnInit,
 
   @ViewChildren( UserComponent )
   users: QueryList<UserComponent>;
+  selectedUser: User;
 
   constructor( private renderer: Renderer2 ) { }
 
@@ -38,4 +39,7 @@ export class UserListComponent implements OnInit,
     // this.line.nativeElement.style.borderColor = 'blue';
   }
 
+  setSelectedUser( usr: User ) {
+    this.selectedUser = usr;
+  }
 }
