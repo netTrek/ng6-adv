@@ -1,7 +1,22 @@
 <h3>user list</h3>
-<p>{{selectedUser|json}}</p>
+
+<!--
+<ul>
+  <li *ngFor="let num of myList; index as i; even as e">
+    [{{i}}] {{num}} <span *ngIf="e">is even</span></li>
+</ul>
+-->
+
 <hr #line>
 <msg-avatar>1</msg-avatar>
+<msg-user *ngFor="let user of userList; even as e; odd as o"
+  [user]="user"
+  (selected)="setSelectedUser($event)"
+  (del)="deleteUser($event)"
+  [isSelected]="user===selectedUser"
+  [ngClass]="{even: e, odd: o}"
+></msg-user>
+<!--
 <msg-user
   [user]="userList[0]"
   (selected)="setSelectedUser($event)"
@@ -12,3 +27,37 @@
   (selected)="setSelectedUser($event)"
   [isSelected]="userList[1]===selectedUser"
 ></msg-user>
+-->
+<button (click)="addUser()">+</button>
+
+<div *ngIf="selectedUser; else selecUsrTmp">
+  <hr>
+  is selected = {{selectedUser.firstname}} {{selectedUser.lastname}} <button (click)="delSelected()">-</button>
+</div>
+<ng-template #selecUsrTmp>
+  <div>
+    <hr>
+    bitte selectiere einen user
+  </div>
+</ng-template>
+
+
+<!--
+Das macht der angular compiler
+<ng-template [ngIf]="selectedUser" >
+  <div>
+    <hr>
+    is selected = {{selectedUser.firstname}} {{selectedUser.lastname}}
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="selectedUser" >
+  <div>user was selected</div>
+  <div>dsss</div>
+</ng-template>
+
+<ng-container *ngIf="selectedUser">
+  <div>user was selected</div>
+  <div>dsss</div>
+</ng-container>
+-->

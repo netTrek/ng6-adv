@@ -29,6 +29,9 @@ export class UserComponent implements OnInit, OnChanges {
   @Output()
   selected: EventEmitter<User> = new EventEmitter();
 
+  @Output()
+  del: EventEmitter<User> = new EventEmitter();
+
   @Input()
   @HostBinding ( 'class.selected' )
   isSelected = false;
@@ -44,16 +47,22 @@ export class UserComponent implements OnInit, OnChanges {
       console.log ( 'user value', userVal.currentValue );
     }
     if ( changes.hasOwnProperty( 'isSelected' ) ) {
-      if ( changes.isSelected.currentValue  ) {
+      if ( changes.isSelected.currentValue  ) { // ist currentValue === true
         console.log ( 'ich bin selektiert', this.user );
-      } else if ( changes.isSelected.previousValue === true  ){
+      } else if ( changes.isSelected.previousValue === true  ) {
         console.log ( 'ich bin deselektiert', this.user );
       }
     }
   }
 
   @HostListener ('click')
-  setAsSelected() {
+  private setAsSelected() {
+    // console.log ( 'select' );
     this.selected.emit( this.user );
+  }
+  delUsr( event: MouseEvent ) {
+    // console.log ( 'delete' );
+    event.stopImmediatePropagation();
+    this.del.emit( this.user );
   }
 }
