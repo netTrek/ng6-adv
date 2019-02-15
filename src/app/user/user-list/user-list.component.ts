@@ -21,12 +21,7 @@ export class UserListComponent implements OnInit,
                        6
   ];
 
-  userList: User[] = [
-    { firstname: 'user1', lastname: 'hello' },
-    { firstname: 'user2', lastname: 'world' },
-    { firstname: 'user3', lastname: 'init' },
-    { firstname: 'user4', lastname: 'init' }
-  ];
+  userList: User[] = [];
 
   @ViewChild ( 'line' )
   line: ElementRef<HTMLHRElement>;
@@ -42,6 +37,9 @@ export class UserListComponent implements OnInit,
   }
 
   ngOnInit() {
+    this.$user.users$.subscribe( next => this.userList = next );
+    // this.$user.getUsers();
+    // this.$user.getUsers()
   }
 
   ngAfterViewInit(): void {
