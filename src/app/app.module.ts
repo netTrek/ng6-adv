@@ -12,6 +12,7 @@ import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { PlayService } from './play.service';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData( localeDE );
 
 
@@ -22,6 +23,7 @@ registerLocaleData( localeDE );
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     UserModule,
     BindingsModule,
     UtilsModule,
