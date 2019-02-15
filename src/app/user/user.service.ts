@@ -25,6 +25,11 @@ export class UserService {
     return this.users$;
   }
 
+  getUserById( id: number ): Promise<User> {
+    return this.$http.get<User> ( `${this.endpoint}/${id}` )
+      .toPromise();
+  }
+
   addUser( user: User ): Promise<User> {
     return this.$http.post<User>( this.endpoint, user )
       .pipe(

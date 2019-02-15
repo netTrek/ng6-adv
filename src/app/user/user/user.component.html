@@ -1,2 +1,4 @@
-{{user.firstname}} {{user.lastname}}
+<a [routerLink]="['/user', user.id ]">
+  {{user.firstname}} {{user.lastname}}
+</a>
 <button (click)="delUsr(  $event )">del</button>

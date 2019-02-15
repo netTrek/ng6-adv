@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'msg-user-detail',
@@ -11,18 +13,20 @@ import { Subscription } from 'rxjs';
 export class UserDetailComponent implements OnInit, OnDestroy {
 
   id: number;
+  user: User;
+
   private sub: Subscription;
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute, private $user: UserService ) { }
 
   ngOnInit() {
-    console.log ( 'init userDetails' );
     this.sub = this.route.paramMap.pipe(
       map( value => parseInt( value.get('id') as string, 10 ))
     ).subscribe(
       id => {
         this.id = id;
-        console.log ( 'update userDetails id' );
+        this.$user.getUserById ( this.id ).then( user => this.user = user );
+        // console.log ( 'update userDetails id' );
       }
     );
   }
