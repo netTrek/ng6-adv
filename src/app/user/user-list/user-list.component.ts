@@ -63,17 +63,19 @@ export class UserListComponent implements OnInit,
   }
 
   addUser() {
-    this.userList.push( {firstname: `user${this.userList.length + 1}`,
-      lastname: 'added' } );
+    this.$user.addUser(
+      {firstname: `user${this.userList.length + 1}`,
+        lastname: 'added' }
+    );
   }
 
   delSelected() {
-    this.userList.splice( this.userList.indexOf( this.$user.selectedUser ), 1 );
+    this.$user.delUser( this.$user.selectedUser );
     this.$user.selectedUser = undefined;
   }
 
   deleteUser( usr: User ) {
-    this.userList.splice( this.userList.indexOf( usr ), 1 );
+    this.$user.delUser( usr );
     if ( usr === this.$user.selectedUser ) {
       this.$user.selectedUser = undefined;
     }
