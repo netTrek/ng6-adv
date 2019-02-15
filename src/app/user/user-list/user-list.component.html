@@ -1,5 +1,6 @@
-<h3 msgDangerBtn>user list</h3>
+<h3 msgDangerBtn>user list {{$play.toPlay}}</h3>
 
+<button (click)="updateToPlay()">changePlay</button>
 <!--
 <ul>
   <li *ngFor="let num of myList; index as i; even as e">
@@ -13,27 +14,27 @@
   [user]="user"
   (selected)="setSelectedUser($event)"
   (del)="deleteUser($event)"
-  [isSelected]="user===selectedUser"
+  [isSelected]="user===$user.selectedUser"
   [ngClass]="{even: e, odd: o}"
 ></msg-user>
 <!--
 <msg-user
   [user]="userList[0]"
   (selected)="setSelectedUser($event)"
-  [isSelected]="userList[0]===selectedUser"
+  [isSelected]="userList[0]===$user.selectedUser"
 ></msg-user>
 <msg-user
   [user]="userList[1]"
   (selected)="setSelectedUser($event)"
-  [isSelected]="userList[1]===selectedUser"
+  [isSelected]="userList[1]===$user.selectedUser"
 ></msg-user>
 -->
 <button (click)="addUser()">+</button>
 
-<div *ngIf="selectedUser; else selecUsrTmp">
+<div *ngIf="$user.selectedUser; else selecUsrTmp">
   <hr>
-  is selected = {{selectedUser.firstname}} {{selectedUser.lastname}}
-  <button msgDangerBtn="willst du {{selectedUser.firstname}} wirklich löschen?" (confirmed)="delSelected()" >-</button>
+  is selected = {{$user.selectedUser.firstname}} {{$user.selectedUser.lastname}}
+  <button msgDangerBtn="willst du {{$user.selectedUser.firstname}} wirklich löschen?" (confirmed)="delSelected()" >-</button>
 </div>
 <ng-template #selecUsrTmp>
   <div>
@@ -45,19 +46,19 @@
 
 <!--
 Das macht der angular compiler
-<ng-template [ngIf]="selectedUser" >
+<ng-template [ngIf]="$user.selectedUser" >
   <div>
     <hr>
-    is selected = {{selectedUser.firstname}} {{selectedUser.lastname}}
+    is selected = {{$user.selectedUser.firstname}} {{$user.selectedUser.lastname}}
   </div>
 </ng-template>
 
-<ng-template [ngIf]="selectedUser" >
+<ng-template [ngIf]="$user.selectedUser" >
   <div>user was selected</div>
   <div>dsss</div>
 </ng-template>
 
-<ng-container *ngIf="selectedUser">
+<ng-container *ngIf="$user.selectedUser">
   <div>user was selected</div>
   <div>dsss</div>
 </ng-container>

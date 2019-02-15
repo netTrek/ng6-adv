@@ -2,11 +2,13 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, Vie
 import { AvatarComponent } from '../avatar/avatar.component';
 import { UserComponent } from '../user/user.component';
 import { User } from '../user';
+import { PlayService } from '../../play.service';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'msg-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls  : [ './user-list.component.scss' ]
+  styleUrls  : [ './user-list.component.scss' ], providers: [ UserService ]
 } )
 export class UserListComponent implements OnInit,
                                           AfterViewInit {
@@ -34,9 +36,9 @@ export class UserListComponent implements OnInit,
 
   @ViewChildren ( UserComponent )
   users: QueryList<UserComponent>;
-  selectedUser: User;
+  // selectedUser: User;
 
-  constructor( private renderer: Renderer2 ) {
+  constructor( private renderer: Renderer2, public $play: PlayService, public $user: UserService ) {
   }
 
   ngOnInit() {
@@ -51,10 +53,10 @@ export class UserListComponent implements OnInit,
   }
 
   setSelectedUser( usr: User ) {
-    if ( this.selectedUser === usr ) {
-      this.selectedUser = undefined;
+    if ( this.$user.selectedUser === usr ) {
+      this.$user.selectedUser = undefined;
     } else {
-      this.selectedUser = usr;
+      this.$user.selectedUser = usr;
     }
   }
 
@@ -68,14 +70,18 @@ export class UserListComponent implements OnInit,
   }
 
   delSelected() {
-    this.userList.splice( this.userList.indexOf( this.selectedUser ), 1 );
-    this.selectedUser = undefined;
+    this.userList.splice( this.userList.indexOf( this.$user.selectedUser ), 1 );
+    this.$user.selectedUser = undefined;
   }
 
   deleteUser( usr: User ) {
     this.userList.splice( this.userList.indexOf( usr ), 1 );
-    if ( usr === this.selectedUser ) {
-      this.selectedUser = undefined;
+    if ( usr === this.$user.selectedUser ) {
+      this.$user.selectedUser = undefined;
     }
+  }
+
+  updateToPlay() {
+    this.$play.toPlay = 4556;
   }
 }

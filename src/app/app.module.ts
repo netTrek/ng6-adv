@@ -10,6 +10,8 @@ import { PipesModule } from './pipes/pipes.module';
 
 import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
+import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
+import { PlayService } from './play.service';
 registerLocaleData( localeDE );
 
 
@@ -23,10 +25,12 @@ registerLocaleData( localeDE );
     UserModule,
     BindingsModule,
     UtilsModule,
-    PipesModule
+    PipesModule,
+    RxjsSamplesModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'de'}
+    {provide: LOCALE_ID, useValue: 'de'}/*,
+    PlayService*/
   ],
   bootstrap: [AppComponent]
 })

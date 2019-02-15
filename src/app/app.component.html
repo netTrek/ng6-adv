@@ -2,15 +2,18 @@
 
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{ title }}! {{$play.toPlay}}
   </h1>
   <button (click)="chgTitle()">change title</button>
 </div>
+<!--
 
 <msg-pipe-samples></msg-pipe-samples>
-
-<!--
+<msg-rxjs-sample></msg-rxjs-sample>
+-->
 <msg-user-list></msg-user-list>
+<msg-user-list></msg-user-list>
+<!--
 <msg-countdown></msg-countdown>
 <msg-binding-samples></msg-binding-samples>
 -->
